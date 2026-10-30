@@ -334,6 +334,48 @@
       .core-compact-capabilities li {font-size:12px;}
     }
     @media(max-width:380px){.core-compact-capabilities{grid-template-columns:1fr;gap:10px;}}
+  
+    /* V10: remove conceptual diagram; focus on verified throughput and workload scale. */
+    .industrial-feature{grid-template-columns:1fr}
+    .industrial-feature .project-info{padding:34px 39px}
+    .industrial-proof{grid-column:1;background:#111a10}
+    .industrial-proof-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .object-inspection{display:flex;align-items:center;gap:22px;border-top:1px solid #394b32;padding:22px 0 4px;margin-top:21px}
+    .object-inspection>strong{color:#b0e967;font-size:48px;line-height:1;font-weight:850}
+    .object-inspection div{display:flex;flex-direction:column;gap:6px}
+    .object-inspection b{font-size:15px;color:#f0f6ec}
+    .object-inspection span{font-size:12px;color:#b9cbb1}
+    .industrial-proof .data-estimate{font-size:10px;color:#9db392;margin-top:18px}
+    @media(max-width:760px){.industrial-feature .project-info{padding:31px 26px}.industrial-proof-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.proof-stat{padding:14px 12px}.proof-stat strong{font-size:clamp(23px,7vw,32px)}.proof-stat b{font-size:11px}.proof-stat span{font-size:10px}.object-inspection{gap:15px}.object-inspection>strong{font-size:43px}}
+
+    .kernel-speedup{display:flex;align-items:center;gap:22px;padding:20px 22px;margin-top:14px;background:#23371d;border:1px solid #526f43;border-radius:12px}
+    .kernel-speedup>strong{font-size:clamp(22px,2.5vw,33px);line-height:1.14;max-width:320px;letter-spacing:-1px;color:#b0e967;flex:0 0 42%}
+    .kernel-speedup b{display:block;color:#f0f6ec;font-size:13px;margin-bottom:5px}
+    .kernel-speedup span{display:block;color:#afc5a5;font-size:11px;line-height:1.6}
+    @media(max-width:600px){.kernel-speedup{align-items:flex-start;flex-direction:column;gap:9px;padding:17px}.kernel-speedup>strong{flex:auto;max-width:none}}
+
+    /* V17: horizontal architecture at every viewport, with local scroll only on narrow screens. */
+    .inspection-architecture{grid-column:1/-1;margin:0 28px 29px;padding:23px 25px;border-radius:16px;background:#141d16;color:#f2f7ed;border:1px solid #344c37}
+    .arch-header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}
+    .arch-header strong{font-size:11px;letter-spacing:1.3px;color:#b4e477}
+    .arch-header span{font-size:10px;color:#92a88d;letter-spacing:.7px}
+    .arch-flow{display:grid;grid-template-columns:minmax(100px,1fr) 18px minmax(285px,2.8fr) 18px minmax(105px,1fr);align-items:center;gap:8px;min-width:0}
+    .arch-endpoint{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;min-width:0}
+    .arch-icon{font-size:27px;color:#b1e76c;line-height:1}
+    .arch-label{font-size:13px;font-weight:750;color:#f5fff1}
+    .arch-small{font-size:11px;color:#b8c9b4;line-height:1.55}
+    .arch-arrow{font-size:24px;color:#b1e76c;text-align:center}
+    .arch-compute{padding:18px 15px;background:#202c22;border:1px solid #45634a;border-radius:11px;min-width:0}
+    .arch-compute-title{font-size:11px;color:#b3e679;letter-spacing:.7px;font-weight:800;margin-bottom:16px}
+    .arch-processors{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .arch-processor h5{font-size:14px;color:#f7fff3;margin:0 0 9px}
+    .arch-processor p{font-size:11px;line-height:1.8;color:#c4d1c0;margin:0}
+    .arch-blackbox{margin-top:16px;padding:11px 9px;background:#111a13;border-radius:7px;color:#d2e4cd;font-size:11px;text-align:center}
+    .arch-output-lines{font-size:11px;color:#b8c9b4;line-height:1.8}
+    .arch-transfer{margin-top:17px;font-size:11px;color:#a6c996;text-align:center}
+    @media(max-width:850px){.inspection-architecture{margin:0 20px 23px}.arch-flow-viewport{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#657c63 #18231a}.arch-flow{min-width:690px}}
+    @media(max-width:480px){.inspection-architecture{padding:18px 15px;margin:0 13px 20px}.arch-header{flex-direction:column;align-items:flex-start;gap:5px}.arch-compute{padding:15px}.arch-processors{gap:12px}.arch-processor h5{font-size:12px}.arch-processor p{font-size:10px}}
+
   </style>
 </head>
 <body>
@@ -395,52 +437,52 @@
 
     <section class="section projects-section" id="projects">
       <div class="container">
-        <div class="section-head"><div><div class="eyebrow">03 / FEATURED PROJECTS</div><h2>Selected engineering work.</h2></div><p>Detailed work that shows how I approach performance, system integration and measurable results.</p></div>
+        <div class="section-head"><div><div class="eyebrow">03 / FEATURED PROJECTS</div></div></div>
       <article class="project-feature industrial-feature">
         <div class="project-info">
-          <span class="pill">FEATURED PROJECT / 01</span>
           <h3>High-Throughput CUDA Vision Pipeline</h3>
           <div class="project-sub">Industrial Image Processing & GPU Acceleration</div>
           <p>A real-time image-processing pipeline engineered around high-volume inspection workloads. Work focused on selective GPU acceleration, CPU–GPU task allocation, kernel and memory tuning, and profiling-driven pipeline optimization.</p>
           <div class="chips"><span class="chip">CUDA / C++</span><span class="chip">Nsight</span><span class="chip">Kernel Optimization</span><span class="chip">CPU–GPU Scheduling</span></div>
 
         </div>
-        <div class="industrial-visual" role="img" aria-label="Conceptual pipeline diagram illustrating CPU and GPU stages; not proprietary implementation details">
-          <div class="industrial-top"><span>HIGH-LEVEL PIPELINE / CONCEPTUAL</span><span class="live-marker"><i></i>GPU ACCELERATION</span></div>
-          <div class="pipeline-scene">
-            <div class="pipes-row">
-              <div class="pipes-cell"><span>01</span><strong>Image Input</strong><small>High-volume frames</small></div>
-              <b class="pipes-arrow">→</b>
-              <div class="pipes-cell"><span>02</span><strong>CPU Stages</strong><small>Host processing</small></div>
+        <section class="inspection-architecture" aria-label="Conceptual real-time industrial inspection system architecture">
+          <div class="arch-header"><strong>REAL-TIME INSPECTION ARCHITECTURE</strong><span>SYSTEM OVERVIEW</span></div>
+          <div class="arch-flow-viewport" aria-label="Horizontal architecture diagram; scroll sideways on small screens"><div class="arch-flow">
+            <div class="arch-endpoint"><div class="arch-icon" aria-hidden="true">◉</div><div class="arch-label">Acquisition</div><div class="arch-small">Multi-angle cameras<br>Network</div></div>
+            <div class="arch-arrow" aria-hidden="true">→</div>
+            <div class="arch-compute">
+              <div class="arch-compute-title">HYBRID CPU–GPU PROCESSING</div>
+              <div class="arch-processors">
+                <div class="arch-processor"><h5>CPU</h5><p>Multithreading<br>Memory &amp; Mutex<br>Task Scheduling</p></div>
+                <div class="arch-processor"><h5>GPU</h5><p>CUDA Kernels<br>Multi-Stream Execution<br>Device Memory</p></div>
+              </div>
+              <div class="arch-blackbox">Proprietary Inspection Algorithms</div>
             </div>
-            <div class="pipes-branch"><span>Balanced execution</span><b>↓</b></div>
-            <div class="pipes-row">
-              <div class="pipes-cell gpu-cell"><span>03</span><strong>CUDA Kernels</strong><small>GPU processing</small></div>
-              <b class="pipes-arrow">→</b>
-              <div class="pipes-cell"><span>04</span><strong>Output</strong><small>Validated results</small></div>
-            </div>
+            <div class="arch-arrow" aria-hidden="true">→</div>
+            <div class="arch-endpoint"><div class="arch-icon" aria-hidden="true">▣</div><div class="arch-label">Output</div><div class="arch-output-lines">Monitoring<br>Reports &amp; Data<br>I/O Sorting</div></div>
           </div>
-          <div class="industrial-bottom">
-            <div class="trace-label"><span>Performance-driven engineering</span><span>PROFILE → OPTIMIZE → VERIFY</span></div>
-            <div class="trace-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
           </div>
-          <p class="industrial-viz-caption">Conceptual visualization — not a reproduction of a proprietary processing pipeline.</p>
-        </div>
-        <div class="industrial-proof" aria-label="Production-deployed industrial GPU performance results">
+          <div class="arch-transfer">↔ &nbsp; CPU–GPU Memory Transfers · Asynchronous Execution</div>
+        </section>
+<div class="industrial-proof" aria-label="Production-deployed industrial GPU performance results">
           <div class="production-badge"><span class="production-check" aria-hidden="true">✓</span> PRODUCTION-DEPLOYED <span class="production-separator" aria-hidden="true">·</span> INDUSTRIAL MACHINE VISION</div>
           <h4 class="production-heading">GPU Optimization Proven in Production</h4>
           <p class="production-summary">Measured performance improvements from a CUDA/C++ image-processing pipeline deployed in a real industrial inspection system.</p>
           <div class="industrial-proof-grid">
             <div class="proof-stat"><strong>11.2×</strong><b>Processing throughput</b><span>vs. single-core CPU baseline</span></div>
             <div class="proof-stat"><strong>~40%</strong><b>Higher throughput</b><span>vs. multi-core CPU-only pipeline</span></div>
-            <div class="proof-stat"><strong>2.52M</strong><b>Images per hour</b><span>Industrial inspection workload</span></div>
+            <div class="proof-stat"><strong>2.52M</strong><b>Images inspected per hour</b><span>Industrial inspection workload</span></div>
+            <div class="proof-stat"><strong>~1.55 TB</strong><b>Image data processed per hour</b><span>Multi-angle imaging inspection</span></div>
           </div>
+          <div class="kernel-speedup"><strong>10s–100s×</strong><div><b>Individual CUDA Kernel Speedups</b><span>Compared with single-core CPU implementations. Kernel-level speedups in specific image-processing operations are distinct from end-to-end throughput gains.</span></div></div>
+          <div class="object-inspection"><strong>12</strong><div><b>Images inspected per object</b><span>Multi-angle imaging and height-map inspection · 640 × 480</span></div></div>
           <p class="production-note">Results from an operational industrial vision system—not a simulation or portfolio benchmark. Proprietary algorithms and implementation details are not disclosed.</p>
         </div>
       </article>
       <article class="project-feature">
           <div class="project-info">
-            <span class="pill">FEATURED PROJECT / 02</span>
+            
             <h3>DriveFusion</h3><div class="project-sub">Real-Time Automotive Vision & Radar Fusion</div>
             <p>A CARLA-based perception prototype combining YOLO11n, TensorRT, object tracking, radar-assisted distance estimation and a Qt monitoring interface. Evaluation compares camera-only and radar-assisted estimates across simulated driving sessions.</p>
             <div class="chips"><span class="chip">C++ / CUDA</span><span class="chip">TensorRT</span><span class="chip">Qt</span><span class="chip">CARLA</span><span class="chip">Sensor Fusion</span></div>
