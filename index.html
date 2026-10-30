@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#111410">
   <meta name="description" content="Jihun Rho — CUDA/C++ Engineer focused on GPU performance, real-time computer vision and inference systems.">
   <meta property="og:title" content="Jihun Rho | CUDA & GPU Performance Engineer">
-  <meta property="og:description" content="Engineering high-performance computer vision, from kernels to complete systems.">
+  <meta property="og:description" content="GPU performance engineering, vision systems, and selected technical projects.">
   <meta property="og:type" content="website">
   <title>Jihun Rho — GPU Performance Engineer</title>
   <style>
@@ -173,6 +173,55 @@
     }
     @media(max-width:420px){.workflow span{font-size:8px;min-height:49px}.workflow b{font-size:13px}.viz-result strong{font-size:24px}.photo-caption b{font-size:12px}.photo-caption span{font-size:9px}.gpu-result{grid-template-columns:100px minmax(0,1fr)}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button{transition:none}}
+
+    /* Portfolio information architecture v2: editorial featured projects and compact other work. */
+    .nav{gap:21px}
+    .more-work-four{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .more-work-four .work-card{min-height:168px;padding:25px 24px}
+    .more-work-four .work-card h3{font-size:17px}
+    .projects-section{background:#f7f9f5}
+    .projects-section .project-feature + .project-feature{margin-top:26px}
+    .industrial-feature{grid-template-columns:1fr 1fr}
+    .industrial-feature .project-info{padding:42px 39px}
+    .industrial-feature .project-info h3{font-size:33px;line-height:1.12}
+    .industrial-disclosure{font-size:11px!important;margin-top:22px!important;padding-top:14px;border-top:1px solid var(--line);color:#73806d!important}
+    .industrial-visual{background:radial-gradient(circle at 78% 0%,rgba(118,185,0,.23),transparent 49%),linear-gradient(145deg,#202d1d 0%,#101710 100%);padding:30px 28px 24px;display:flex;flex-direction:column;justify-content:center;color:#e5f0de}
+    .industrial-top{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:10px;color:#b8d5a3;letter-spacing:1.25px;font-weight:850}
+    .live-marker{white-space:nowrap;color:#b6ee72;font-size:9px;letter-spacing:.7px}
+    .live-marker i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#9dd93b;margin-right:6px}
+    .pipeline-scene{padding:22px 18px;margin-top:19px;background:rgba(9,15,9,.55);border:1px solid #36532b;border-radius:15px}
+    .pipes-row{display:grid;grid-template-columns:1fr 24px 1fr;align-items:center;gap:7px}
+    .pipes-cell{padding:17px 9px;border:1px solid #46663a;border-radius:10px;background:#23341e;text-align:center;min-width:0}
+    .pipes-cell span{display:block;color:#91c354;font-size:10px;font-weight:800;letter-spacing:1px}
+    .pipes-cell strong{display:block;font-size:13px;margin-top:9px;color:#f2f9ef}
+    .pipes-cell small{display:block;color:#b1c7aa;font-size:10px;margin-top:7px}
+    .pipes-cell.gpu-cell{border-color:#86c837;background:#2c461e}
+    .pipes-arrow{font-size:18px;color:#b2e769;text-align:center}
+    .pipes-branch{text-align:center;padding:12px 0;color:#b0ce9d;font-size:10px;letter-spacing:.4px}
+    .pipes-branch b{display:block;margin-top:4px;color:#b2e769;font-size:18px}
+    .industrial-bottom{margin-top:19px}
+    .trace-label{display:flex;justify-content:space-between;gap:15px;font-size:10px;color:#bad0ad}
+    .trace-label span:last-child{color:#a5de58;font-weight:700;white-space:nowrap}
+    .trace-bars{height:44px;display:flex;align-items:end;gap:5px;margin-top:13px}
+    .trace-bars i{flex:1;background:#7cbb28;border-radius:3px 3px 0 0;min-height:10px;opacity:.78}
+    .trace-bars i:nth-child(3n+1){height:38%}.trace-bars i:nth-child(3n+2){height:70%}.trace-bars i:nth-child(4n){height:94%}.trace-bars i:nth-child(5n){height:56%}
+    .industrial-viz-caption{color:#93a98a;font-size:10px;line-height:1.65;margin:15px 0 0}
+    .other-projects-section .section-head p{max-width:410px}
+    .other-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .other-card{position:relative;min-height:233px;padding:27px 25px;border-radius:16px;background:#fff;border:1px solid #dfe8d9;display:flex;flex-direction:column;transition:border-color .18s,transform .18s,box-shadow .18s}
+    .other-card:hover{border-color:#aac887;box-shadow:0 12px 30px rgba(35,58,24,.055);transform:translateY(-2px)}
+    .other-card::before{content:"";position:absolute;top:0;left:25px;width:30px;height:3px;background:var(--green);border-radius:0 0 3px 3px}
+    .other-card-top{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+    .other-kicker{font-weight:850;letter-spacing:1.2px;font-size:10px;color:#638b34}
+    .other-status{font-size:9px;color:#596e48;background:#e9f3df;border-radius:6px;padding:5px 7px;font-weight:750;white-space:nowrap}
+    .other-card h3{font-size:19px;letter-spacing:-.45px;margin:20px 0 11px;line-height:1.25}
+    .other-card p{font-size:12px;line-height:1.8;color:#63715e;margin:0}
+    .other-tech{margin-top:auto;padding-top:23px;font-size:10px;font-weight:750;color:#5a871e;letter-spacing:.2px}
+    .other-footer{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:22px;color:#708068;font-size:11px;line-height:1.8}
+    .other-footer a{font-size:12px;font-weight:800;color:#4e8100;white-space:nowrap}
+    @media(max-width:1100px){.industrial-feature{grid-template-columns:1fr}.industrial-visual{min-height:430px}.other-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:760px){.more-work-four{grid-template-columns:1fr}.other-grid{grid-template-columns:1fr}.industrial-visual{padding:23px 20px;min-height:400px}.industrial-feature .project-info{padding:31px 26px}.industrial-feature .project-info h3{font-size:29px}.other-footer{align-items:flex-start;flex-direction:column}.trace-label{font-size:9px}}
+    @media(max-width:420px){.pipes-cell{padding:14px 5px}.pipes-cell strong{font-size:11px}.pipes-cell small{font-size:9px}.industrial-top{font-size:8px}.live-marker{font-size:8px}.trace-label{flex-wrap:wrap}}
   </style>
 </head>
 <body>
@@ -182,7 +231,7 @@
       <a class="brand" href="#home" aria-label="Jihun Rho home"><span class="logo">JR</span> Jihun Rho<span class="dot">.</span></a>
       <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-nav" type="button">☰ Menu</button>
       <nav class="nav" id="main-nav" aria-label="Main navigation">
-        <a href="#approach">What I Do</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#stack">Stack</a><a href="#contact" class="nav-action">Contact ↗</a>
+        <a href="#approach">What I Do</a><a href="#projects">Featured</a><a href="#other-projects">Other Projects</a><a href="#experience">Experience</a><a href="#stack">Skills</a><a href="#contact" class="nav-action">Contact ↗</a>
       </nav>
     </div>
   </header>
@@ -232,19 +281,53 @@
           </div>
 
         </div>
-        <div class="more-work">
-          <article class="work-card"><div class="work-icon" aria-hidden="true">▣</div><div><h3>Real-Time Computer Vision</h3><p>Image processing, detection and tracking for industrial and sensor-driven applications where latency and reliability matter.</p><div class="work-foot">OpenCV · Detection · Tracking</div></div></article>
-          <article class="work-card"><div class="work-icon" aria-hidden="true">↗</div><div><h3>Inference & Integration</h3><p>Integrating TensorRT inference with C++ applications, sensor inputs and real-time Qt interfaces across Windows and Linux.</p><div class="work-foot">TensorRT · CMake · Qt</div></div></article>
+        <div class="more-work more-work-four">
+          <article class="work-card"><div class="work-icon" aria-hidden="true">▣</div><div><h3>Computer Vision</h3><p>Classical image processing, object detection, tracking, camera geometry and 2D/3D vision.</p><div class="work-foot">OpenCV · Detection · 3D Vision</div></div></article>
+          <article class="work-card"><div class="work-icon" aria-hidden="true">↗</div><div><h3>Inference Optimization</h3><p>Deploying accelerated models with TensorRT and connecting GPU inference to application pipelines.</p><div class="work-foot">TensorRT · CUDA · YOLO</div></div></article>
+          <article class="work-card"><div class="work-icon" aria-hidden="true">◷</div><div><h3>Real-Time Systems</h3><p>Throughput-sensitive, multithreaded processing and data flow with performance and correctness in mind.</p><div class="work-foot">C++ · Multithreading · Latency</div></div></article>
+          <article class="work-card"><div class="work-icon" aria-hidden="true">⌘</div><div><h3>System Integration</h3><p>Bringing together sensors, robotic devices, Qt interfaces and cross-platform application components.</p><div class="work-foot">Qt · CMake · Protocols</div></div></article>
         </div>
       </div>
     </section>
 
     <section class="section projects-section" id="projects">
       <div class="container">
-        <div class="section-head"><div><div class="eyebrow">02 / PROJECTS</div><h2>Built to run. Tested to improve.</h2></div><p>Selected independent work demonstrating system integration and measurable evaluation.</p></div>
-        <article class="project-feature">
+        <div class="section-head"><div><div class="eyebrow">02 / FEATURED PROJECTS</div><h2>Selected engineering work.</h2></div><p>Detailed work that shows how I approach performance, system integration and measurable results.</p></div>
+      <article class="project-feature industrial-feature">
+        <div class="project-info">
+          <span class="pill">FEATURED PROJECT / 01</span>
+          <h3>High-Throughput CUDA Vision Pipeline</h3>
+          <div class="project-sub">Industrial Image Processing & GPU Acceleration</div>
+          <p>A real-time image-processing pipeline engineered around high-volume inspection workloads. Work focused on selective GPU acceleration, CPU–GPU task allocation, kernel and memory tuning, and profiling-driven pipeline optimization.</p>
+          <div class="chips"><span class="chip">CUDA / C++</span><span class="chip">Nsight</span><span class="chip">Kernel Optimization</span><span class="chip">CPU–GPU Scheduling</span></div>
+          <p class="industrial-disclosure">High-level technical overview only. Proprietary source code, algorithms and implementation details are not disclosed.</p>
+          <a class="project-link" href="#approach">See optimization approach ↑</a>
+        </div>
+        <div class="industrial-visual" role="img" aria-label="Conceptual pipeline diagram illustrating CPU and GPU stages; not proprietary implementation details">
+          <div class="industrial-top"><span>HIGH-LEVEL PIPELINE / CONCEPTUAL</span><span class="live-marker"><i></i>GPU ACCELERATION</span></div>
+          <div class="pipeline-scene">
+            <div class="pipes-row">
+              <div class="pipes-cell"><span>01</span><strong>Image Input</strong><small>High-volume frames</small></div>
+              <b class="pipes-arrow">→</b>
+              <div class="pipes-cell"><span>02</span><strong>CPU Stages</strong><small>Host processing</small></div>
+            </div>
+            <div class="pipes-branch"><span>Balanced execution</span><b>↓</b></div>
+            <div class="pipes-row">
+              <div class="pipes-cell gpu-cell"><span>03</span><strong>CUDA Kernels</strong><small>GPU processing</small></div>
+              <b class="pipes-arrow">→</b>
+              <div class="pipes-cell"><span>04</span><strong>Output</strong><small>Validated results</small></div>
+            </div>
+          </div>
+          <div class="industrial-bottom">
+            <div class="trace-label"><span>Performance-driven engineering</span><span>PROFILE → OPTIMIZE → VERIFY</span></div>
+            <div class="trace-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+          <p class="industrial-viz-caption">Conceptual visualization — not a reproduction of a proprietary processing pipeline.</p>
+        </div>
+      </article>
+      <article class="project-feature">
           <div class="project-info">
-            <span class="pill">Featured · Independent project</span>
+            <span class="pill">FEATURED PROJECT / 02</span>
             <h3>DriveFusion</h3><div class="project-sub">Real-Time Automotive Vision & Radar Fusion</div>
             <p>A CARLA-based perception prototype combining YOLO11n, TensorRT, object tracking, radar-assisted distance estimation and a Qt monitoring interface. Evaluation compares camera-only and radar-assisted estimates across simulated driving sessions.</p>
             <div class="chips"><span class="chip">C++ / CUDA</span><span class="chip">TensorRT</span><span class="chip">Qt</span><span class="chip">CARLA</span><span class="chip">Sensor Fusion</span></div>
@@ -271,16 +354,26 @@
             <div class="viz-foot">Nine simulation sessions covering weather and time-of-day variations. Visualization is illustrative, not a screenshot of the running Qt application.</div>
           </div>
         </article>
-        <article class="secondary-project">
-          <div><span class="pill">Work in progress</span><h3>CudaFusion3D</h3><p>A CUDA-oriented 3D reconstruction exploration using CARLA RGB-D and camera poses, with planned TSDF integration, Marching Cubes, and CPU/GPU correctness and performance comparisons. No completed benchmark results claimed.</p></div>
-          <div class="chips"><span class="chip">CUDA</span><span class="chip">C++17</span><span class="chip">RGB-D</span><span class="chip">TSDF</span></div>
-        </article>
+        </div>
+    </section>
+    <section class="section section-white other-projects-section" id="other-projects">
+      <div class="container">
+        <div class="section-head"><div><div class="eyebrow">03 / OTHER PROJECTS</div><h2>More things I've built.</h2></div><p>Additional work across vision research, robotics, 3D reconstruction and applied AI systems.</p></div>
+        <div class="other-grid">
+          <article class="other-card"><div class="other-card-top"><span class="other-kicker">3D RECONSTRUCTION</span><span class="other-status">In development</span></div><h3>CudaFusion3D</h3><p>CUDA-based RGB-D reconstruction with planned TSDF fusion, Marching Cubes and CPU/GPU correctness benchmarks.</p><div class="other-tech">CUDA · C++17 · RGB-D</div></article>
+          <article class="other-card"><div class="other-card-top"><span class="other-kicker">ROBOTICS & VISION</span></div><h3>Robotics & 3D Bin Picking</h3><p>Integrated AMR, six-axis robotics, 3D recognition and gripper control into working system demonstrations.</p><div class="other-tech">Robotics · 3D Vision · Protocols</div></article>
+          <article class="other-card"><div class="other-card-top"><span class="other-kicker">COMPUTER VISION</span></div><h3>Vehicle Detection Research</h3><p>Vehicle detection experiments using YOLO and MobileNet-SSD, including dataset preparation and evaluation.</p><div class="other-tech">YOLO · MobileNet-SSD · Evaluation</div></article>
+          <article class="other-card"><div class="other-card-top"><span class="other-kicker">CAMERA GEOMETRY</span></div><h3>Traffic Sign Recognition</h3><p>Recognition experiments based on 3D-to-2D projection and rotation-dependent accuracy analysis.</p><div class="other-tech">Projection · Calibration · SVM</div></article>
+          <article class="other-card"><div class="other-card-top"><span class="other-kicker">AI APPLICATION</span></div><h3>SubSync</h3><p>AI-assisted YouTube English learning with dual subtitles, saved vocabulary and a tutor workflow.</p><div class="other-tech">FastAPI · Supabase · Gemini</div></article>
+          <article class="other-card"><div class="other-card-top"><span class="other-kicker">AI SYSTEMS</span></div><h3>CareerLens</h3><p>AI-powered resume and job matching system; contributed to LangGraph architecture and database design.</p><div class="other-tech">LangGraph · Python · Backend</div></article>
+          <article class="other-card"><div class="other-card-top"><span class="other-kicker">INFERENCE BENCHMARK</span></div><h3>LLM Inference Benchmark</h3><p>Performance evaluation of Qwen3-4B inference with attention to latency, throughput and batch scaling.</p><div class="other-tech">GPU · Benchmarking · Inference</div></article>
+        </div>
+        <div class="other-footer"><span>Selected work spans multiple engineering settings. Project descriptions focus on technical scope and contribution.</span><a href="https://github.com/931njhthe-star" target="_blank" rel="noopener noreferrer">Explore GitHub ↗</a></div>
       </div>
     </section>
-
     <section class="section" id="experience">
       <div class="container">
-        <div class="section-head"><div><div class="eyebrow">03 / EXPERIENCE</div><h2>Where I built and applied it.</h2></div><p>Industrial software development, computer vision research and robotic system integration.</p></div>
+        <div class="section-head"><div><div class="eyebrow">04 / EXPERIENCE</div><h2>Where I built and applied it.</h2></div><p>Industrial software development, computer vision research and robotic system integration.</p></div>
         <div class="timeline">
           <article class="timeline-item"><div class="timeline-top"><h3>Enclony · Advanced Technology Research Institute</h3><time>Mar 2021 – Oct 2025</time></div><div class="timeline-role">Research Engineer · CUDA & GPU Performance Optimization</div><p>Developed C++/CUDA software for high-volume industrial machine vision inspection, contributing to a performance-focused real-time processing pipeline.</p></article>
           <article class="timeline-item"><div class="timeline-top"><h3>Sejong University · Vision Research Laboratory</h3><time>Nov 2019 – Oct 2020</time></div><div class="timeline-role">Researcher · Computer Vision</div><p>Investigated vehicle detection and traffic-sign recognition, including dataset evaluation and 3D-to-2D camera projection studies.</p></article>
@@ -291,7 +384,7 @@
 
     <section class="section section-white" id="stack">
       <div class="container">
-        <div class="section-head"><div><div class="eyebrow">04 / TECH STACK</div><h2>Tools I work with.</h2></div><p>Core GPU and vision tools complemented by application and deployment experience.</p></div>
+        <div class="section-head"><div><div class="eyebrow">05 / TECHNICAL SKILLS</div><h2>Tools I work with.</h2></div><p>Core GPU and vision tools complemented by application and deployment experience.</p></div>
         <div class="stack-grid">
           <div class="stack-card"><h3>GPU & Performance</h3><div class="chips"><span class="chip">CUDA</span><span class="chip">C++</span><span class="chip">Nsight Systems</span><span class="chip">Nsight Compute</span><span class="chip">Multithreading</span></div></div>
           <div class="stack-card"><h3>Vision & Inference</h3><div class="chips"><span class="chip">OpenCV</span><span class="chip">TensorRT</span><span class="chip">YOLO</span><span class="chip">Camera Calibration</span><span class="chip">Sensor Fusion</span></div></div>
@@ -302,7 +395,7 @@
     </section>
 
     <section class="contact-area" id="contact">
-      <div class="container"><div class="contact-card"><div><div class="eyebrow">05 / CONTACT</div><h2>Let's build faster systems.</h2><p>Open to roles in GPU performance, CUDA software and computer vision engineering.</p></div><div class="contact-actions"><a href="mailto:hunjirho@gmail.com" class="button button-green">Email me ↗</a><a href="https://github.com/931njhthe-star" class="button button-light" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div></div>
+      <div class="container"><div class="contact-card"><div><div class="eyebrow">06 / CONTACT</div><h2>Let's build faster systems.</h2><p>Open to roles in GPU performance, CUDA software and computer vision engineering.</p></div><div class="contact-actions"><a href="mailto:hunjirho@gmail.com" class="button button-green">Email me ↗</a><a href="https://github.com/931njhthe-star" class="button button-light" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div></div>
     </section>
   </main>
   <footer class="footer"><div class="container footer-inner"><span>© <span id="year">2026</span> Jihun Rho · Built for GitHub Pages</span><span>Seoul, South Korea · <a href="#home">Back to top ↑</a></span></div></footer>
