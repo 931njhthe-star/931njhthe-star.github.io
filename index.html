@@ -222,6 +222,54 @@
     @media(max-width:1100px){.industrial-feature{grid-template-columns:1fr}.industrial-visual{min-height:430px}.other-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
     @media(max-width:760px){.more-work-four{grid-template-columns:1fr}.other-grid{grid-template-columns:1fr}.industrial-visual{padding:23px 20px;min-height:400px}.industrial-feature .project-info{padding:31px 26px}.industrial-feature .project-info h3{font-size:29px}.other-footer{align-items:flex-start;flex-direction:column}.trace-label{font-size:9px}}
     @media(max-width:420px){.pipes-cell{padding:14px 5px}.pipes-cell strong{font-size:11px}.pipes-cell small{font-size:9px}.industrial-top{font-size:8px}.live-marker{font-size:8px}.trace-label{flex-wrap:wrap}}
+
+    /* V3: broad engineering capabilities; quantitative results only in featured project 01. */
+    .gpu-specialty-note{margin-top:29px;border-top:1px solid #40583a;padding-top:18px;color:#b7e980;font-size:11px;letter-spacing:1.3px;font-weight:790;line-height:1.8}
+    .gpu-specialty-note span{color:#83a774;padding:0 5px}
+    .more-work-four .work-card{min-height:185px}
+    .more-work-four .work-card h3{line-height:1.32}
+    .industrial-feature{grid-template-columns:1fr 1fr}
+    .industrial-proof{grid-column:1 / -1;background:#111a10;color:#f1f8ec;border-top:1px solid #405838;padding:27px 38px 24px}
+    .industrial-proof-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;margin-bottom:20px}
+    .industrial-proof-top span{font-size:11px;letter-spacing:1.65px;color:#b8ed76;font-weight:850}
+    .industrial-proof-top small{font-size:11px;color:#bacab3}
+    .industrial-proof-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+    .proof-stat{padding:19px 20px 18px;background:#1e2d1a;border:1px solid #415a36;border-radius:12px;min-width:0}
+    .proof-stat strong{display:block;font-size:38px;letter-spacing:-1.5px;line-height:1.1;color:#b0e967;font-weight:850}
+    .proof-stat b{display:block;font-size:12px;margin-top:13px;color:#f0f6ec}
+    .proof-stat span{display:block;font-size:11px;color:#afc5a5;margin-top:6px;line-height:1.55}
+    .industrial-proof>p{font-size:10px;line-height:1.65;margin:17px 0 0;color:#a9bea0}
+    @media(max-width:1100px){.industrial-feature{grid-template-columns:1fr}}
+    @media(max-width:760px){.industrial-proof{padding:23px 20px}.industrial-proof-grid{grid-template-columns:1fr;gap:8px}.proof-stat{padding:16px 18px}.proof-stat strong{font-size:32px}.proof-stat b{margin-top:7px}.industrial-proof-top small{font-size:10px}.more-work-four .work-card{min-height:0}}
+
+    /* V4: full-width black editorial list, replacing the workflow chips and duplicate CUDA cards. */
+    .gpu-feature-vertical { display:block; border-color:#31452c; }
+    .gpu-feature-vertical .gpu-feature-left {
+      padding:48px clamp(27px,5vw,62px) 34px;
+      background:linear-gradient(125deg,#172417 0%,#101910 58%,#0c140c 100%);
+    }
+    .gpu-feature-vertical .gpu-feature-left h3 { margin:21px 0 13px; font-size:clamp(29px,3.8vw,43px); }
+    .gpu-feature-vertical .gpu-feature-left > p { max-width:790px; color:#becdb5; font-size:14px; }
+    .gpu-vertical-list { margin-top:35px; border-top:1px solid #3d5136; }
+    .gpu-vertical-row {
+      display:grid; grid-template-columns:74px minmax(0,1fr); gap:21px;
+      align-items:start; padding:24px 2px 25px; border-bottom:1px solid #3d5136;
+    }
+    .gpu-vertical-row:last-child { border-bottom:0; padding-bottom:4px; }
+    .gpu-vertical-num { color:#a9df61; font-size:30px; font-weight:850; letter-spacing:-1.3px; line-height:1.08; font-variant-numeric:tabular-nums; }
+    .gpu-vertical-copy { min-width:0; }
+    .gpu-vertical-label { display:block; color:#a7dc5c; font-size:11px; font-weight:830; letter-spacing:1.7px; }
+    .gpu-vertical-copy h4 { color:#f9fff5; font-size:21px; letter-spacing:-.5px; margin:9px 0 7px; line-height:1.2; }
+    .gpu-feature-vertical .gpu-vertical-copy p { color:#bccbb5; font-size:13px; line-height:1.7; max-width:810px; margin:0; }
+    @media(max-width:760px) {
+      .gpu-feature-vertical .gpu-feature-left { padding:32px 23px 26px; }
+      .gpu-feature-vertical .gpu-feature-left > p { font-size:13px; }
+      .gpu-vertical-list { margin-top:25px; }
+      .gpu-vertical-row { grid-template-columns:44px minmax(0,1fr); gap:12px; padding:20px 0 21px; }
+      .gpu-vertical-num { font-size:25px; }
+      .gpu-vertical-copy h4 { font-size:18px; }
+      .gpu-vertical-label { font-size:10px; letter-spacing:1.3px; }
+    }
   </style>
 </head>
 <body>
@@ -243,7 +291,7 @@
           <div class="eyebrow">JIHUN RHO · CUDA / C++ ENGINEER</div>
           <h1>Engineering speed into <span>computer vision.</span></h1>
           <p class="hero-lead">GPU Performance · Real-Time Systems</p>
-          <p class="hero-intro">I turn demanding vision workloads into efficient software—from industrial image processing to modern inference applications.</p>
+          <p class="hero-intro">I build and optimize high-performance software across computer vision, robotics and AI applications—from CUDA kernels to end-to-end systems.</p>
           <div class="hero-meta"><span class="availability"><i></i>Open to opportunities</span><span>Seoul, South Korea</span></div>
           <div class="actions"><a href="#projects" class="button button-green">Explore projects ↗</a><a href="https://github.com/931njhthe-star" target="_blank" rel="noopener noreferrer" class="button button-light">GitHub profile ↗</a></div>
         </div>
@@ -256,36 +304,53 @@
 
     <section class="section section-white" id="approach">
       <div class="container">
-        <div class="section-head"><div><div class="eyebrow">01 / WHAT I DO</div><h2>Performance is a systems problem.</h2></div><p>I focus on where time is spent—and on changes that improve end-to-end execution rather than isolated benchmarks.</p></div>
-        <div class="gpu-feature">
+        <div class="section-head"><div><div class="eyebrow">01 / WHAT I DO</div><h2>From GPU kernels to complete systems.</h2></div><p>GPU optimization is my core strength. I also develop computer vision, robotics, real-time inference and full-stack AI applications.</p></div>
+        <div class="gpu-feature gpu-feature-vertical">
           <div class="gpu-feature-left">
             <div class="eyebrow">PRIMARY SPECIALIZATION</div>
-            <h3>GPU Performance Engineering</h3>
-            <p>From profiling an overloaded pipeline to validating an optimized implementation, I use measurement to guide CUDA engineering decisions.</p>
-            <div class="workflow" aria-label="Optimization workflow"><span>PROFILE</span><b>›</b><span>ANALYZE</span><b>›</b><span>OPTIMIZE</span><b>›</b><span>VERIFY</span></div>
-            <div class="gpu-results" aria-label="Measured professional GPU optimization results">
-              <div class="gpu-results-heading"><span class="proof-indicator"></span>MEASURED INDUSTRIAL PERFORMANCE</div>
-              <div class="gpu-results-list">
-                <div class="gpu-result"><strong>11.2×</strong><div><b>Processing throughput</b><span>vs. single-core CPU baseline</span></div></div>
-                <div class="gpu-result"><strong>~40%</strong><div><b>Additional throughput</b><span>vs. multi-core CPU-only pipeline</span></div></div>
-                <div class="gpu-result"><strong>2.52M</strong><div><b>Images per hour</b><span>Industrial inspection workload</span></div></div>
+            <h3>CUDA &amp; GPU Performance Engineering</h3>
+            <p>Optimizing GPU workloads through efficient computation, memory access, concurrent execution, and measurement-driven profiling.</p>
+            <div class="gpu-vertical-list" aria-label="GPU optimization capabilities">
+              <div class="gpu-vertical-row">
+                <span class="gpu-vertical-num">01</span>
+                <div class="gpu-vertical-copy">
+                  <span class="gpu-vertical-label">COMPUTE</span>
+                  <h4>Kernel Optimization</h4>
+                  <p>Thread layout, block configuration, occupancy, and execution efficiency.</p>
+                </div>
               </div>
-              <div class="gpu-results-note">Measured in industrial CUDA/C++ engineering. Separate from DriveFusion; proprietary implementation details are not disclosed.</div>
+              <div class="gpu-vertical-row">
+                <span class="gpu-vertical-num">02</span>
+                <div class="gpu-vertical-copy">
+                  <span class="gpu-vertical-label">MEMORY</span>
+                  <h4>Memory Optimization</h4>
+                  <p>Coalesced access and efficient use of global, shared, and constant memory.</p>
+                </div>
+              </div>
+              <div class="gpu-vertical-row">
+                <span class="gpu-vertical-num">03</span>
+                <div class="gpu-vertical-copy">
+                  <span class="gpu-vertical-label">SCHEDULING</span>
+                  <h4>Pipeline Optimization</h4>
+                  <p>Multithreading, CUDA streams, and CPU–GPU execution overlap.</p>
+                </div>
+              </div>
+              <div class="gpu-vertical-row">
+                <span class="gpu-vertical-num">04</span>
+                <div class="gpu-vertical-copy">
+                  <span class="gpu-vertical-label">PROFILING</span>
+                  <h4>Performance Analysis</h4>
+                  <p>Nsight Systems and Nsight Compute for bottleneck identification and validation.</p>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="gpu-feature-right">
-            <div class="capability"><div class="capability-index">01 / COMPUTE</div><h4>Kernel configuration</h4><p>Thread layout, launch dimensions, occupancy and execution efficiency.</p></div>
-            <div class="capability"><div class="capability-index">02 / MEMORY</div><h4>Data access</h4><p>Coalesced loads and appropriate use of global, shared and constant memory.</p></div>
-            <div class="capability"><div class="capability-index">03 / SCHEDULING</div><h4>Pipeline overlap</h4><p>Multithreading, stream concurrency and CPU–GPU work distribution.</p></div>
-            <div class="capability"><div class="capability-index">04 / EVIDENCE</div><h4>Performance profiling</h4><p>Nsight Systems and Nsight Compute for bottleneck analysis and validation.</p></div>
-          </div>
-
         </div>
         <div class="more-work more-work-four">
-          <article class="work-card"><div class="work-icon" aria-hidden="true">▣</div><div><h3>Computer Vision</h3><p>Classical image processing, object detection, tracking, camera geometry and 2D/3D vision.</p><div class="work-foot">OpenCV · Detection · 3D Vision</div></div></article>
-          <article class="work-card"><div class="work-icon" aria-hidden="true">↗</div><div><h3>Inference Optimization</h3><p>Deploying accelerated models with TensorRT and connecting GPU inference to application pipelines.</p><div class="work-foot">TensorRT · CUDA · YOLO</div></div></article>
-          <article class="work-card"><div class="work-icon" aria-hidden="true">◷</div><div><h3>Real-Time Systems</h3><p>Throughput-sensitive, multithreaded processing and data flow with performance and correctness in mind.</p><div class="work-foot">C++ · Multithreading · Latency</div></div></article>
-          <article class="work-card"><div class="work-icon" aria-hidden="true">⌘</div><div><h3>System Integration</h3><p>Bringing together sensors, robotic devices, Qt interfaces and cross-platform application components.</p><div class="work-foot">Qt · CMake · Protocols</div></div></article>
+          <article class="work-card"><div class="work-icon" aria-hidden="true">▣</div><div><h3>Computer Vision &amp; 3D Perception</h3><p>Classical image processing, object detection, tracking, camera calibration and 2D/3D geometry.</p><div class="work-foot">OpenCV · YOLO · 3D Vision</div></div></article>
+          <article class="work-card"><div class="work-icon" aria-hidden="true">⌘</div><div><h3>Robotics &amp; System Integration</h3><p>Integrating AMRs, robot arms, 3D sensing and device controllers through software interfaces and industrial protocols.</p><div class="work-foot">Robotics · Sensors · TCP/IP · Modbus</div></div></article>
+          <article class="work-card"><div class="work-icon" aria-hidden="true">↗</div><div><h3>GPU Inference &amp; Real-Time Software</h3><p>Connecting TensorRT inference, tracking and sensor fusion with multithreaded C++ and Qt applications.</p><div class="work-foot">TensorRT · C++ · Qt · CMake</div></div></article>
+          <article class="work-card"><div class="work-icon" aria-hidden="true">◇</div><div><h3>Full-Stack AI Applications</h3><p>Building end-to-end project applications with user interfaces, FastAPI services, databases, automated tests and Docker-based delivery workflows.</p><div class="work-foot">FastAPI · Streamlit · Supabase · Docker</div></div></article>
         </div>
       </div>
     </section>
@@ -300,8 +365,7 @@
           <div class="project-sub">Industrial Image Processing & GPU Acceleration</div>
           <p>A real-time image-processing pipeline engineered around high-volume inspection workloads. Work focused on selective GPU acceleration, CPU–GPU task allocation, kernel and memory tuning, and profiling-driven pipeline optimization.</p>
           <div class="chips"><span class="chip">CUDA / C++</span><span class="chip">Nsight</span><span class="chip">Kernel Optimization</span><span class="chip">CPU–GPU Scheduling</span></div>
-          <p class="industrial-disclosure">High-level technical overview only. Proprietary source code, algorithms and implementation details are not disclosed.</p>
-          <a class="project-link" href="#approach">See optimization approach ↑</a>
+
         </div>
         <div class="industrial-visual" role="img" aria-label="Conceptual pipeline diagram illustrating CPU and GPU stages; not proprietary implementation details">
           <div class="industrial-top"><span>HIGH-LEVEL PIPELINE / CONCEPTUAL</span><span class="live-marker"><i></i>GPU ACCELERATION</span></div>
@@ -323,6 +387,15 @@
             <div class="trace-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
           </div>
           <p class="industrial-viz-caption">Conceptual visualization — not a reproduction of a proprietary processing pipeline.</p>
+        </div>
+        <div class="industrial-proof" aria-label="Measured industrial performance results">
+          <div class="industrial-proof-top"><span>MEASURED INDUSTRIAL PERFORMANCE</span><small>Results from professional CUDA/C++ image-processing work</small></div>
+          <div class="industrial-proof-grid">
+            <div class="proof-stat"><strong>11.2×</strong><b>Processing throughput</b><span>vs. single-core CPU baseline</span></div>
+            <div class="proof-stat"><strong>~40%</strong><b>Additional throughput</b><span>vs. multi-core CPU-only pipeline</span></div>
+            <div class="proof-stat"><strong>2.52M</strong><b>Images per hour</b><span>Industrial inspection workload</span></div>
+          </div>
+          <p>Measured in industrial vision engineering, not DriveFusion. Proprietary algorithms and implementation details are not disclosed.</p>
         </div>
       </article>
       <article class="project-feature">
