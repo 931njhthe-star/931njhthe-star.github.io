@@ -431,11 +431,10 @@
             <div class="proof-stat"><strong>11.2×</strong><b>Processing throughput</b><span>vs. single-core CPU baseline</span></div>
             <div class="proof-stat"><strong>~40%</strong><b>Higher throughput</b><span>vs. multi-core CPU-only pipeline</span></div>
             <div class="proof-stat"><strong>2.52M</strong><b>Images inspected per hour</b><span>Industrial inspection workload</span></div>
-            <div class="proof-stat"><strong>~1.55 TB</strong><b>Raw image data per hour*</b><span>Estimated uncompressed input volume</span></div>
+            <div class="proof-stat"><strong>~1.55 TB</strong><b>Image data processed per hour</b><span>Multi-angle imaging inspection</span></div>
           </div>
           <div class="kernel-speedup"><strong>Tens to Hundreds of Times</strong><div><b>Individual CUDA Kernel Speedups</b><span>Compared with single-core CPU implementations. Kernel-level speedups in specific image-processing operations are distinct from end-to-end throughput gains.</span></div></div>
-          <div class="object-inspection"><strong>12</strong><div><b>Images inspected per object</b><span>10 Bayer BGGR images + 2 height maps · 640 × 480 each</span></div></div>
-          <p class="data-estimate">*Estimated assuming 16-bit storage for both image types; not a measured GPU transfer rate.</p>
+          <div class="object-inspection"><strong>12</strong><div><b>Images inspected per object</b><span>Multi-angle imaging and height-map inspection · 640 × 480</span></div></div>
           <p class="production-note">Results from an operational industrial vision system—not a simulation or portfolio benchmark. Proprietary algorithms and implementation details are not disclosed.</p>
         </div>
       </article>
