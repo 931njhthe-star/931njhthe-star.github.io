@@ -359,7 +359,7 @@
     .arch-header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}
     .arch-header strong{font-size:11px;letter-spacing:1.3px;color:#b4e477}
     .arch-header span{font-size:10px;color:#92a88d;letter-spacing:.7px}
-    .arch-flow{display:grid;grid-template-columns:minmax(100px,1fr) 18px minmax(285px,2.8fr) 18px minmax(105px,1fr);align-items:center;gap:8px;min-width:0}
+    .arch-flow{display:grid;grid-template-columns:minmax(120px,1fr) 18px minmax(285px,2.6fr) 18px minmax(160px,1.3fr);align-items:center;gap:8px;min-width:0}
     .arch-endpoint{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;min-width:0}
     .arch-icon{font-size:27px;color:#b1e76c;line-height:1}
     .arch-label{font-size:13px;font-weight:750;color:#f5fff1}
@@ -372,6 +372,14 @@
     .arch-processor p{font-size:11px;line-height:1.8;color:#c4d1c0;margin:0}
     .arch-blackbox{margin-top:16px;padding:11px 9px;background:#111a13;border-radius:7px;color:#d2e4cd;font-size:11px;text-align:center}
     .arch-output-lines{font-size:11px;color:#b8c9b4;line-height:1.8}
+    .arch-acq-volume{font-size:26px;font-weight:850;line-height:1.05;color:#b0e967;letter-spacing:-.8px;margin-top:5px}
+    .arch-acq-unit{font-size:11px;font-weight:750;color:#f5fff1}
+    .arch-acq-details{font-size:10px;color:#b8c9b4;line-height:1.7}
+    .arch-svg-icon{width:29px;height:29px;fill:none;stroke:#b1e76c;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    .arch-detection-preview{width:94px;max-width:100%;border:1px solid #405c42;border-radius:7px;background:#1d3026;padding:4px;margin-top:1px}
+    .arch-detection-preview svg{display:block;width:100%;height:auto}
+    .arch-inspection-preview{width:170px;max-width:100%;margin:0 auto}
+    .arch-inspection-preview svg{display:block;width:100%;height:auto}
     .arch-transfer{margin-top:17px;font-size:11px;color:#a6c996;text-align:center}
     @media(max-width:850px){.inspection-architecture{margin:0 20px 23px}.arch-flow-viewport{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#657c63 #18231a}.arch-flow{min-width:690px}}
     @media(max-width:480px){.inspection-architecture{padding:18px 15px;margin:0 13px 20px}.arch-header{flex-direction:column;align-items:flex-start;gap:5px}.arch-compute{padding:15px}.arch-processors{gap:12px}.arch-processor h5{font-size:12px}.arch-processor p{font-size:10px}}
@@ -449,7 +457,7 @@
         <section class="inspection-architecture" aria-label="Conceptual real-time industrial inspection system architecture">
           <div class="arch-header"><strong>REAL-TIME INSPECTION ARCHITECTURE</strong><span>SYSTEM OVERVIEW</span></div>
           <div class="arch-flow-viewport" aria-label="Horizontal architecture diagram; scroll sideways on small screens"><div class="arch-flow">
-            <div class="arch-endpoint"><div class="arch-icon" aria-hidden="true">◉</div><div class="arch-label">Acquisition</div><div class="arch-small">Multi-angle cameras<br>Network</div></div>
+            <div class="arch-endpoint"><svg class="arch-svg-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 10h5l2-3h8l2 3h5v16H5z"/><circle cx="16" cy="18" r="5"/><path d="M24 13h1"/></svg><div class="arch-label">Acquisition</div><div class="arch-acq-volume">2.52M</div><div class="arch-acq-unit">Images / Hour</div><div class="arch-acq-details">12 Images / Object<br>Multi-Camera · Network</div></div>
             <div class="arch-arrow" aria-hidden="true">→</div>
             <div class="arch-compute">
               <div class="arch-compute-title">HYBRID CPU–GPU PROCESSING</div>
@@ -460,7 +468,7 @@
               <div class="arch-blackbox">Proprietary Inspection Algorithms</div>
             </div>
             <div class="arch-arrow" aria-hidden="true">→</div>
-            <div class="arch-endpoint"><div class="arch-icon" aria-hidden="true">▣</div><div class="arch-label">Output</div><div class="arch-output-lines">Monitoring<br>Reports &amp; Data<br>I/O Sorting</div></div>
+            <div class="arch-endpoint"><div class="arch-inspection-preview" aria-hidden="true"><svg viewBox="0 0 180 92" xmlns="http://www.w3.org/2000/svg"><rect x="12" y="8" width="70" height="75" rx="7" stroke="#81C943" stroke-width="1.5" fill="#1B2B1B"/><circle cx="47" cy="38" r="17" stroke="#B6CDA9" stroke-width="2" fill="#334431"/><path d="M37 38l7 7 14-16" stroke="#A7E66A" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="47" y="72" font-size="11" text-anchor="middle" fill="#B0E967" font-weight="bold">PASS</text><rect x="98" y="8" width="70" height="75" rx="7" stroke="#E28D72" stroke-width="1.5" fill="#2A211D"/><circle cx="133" cy="38" r="17" stroke="#B6CDA9" stroke-width="2" fill="#334431"/><path d="M127 28l11 10-9 8" stroke="#F29A7B" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="139" cy="29" r="5" fill="none" stroke="#F29A7B" stroke-width="1.5" stroke-dasharray="2 2"/><text x="133" y="72" font-size="11" text-anchor="middle" fill="#F29A7B" font-weight="bold">FAIL</text></svg></div><div class="arch-label">Inspection Results</div><div class="arch-output-lines">Defect Detection · Pass / Fail<br>Monitoring · I/O Sorting</div></div>
           </div>
           </div>
           <div class="arch-transfer">↔ &nbsp; CPU–GPU Memory Transfers · Asynchronous Execution</div>
