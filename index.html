@@ -234,6 +234,11 @@
     .industrial-proof-top span{font-size:11px;letter-spacing:1.65px;color:#b8ed76;font-weight:850}
     .industrial-proof-top small{font-size:11px;color:#bacab3}
     .industrial-proof-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+    .metric-group-heading{display:flex;align-items:center;gap:10px;margin:24px 0 13px;color:#b0e967;font-size:11px;letter-spacing:1.35px;font-weight:850}
+    .metric-group-heading::before{content:"";display:block;width:3px;height:17px;border-radius:2px;background:#b0e967;flex:none}
+    .metric-group-heading span{color:#afc5a5;font-size:10px;letter-spacing:0;font-weight:600}
+    .metric-group-heading.workload{padding-top:21px;border-top:1px solid #394b32;margin-top:23px}
+
     .proof-stat{padding:19px 20px 18px;background:#1e2d1a;border:1px solid #415a36;border-radius:12px;min-width:0}
     .proof-stat strong{display:block;font-size:38px;letter-spacing:-1.5px;line-height:1.1;color:#b0e967;font-weight:850}
     .proof-stat b{display:block;font-size:12px;margin-top:13px;color:#f0f6ec}
@@ -339,7 +344,7 @@
     .industrial-feature{grid-template-columns:1fr}
     .industrial-feature .project-info{padding:34px 39px}
     .industrial-proof{grid-column:1;background:#111a10}
-    .industrial-proof-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .industrial-proof-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
     .object-inspection{display:flex;align-items:center;gap:22px;border-top:1px solid #394b32;padding:22px 0 4px;margin-top:21px}
     .object-inspection>strong{color:#b0e967;font-size:48px;line-height:1;font-weight:850}
     .object-inspection div{display:flex;flex-direction:column;gap:6px}
@@ -353,6 +358,8 @@
     .kernel-speedup b{display:block;color:#f0f6ec;font-size:13px;margin-bottom:5px}
     .kernel-speedup span{display:block;color:#afc5a5;font-size:11px;line-height:1.6}
     @media(max-width:600px){.kernel-speedup{align-items:flex-start;flex-direction:column;gap:9px;padding:17px}.kernel-speedup>strong{flex:auto;max-width:none}}
+
+    @media(max-width:440px){.industrial-proof-grid{grid-template-columns:1fr}.proof-stat{padding:18px}.proof-stat strong{font-size:34px}}
 
     /* V17: horizontal architecture at every viewport, with local scroll only on narrow screens. */
     .inspection-architecture{grid-column:1/-1;margin:0 28px 29px;padding:23px 25px;border-radius:16px;background:#141d16;color:#f2f7ed;border:1px solid #344c37}
@@ -477,15 +484,19 @@
           <div class="production-badge"><span class="production-check" aria-hidden="true">✓</span> PRODUCTION-DEPLOYED <span class="production-separator" aria-hidden="true">·</span> INDUSTRIAL MACHINE VISION</div>
           <h4 class="production-heading">GPU Optimization Proven in Production</h4>
           <p class="production-summary">Measured performance improvements from a CUDA/C++ image-processing pipeline deployed in a real industrial inspection system.</p>
-          <div class="industrial-proof-grid">
-            <div class="proof-stat"><strong>11.2×</strong><b>Processing throughput</b><span>vs. single-core CPU baseline</span></div>
-            <div class="proof-stat"><strong>~40%</strong><b>Higher throughput</b><span>vs. multi-core CPU-only pipeline</span></div>
-            <div class="proof-stat"><strong>2.52M</strong><b>Images inspected per hour</b><span>Industrial inspection workload</span></div>
-            <div class="proof-stat"><strong>~1.55 TB</strong><b>Image data processed per hour</b><span>Multi-angle imaging inspection</span></div>
+          <div class="metric-group-heading">PERFORMANCE GAINS</div>
+          <div class="industrial-proof-grid" aria-label="Performance gains">
+            <div class="proof-stat"><strong>11.2×</strong><b>Processing Throughput</b><span>vs. single-core CPU baseline</span></div>
+            <div class="proof-stat"><strong>~40%</strong><b>Higher Throughput</b><span>vs. multi-core CPU-only pipeline</span></div>
+            <div class="proof-stat"><strong>10s–100s×</strong><b>CUDA Kernel Speedups</b><span>Individual operations vs. single-core CPU</span></div>
           </div>
-          <div class="kernel-speedup"><strong>10s–100s×</strong><div><b>Individual CUDA Kernel Speedups</b><span>Compared with single-core CPU implementations. Kernel-level speedups in specific image-processing operations are distinct from end-to-end throughput gains.</span></div></div>
-          <div class="object-inspection"><strong>12</strong><div><b>Images inspected per object</b><span>Multi-angle imaging and height-map inspection · 640 × 480</span></div></div>
-          <p class="production-note">Results from an operational industrial vision system—not a simulation or portfolio benchmark. Proprietary algorithms and implementation details are not disclosed.</p>
+          <div class="metric-group-heading workload">PRODUCTION WORKLOAD SCALE</div>
+          <div class="industrial-proof-grid" aria-label="Production workload scale">
+            <div class="proof-stat"><strong>2.52M</strong><b>Images per Hour</b><span>Industrial inspection workload</span></div>
+            <div class="proof-stat"><strong>~1.55 TB</strong><b>Data per Hour</b><span>Multi-angle imaging inspection</span></div>
+            <div class="proof-stat"><strong>12</strong><b>Images per Object</b><span>640 × 480 · RGB + height maps</span></div>
+          </div>
+          <p class="production-note">Kernel-level speedups refer to individual image-processing operations, not end-to-end pipeline throughput. Results from an operational industrial vision system—not a simulation or portfolio benchmark. Proprietary algorithms and implementation details are not disclosed.</p>
         </div>
       </article>
       <article class="project-feature">
