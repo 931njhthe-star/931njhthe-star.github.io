@@ -3,231 +3,339 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#f6f8fc" />
+  <meta name="theme-color" content="#0e120d" />
   <meta name="description" content="Jihun Rho — CUDA/C++ and GPU Performance Engineer specializing in high-throughput computer vision, real-time inference and system optimization." />
   <meta property="og:title" content="Jihun Rho | CUDA & GPU Performance Engineer" />
   <meta property="og:description" content="High-performance computer vision, real-time inference, and GPU systems." />
   <meta property="og:type" content="website" />
   <title>Jihun Rho — CUDA & GPU Performance Engineer</title>
   <style>
-  * {
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-  }
-
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0b1220;
-    color: #e5e7eb;
-    line-height: 1.7;
-  }
-
-  a {
-    color: #38bdf8;
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: #7dd3fc;
-  }
-
-  .container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-
-  header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(11, 18, 32, 0.9);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid #1e293b;
-  }
-
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 0;
-  }
-
-  nav .logo {
-    font-size: 20px;
-    font-weight: 700;
-    color: #ffffff;
-  }
-
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 24px;
-    padding: 0;
-    margin: 0;
-  }
-
-  nav ul li a {
-    color: #cbd5e1;
-    font-size: 15px;
-  }
-
-  .hero {
-    padding: 90px 0 70px;
-  }
-
-  .hero h1 {
-    font-size: 52px;
-    line-height: 1.15;
-    margin-bottom: 16px;
-    color: #ffffff;
-  }
-
-  .hero .subtitle {
-    font-size: 20px;
-    color: #38bdf8;
-    font-weight: 600;
-    margin-bottom: 16px;
-  }
-
-  .hero p {
-    max-width: 760px;
-    color: #94a3b8;
-    font-size: 18px;
-  }
-
-  .button-group {
-    margin-top: 28px;
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-  }
-
-  .btn {
-    display: inline-block;
-    padding: 12px 18px;
-    border-radius: 10px;
-    font-weight: 600;
-    transition: 0.2s ease;
-  }
-
-  .btn-primary {
-    background: #0ea5e9;
-    color: white;
-  }
-
-  .btn-primary:hover {
-    background: #0284c7;
-    color: white;
-  }
-
-  .btn-secondary {
-    border: 1px solid #334155;
-    color: #e5e7eb;
-    background: #121a2b;
-  }
-
-  .btn-secondary:hover {
-    border-color: #38bdf8;
-    color: #38bdf8;
-  }
-
-  section {
-    padding: 70px 0;
-  }
-
-  section h2 {
-    font-size: 30px;
-    margin-bottom: 18px;
-    color: #ffffff;
-  }
-
-  section .section-desc {
-    color: #94a3b8;
-    margin-bottom: 28px;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 22px;
-  }
-
-  .card {
-    background: #121a2b;
-    border: 1px solid #1e293b;
-    border-radius: 16px;
-    padding: 24px;
-    transition: transform 0.2s ease, border-color 0.2s ease;
-  }
-
-  .card:hover {
-    transform: translateY(-4px);
-    border-color: #38bdf8;
-  }
-
-  .card h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
-    color: #ffffff;
-  }
-
-  .card p {
-    color: #94a3b8;
-    margin-bottom: 14px;
-  }
-
-  .tag-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 16px;
-  }
-
-  .tag {
-    padding: 8px 12px;
-    border-radius: 999px;
-    background: #0f172a;
-    border: 1px solid #243041;
-    color: #cbd5e1;
-    font-size: 14px;
-  }
-
-  footer {
-    border-top: 1px solid #1e293b;
-    padding: 28px 0 40px;
-    color: #64748b;
-    font-size: 14px;
-  }
-
-  @media (max-width: 768px) {
-    .hero h1 {
-      font-size: 38px;
+    :root {
+      --bg: #f6f8fc; --surface: #ffffff; --ink: #17243a; --inksoft: #293b58;
+      --muted: #60718c; --line: #e0e7f0; --blue: #265bce; --blue2: #0f429e;
+      --aqua: #5dd8e4; --navy: #0f2549; --pale: #eef4ff;
+      --shadow: 0 18px 60px rgba(31, 62, 114, .075);
+      --radius: 20px;
     }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+    body { margin:0; background: var(--bg); font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; color: var(--ink); -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { max-width: 1180px; margin: 0 auto; padding-left: 32px; padding-right: 32px; }
+    .site-header { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid rgba(217,226,240,.8); background: rgba(248,250,254,.93); backdrop-filter: blur(14px); }
+    .header-inner { min-height: 78px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-size:17px; font-weight:800; letter-spacing:-.7px; white-space:nowrap; }
+    .brand-mark { display:grid; place-items:center; width:35px; height:35px; background:var(--navy); color:white; border-radius:11px; font-size:12px; font-weight:850; letter-spacing:-.3px; }
+    .nav-links { display:flex; align-items:center; gap:25px; }
+    .nav-links a { font-size:13px; font-weight:650; color:#53647d; transition:color .2s; }
+    .nav-links a:hover, .nav-links a:focus-visible { color:var(--blue); }
+    .nav-cta { display:inline-flex; align-items:center; justify-content:center; background:var(--navy); color:white!important; padding:11px 16px; border-radius:10px; font-weight:700!important; }
+    .nav-cta:hover { background:var(--blue2); }
+    .menu-button { display:none; border: 1px solid var(--line); padding: 8px 12px; border-radius: 10px; background:white; color:var(--ink); cursor:pointer; }
 
-    .hero .subtitle {
-      font-size: 18px;
-    }
+    .hero { position:relative; padding-top:92px; padding-bottom:91px; overflow:hidden; }
+    .hero::before { content:""; position:absolute; width:720px; height:720px; border-radius:50%; background: radial-gradient(circle, rgba(193,216,255,.43), transparent 65%); right:-350px; top:-320px; pointer-events:none; }
+    .hero-grid { position:relative; display:grid; grid-template-columns: 1.12fr .88fr; align-items:center; gap:58px; }
+    .eyebrow { display:inline-flex; align-items:center; gap:10px; font-size:11px; color:var(--blue); letter-spacing:2.3px; text-transform:uppercase; font-weight:850; }
+    .eyebrow::before { content:""; width:20px; height:2px; background:var(--blue); display:block; }
+    .hero h1 { font-size: clamp(52px, 5.6vw, 76px); letter-spacing: -3.7px; line-height:1.04; margin:26px 0 15px; font-weight:830; }
+    .hero h1 span { color:var(--blue); }
+    .hero-title { font-weight:750; font-size:19px; color:var(--inksoft); letter-spacing:-.4px; margin:0 0 24px; }
+    .hero-desc { font-size:15px; line-height:1.95; color:var(--muted); max-width:580px; margin:0; }
+    .hero-desc strong { color:var(--inksoft); }
+    .status-row { display:flex; align-items:center; flex-wrap:wrap; gap:12px 18px; margin-top:25px; font-size:12px; color:var(--muted); font-weight:600; }
+    .status-dot { display:inline-block; width:8px; height:8px; background:#37af84; border-radius:50%; box-shadow:0 0 0 4px #daf6e8; vertical-align:middle; margin-right:7px; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:11px; margin-top:32px; }
+    .btn { min-height:47px; display:inline-flex; justify-content:center; align-items:center; gap:9px; border-radius:11px; padding:12px 19px; font-size:13px; font-weight:750; transition:transform .2s, box-shadow .2s, background .2s; }
+    .btn:hover { transform:translateY(-2px); }
+    .btn-primary { background:var(--blue); color:white; box-shadow:0 8px 24px rgba(38,91,206,.18); }
+    .btn-primary:hover { background:var(--blue2); }
+    .btn-outline { background:white; border:1px solid #d5e0ed; color:var(--inksoft); }
+    .btn-outline:hover { box-shadow: 0 6px 19px rgba(41,69,107,.07); }
+    .btn svg { width:16px; height:16px; }
+    .intro-note { color:#7a89a1; font-size:11px; margin-top:14px; }
 
-    nav {
-      flex-direction: column;
-      gap: 12px;
-      align-items: flex-start;
-    }
+    .hero-art { position:relative; padding:21px; background:linear-gradient(150deg,#173563,#0c1b39); border-radius:25px; box-shadow:0 32px 70px rgba(14,32,72,.22); min-height:448px; overflow:hidden; }
+    .hero-art::before { content:""; position:absolute; inset:0; background-image:linear-gradient(rgba(124,180,245,.065) 1px,transparent 1px),linear-gradient(90deg,rgba(124,180,245,.065) 1px,transparent 1px); background-size:27px 27px; mask-image:linear-gradient(to bottom,black 30%,transparent); }
+    .art-top { position:relative; display:flex; justify-content:space-between; align-items:center; padding:1px 2px 17px; color:#b9cbe8; font-size:10px; letter-spacing:1.7px; font-weight:800; }
+    .art-top .dots { display:flex; gap:5px; }
+    .art-top .dots i { display:block; width:6px; height:6px; border-radius:50%; background:#50739e; }
+    .art-top .dots i:first-child { background:#56d4e0; }
+    .pipeline-box { position:relative; border:1px solid rgba(158,197,246,.18); background:rgba(255,255,255,.05); border-radius:15px; padding:19px; backdrop-filter:blur(8px); }
+    .panel-title { color:#d9e8ff; font-size:12px; font-weight:750; display:flex; align-items:center; justify-content:space-between; }
+    .panel-title span { color:#8fa9ce; font-size:10px; font-weight:500; }
+    .flow-steps { display:flex; align-items:center; justify-content:space-between; margin-top:24px; gap:4px; }
+    .flow-step { flex:1; min-width:0; height:69px; border-radius:10px; background:rgba(81,124,182,.23); border:1px solid rgba(141,186,247,.18); display:flex; flex-direction:column; justify-content:center; align-items:center; gap:8px; }
+    .flow-step b { color:white; font-size:11px; font-weight:750; }
+    .flow-step small { color:#9eb6d6; font-size:9px; }
+    .flow-step.highlight { background:rgba(64,171,197,.2); border-color:rgba(93,216,228,.45); }
+    .flow-arrow { color:#77e0e3; font-weight:bold; font-size:14px; flex:0 0 auto; }
+    .art-chart { margin-top:14px; position:relative; background:rgba(255,255,255,.05); border:1px solid rgba(158,197,246,.18); border-radius:14px; padding:17px 18px 8px; }
+    .art-chart .chart-legend { color:#8fa9ce; font-size:10px; margin-top:5px; }
+    .art-chart svg { width:100%; height:103px; margin-top:14px; }
+    .art-foot { display:flex; gap:11px; margin-top:13px; }
+    .art-metric { flex:1; border-radius:12px; padding:14px 15px; background:rgba(255,255,255,.07); border:1px solid rgba(158,197,246,.17); }
+    .art-metric strong { display:block; font-size:27px; letter-spacing:-1px; color:#e8f4ff; }
+    .art-metric strong em { font-size:13px; font-style:normal; color:#6de3e4; margin-left:4px; }
+    .art-metric span { display:block; color:#a5bddc; font-size:10px; margin-top:5px; line-height:1.5; }
+    .art-caption { position:relative; color:#7792b5; font-size:9px; text-align:right; margin-top:10px; }
 
-    nav ul {
-      flex-wrap: wrap;
-      gap: 14px;
+    .section { padding: 94px 0; }
+    .section-alt { background:white; border-top:1px solid #e9eff7; border-bottom:1px solid #e9eff7; }
+    .section-heading { max-width:730px; margin-bottom:38px; }
+    .section-heading h2 { font-size:clamp(29px,3.4vw,41px); letter-spacing:-1.55px; line-height:1.18; margin:14px 0; }
+    .section-heading p { font-size:15px; line-height:1.8; color:var(--muted); margin:0; }
+    .expertise-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .expertise-card { border:1px solid var(--line); padding:27px 25px 25px; background:white; border-radius:17px; box-shadow:0 7px 24px rgba(25,58,112,.035); }
+    .expertise-icon { width:46px; height:46px; border-radius:13px; background:#eaf1ff; color:var(--blue); font-size:21px; display:grid; place-items:center; font-weight:900; margin-bottom:24px; }
+    .expertise-card h3 { font-size:16px; letter-spacing:-.4px; margin:0 0 12px; }
+    .expertise-card p { font-size:13px; line-height:1.85; color:var(--muted); margin:0; }
+    .expertise-card .tagline { font-size:11px; margin-top:18px; color:var(--blue); font-weight:700; }
+
+    .project-feature { display:grid; grid-template-columns: 1fr 1fr; background:white; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); }
+    .project-copy { padding:39px 37px; }
+    .project-kicker { display:inline-flex; align-items:center; gap:7px; color:#2457bd; font-size:10px; font-weight:850; letter-spacing:1.7px; text-transform:uppercase; }
+    .project-copy h3 { font-size:32px; letter-spacing:-1.2px; margin:14px 0 9px; }
+    .project-subtitle { color:#385270; font-size:14px; font-weight:680; margin:0 0 18px; }
+    .project-copy p { color:var(--muted); font-size:13px; line-height:1.9; margin:0; }
+    .chips { display:flex; flex-wrap:wrap; gap:7px; margin-top:23px; }
+    .chip { font-size:10px; font-weight:750; color:#516682; background:#edf3fb; border:1px solid #e2eaf5; padding:7px 10px; border-radius:7px; }
+    .project-link { display:inline-flex; align-items:center; gap:8px; margin-top:28px; font-size:13px; font-weight:800; color:var(--blue); }
+    .project-link:hover { text-decoration:underline; }
+    .project-visual { min-height:430px; background:radial-gradient(circle at 30% 20%,#203e72,transparent 52%),#0b1e3c; padding:30px 28px; display:flex; flex-direction:column; justify-content:center; color:white; }
+    .viz-label { display:flex; align-items:center; justify-content:space-between; color:#a6c0e5; font-size:10px; letter-spacing:1.4px; text-transform:uppercase; font-weight:780; margin-bottom:14px; }
+    .viz-tag { background:rgba(105,229,226,.12); border:1px solid rgba(105,229,226,.3); color:#8ceeed; padding:5px 9px; border-radius:7px; letter-spacing:.3px; font-size:9px; }
+    .drive-screen { background:#122c52; border:1px solid #2d4e79; border-radius:14px; padding:12px; position:relative; overflow:hidden; }
+    .drive-screen svg { display:block; width:100%; height:auto; border-radius:8px; }
+    .drive-stats { margin-top:15px; display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .drive-stat { padding:16px 13px; background:#132f55; border:1px solid #31537c; border-radius:11px; }
+    .drive-stat strong { font-size:26px; color:#8df0eb; display:block; letter-spacing:-.9px; }
+    .drive-stat span { display:block; font-size:10px; margin-top:4px; color:#adbfdb; line-height:1.6; }
+    .viz-note { color:#8daacb; font-size:10px; line-height:1.6; margin-top:13px; }
+    .project-secondary { display:grid; grid-template-columns: 1fr 1fr; gap:18px; margin-top:20px; }
+    .small-project { padding:30px; border:1px solid var(--line); border-radius:17px; background:white; }
+    .small-project h3 { margin:14px 0 9px; font-size:22px; letter-spacing:-.6px; }
+    .small-project p { color:var(--muted); font-size:13px; line-height:1.85; margin:0; }
+    .project-footnote { margin-top:18px; color:#78879b; font-size:11px; line-height:1.8; }
+
+    .metric-strip { margin-top:20px; display:grid; grid-template-columns:repeat(3,1fr); gap:15px; }
+    .metric-tile { border:1px solid #dce6f6; background:#f2f6fd; border-radius:14px; padding:23px; }
+    .metric-tile strong { font-size:27px; line-height:1.2; display:block; letter-spacing:-1px; color:var(--navy); }
+    .metric-tile span { font-size:11px; color:var(--muted); display:block; margin-top:8px; line-height:1.7; }
+    .metric-strip-caption { font-size:11px; color:var(--muted); margin-top:12px; }
+
+    .timeline { position:relative; margin-top:11px; }
+    .timeline::before { content:""; position:absolute; left:13px; top:8px; bottom:24px; width:1px; background:#cbd9ec; }
+    .timeline-item { position:relative; padding-left:48px; margin:0 0 37px; }
+    .timeline-item:last-child { margin-bottom:0; }
+    .timeline-item::before { content:""; position:absolute; left:6px; top:5px; width:14px; height:14px; border-radius:50%; background:white; border:4px solid var(--blue); box-shadow:0 0 0 3px #ecf2fa; }
+    .timeline-top { display:flex; justify-content:space-between; gap:15px; flex-wrap:wrap; }
+    .timeline h3 { font-size:17px; margin:0; letter-spacing:-.35px; }
+    .timeline-date { color:var(--muted); font-size:12px; white-space:nowrap; font-weight:650; }
+    .timeline-role { margin:5px 0 8px; color:var(--blue); font-size:13px; font-weight:750; }
+    .timeline-item p { font-size:13px; color:var(--muted); line-height:1.85; max-width:900px; margin:0; }
+
+    .skills-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .skill-group { background:#f6f9fe; border:1px solid var(--line); border-radius:14px; padding:24px; }
+    .skill-group h3 { font-size:13px; margin:0 0 14px; letter-spacing:-.15px; }
+    .skill-group .chips { margin-top:0; }
+    .skill-group .chip { background:white; }
+    .skill-note { font-size:11px; color:var(--muted); margin-top:23px; }
+
+    .contact-section { padding:87px 0 98px; }
+    .contact-card { background:linear-gradient(120deg,#132b50,#173e78); border-radius:23px; padding:55px; display:grid; grid-template-columns:1.5fr 1fr; gap:30px; align-items:center; color:white; box-shadow:0 25px 70px rgba(12,39,82,.16); }
+    .contact-card .eyebrow { color:#85dfe9; }
+    .contact-card .eyebrow::before { background:#85dfe9; }
+    .contact-card h2 { font-size:clamp(30px,3.7vw,44px); letter-spacing:-1.5px; margin:15px 0 12px; }
+    .contact-card p { color:#baccdf; max-width:470px; font-size:14px; line-height:1.8; margin:0; }
+    .contact-actions { display:flex; flex-direction:column; gap:10px; align-items:stretch; }
+    .contact-actions .btn { min-height:50px; }
+    .contact-actions .btn-primary { background:white; color:#143563; }
+    .contact-actions .btn-outline { background:transparent; color:white; border-color:#42658f; }
+    .contact-actions .btn-primary:hover { background:#edf5ff; }
+    .footer { border-top:1px solid var(--line); padding:29px 0 40px; color:#7d8aa0; font-size:11px; }
+    .footer-inner { display:flex; justify-content:space-between; gap:20px; align-items:center; flex-wrap:wrap; }
+    .footer a { color:var(--blue); font-weight:700; }
+    .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; }
+    a:focus-visible, button:focus-visible { outline:3px solid #64b9ed; outline-offset:4px; }
+
+    @media (max-width: 950px) {
+      .hero-grid { gap:25px; }
+      .hero h1 { font-size:58px; }
+      .flow-step b { font-size:10px; }
+      .project-copy { padding:31px 27px; }
+      .project-visual { padding:23px; }
+      .nav-links { gap:15px; }
     }
-  }
-</style>
+    @media (max-width: 760px) {
+      .container { padding-left:21px; padding-right:21px; }
+      .header-inner { min-height:68px; }
+      .menu-button { display:block; }
+      .nav-links { display:none; position:absolute; left:0; right:0; top:68px; padding:18px 21px 22px; background:#f9fbfe; border-bottom:1px solid var(--line); box-shadow:0 12px 20px rgba(22,47,84,.08); flex-direction:column; align-items:stretch; gap:0; }
+      .nav-links.open { display:flex; }
+      .nav-links a { padding:12px 7px; font-size:14px; }
+      .nav-links .nav-cta { margin-top:8px; text-align:center; }
+      .hero { padding-top:56px; padding-bottom:59px; }
+      .hero-grid, .project-feature, .contact-card { grid-template-columns:1fr; }
+      .hero h1 { font-size:clamp(50px,11vw,68px); }
+      .hero-art { min-height:400px; }
+      .section { padding:65px 0; }
+      .section-heading { margin-bottom:27px; }
+      .expertise-grid { grid-template-columns:1fr; gap:12px; }
+      .expertise-card { padding:22px; }
+      .expertise-icon { margin-bottom:15px; }
+      .project-visual { min-height:380px; }
+      .project-secondary, .skills-grid { grid-template-columns:1fr; }
+      .metric-strip { grid-template-columns:1fr; gap:10px; }
+      .metric-tile { padding:17px 19px; }
+      .contact-card { padding:32px 26px; gap:25px; }
+      .contact-actions { align-items:stretch; }
+      .timeline-top { display:block; }
+      .timeline-date { display:block; margin-top:6px; }
+    }
+    @media (max-width: 380px) {
+      .hero h1 { letter-spacing:-2.8px; }
+      .hero-art { padding:13px; min-height:auto; }
+      .pipeline-box { padding:12px; }
+      .flow-step { height:60px; }
+      .flow-step b { font-size:9px; }
+      .flow-step small { font-size:8px; }
+      .art-metric strong { font-size:22px; }
+      .project-copy { padding:26px 20px; }
+      .project-visual { padding:20px 15px; }
+    }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .btn { transition:none; } }
+
+
+
+
+    /* NVIDIA-inspired light editorial theme: dark framing, light content, green accents. */
+    :root {
+      color-scheme: light;
+      --bg: #f5f7f3;
+      --surface: #ffffff;
+      --ink: #171b15;
+      --inksoft: #303b2d;
+      --muted: #5b6757;
+      --line: #dfe6da;
+      --blue: #649e00;
+      --blue2: #4e7e00;
+      --aqua: #76b900;
+      --navy: #111610;
+      --pale: #f1f6eb;
+      --shadow: 0 14px 38px rgba(22,41,18,.055);
+    }
+    body { background:var(--bg); color:var(--ink); }
+    ::selection { background:#b9ed69; color:#11190c; }
+
+    /* The header and footer deliberately retain charcoal backgrounds. */
+    .site-header { background:rgba(12,15,12,.97); border-bottom:1px solid #2a3226; }
+    .brand { color:#f6f8f3; }
+    .brand-mark { background:#76b900; color:#111b0a; border:1px solid #8bcb23; box-shadow:none; }
+    .nav-links a { color:#d0d6cc; }
+    .nav-links a:hover, .nav-links a:focus-visible { color:#a9e65a; }
+    .nav-cta { background:#76b900; color:#0f1908!important; }
+    .nav-cta:hover { background:#93ce33; color:#0f1908!important; }
+    .menu-button { background:#20271e; color:#f0f4ec; border-color:#3b4935; }
+
+    /* Everything between header and footer is predominantly bright. */
+    main { background:#f7f9f5; }
+    .hero { background:linear-gradient(132deg,#ffffff 0%, #f8fbf5 66%, #f1f7e9 100%); border-bottom:1px solid #e1e9dc; }
+    .hero::before { background:radial-gradient(circle,rgba(118,185,0,.105),transparent 66%); }
+    .eyebrow { color:#568900; }
+    .eyebrow::before { background:#76b900; }
+    .hero h1 { color:#161c13; }
+    .hero h1 span { color:#609500; }
+    .hero-title { color:#354331; }
+    .hero-desc, .section-heading p { color:#596556; }
+    .hero-desc strong { color:#263321; }
+    .status-row { color:#626f5e; }
+    .status-dot { background:#76b900; box-shadow:0 0 0 4px #edf6df; }
+    .btn-primary { background:#76b900; color:#132008; box-shadow:0 11px 22px rgba(95,143,11,.13); }
+    .btn-primary:hover { background:#8bc72b; }
+    .btn-outline { background:#fff; color:#20291d; border:1px solid #cbd6c5; }
+    .btn-outline:hover { border-color:#86b44e; box-shadow:0 7px 19px rgba(34,52,29,.065); }
+    .intro-note { color:#74816e; }
+
+    /* Dark technical visualization panels act as accents, not the page background. */
+    .hero-art { background:linear-gradient(155deg,#1b2a18,#0b110c 76%); border:1px solid #405537; box-shadow:0 19px 40px rgba(17,31,12,.15); }
+    .hero-art::before { background-image:linear-gradient(rgba(147,215,60,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(147,215,60,.08) 1px,transparent 1px); }
+    .art-top { color:#c9d9c2; }
+    .art-top .dots i { background:#4b643f; }
+    .art-top .dots i:first-child { background:#a1df40; }
+    .pipeline-box, .art-chart { background:rgba(9,16,10,.62); border-color:rgba(145,197,96,.22); }
+    .panel-title { color:#edf5e8; }
+    .panel-title span, .art-chart .chart-legend { color:#9fb693; }
+    .flow-step { background:rgba(56,85,43,.30); border-color:#43593a; }
+    .flow-step small { color:#bdccb6; }
+    .flow-step.highlight { background:rgba(118,185,0,.22); border-color:#86ca30; }
+    .flow-arrow { color:#a5e449; }
+    .art-metric { background:rgba(57,83,42,.30); border-color:rgba(143,197,90,.25); }
+    .art-metric strong { color:#f6fff2; }
+    .art-metric strong em { color:#b2e969; }
+    .art-metric span { color:#b8cfaf; }
+    .art-caption { color:#a2b79b; }
+
+    /* Bright section rhythm and understated editorial cards. */
+    .section-alt { background:#fff; border-top:1px solid #e6ece2; border-bottom:1px solid #e6ece2; }
+    .section-heading h2, .expertise-card h3, .project-copy h3,
+    .small-project h3, .timeline h3, .skill-group h3 { color:#192118; }
+    .expertise-card, .project-feature, .small-project { background:#fff; border:1px solid #dfe6da; box-shadow:0 10px 28px rgba(22,39,16,.044); }
+    .expertise-card:hover, .small-project:hover { border-color:#a4c37b; }
+    .expertise-icon { background:#ecf5e1; color:#5e9204; }
+    .expertise-card p, .small-project p, .project-copy p, .timeline-item p { color:#5b6758; }
+    .expertise-card .tagline { color:#568800; }
+    .project-kicker { color:#598a04; }
+    .project-subtitle { color:#40503c; }
+    .chip { background:#f3f7ee; color:#44553c; border:1px solid #e0e9d8; }
+    .project-link { color:#548600; }
+    .project-link:hover { color:#365800; }
+    .project-visual { background:radial-gradient(circle at 18% 14%,#2a4522,transparent 56%),#0e180e; }
+    .viz-label { color:#b3c8ad; }
+    .viz-tag { background:rgba(118,185,0,.15); border-color:#7fb439; color:#bcef7c; }
+    .drive-screen { background:#101b10; border-color:#385b32; }
+    .drive-stat { background:#172614; border-color:#406535; }
+    .drive-stat strong { color:#b4ec65; }
+    .drive-stat span { color:#b8d0ae; }
+    .viz-note { color:#a9c0a1; }
+    .project-footnote, .metric-strip-caption { color:#71806d; }
+    .metric-tile { background:#f0f6e9; border:1px solid #dce9ce; }
+    .metric-tile strong { color:#253c17; }
+    .metric-tile span { color:#60705b; }
+    .timeline::before { background:#d7e3ca; }
+    .timeline-item::before { background:#fff; border-color:#76b900; box-shadow:0 0 0 3px #eef6e7; }
+    .timeline-role { color:#548300; }
+    .timeline-date { color:#64705f; }
+    .skill-group { background:#fff; border:1px solid #dfe6da; }
+    .skill-group .chip { background:#f2f7ed; }
+    .skill-note { color:#65725f; }
+
+    /* Contact is a bright CTA. The separate footer is the dark final band. */
+    .contact-section { background:#f7f9f5; }
+    .contact-card { position:relative; overflow:hidden; background:linear-gradient(110deg,#fff 5%,#f1f8e9 100%); border:1px solid #d5e5c7; box-shadow:0 15px 39px rgba(32,57,21,.055); color:#1a2515; }
+    .contact-card::before { content:""; position:absolute; left:0; top:0; width:100%; height:5px; background:#76b900; }
+    .contact-card .eyebrow { color:#528500; }
+    .contact-card .eyebrow::before { background:#76b900; }
+    .contact-card h2 { color:#182215; }
+    .contact-card p { color:#5a6a54; }
+    .contact-actions .btn-primary { background:#76b900; color:#101909; }
+    .contact-actions .btn-primary:hover { background:#8dc929; }
+    .contact-actions .btn-outline { background:#fff; border:1px solid #bacab0; color:#253020; }
+    .contact-actions .btn-outline:hover { border-color:#76b900; }
+    .footer { background:#0e120d; border-top:1px solid #2c3925; color:#b3c0ad; }
+    .footer a { color:#a8df52; }
+    a:focus-visible, button:focus-visible { outline:3px solid #76b900; }
+    @media (max-width:760px) {
+      .nav-links { background:#121712; border-bottom:1px solid #36432f; box-shadow:0 15px 25px rgba(0,0,0,.18); }
+    }
+  </style>
 </head>
 <body>
 <a class="sr-only" href="#main">Skip to main content</a>
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="#home" aria-label="Jihun Rho, home"><span class="brand-mark">JR</span> Jihun Rho<span style="color:#91a2b7">.</span></a>
+    <a class="brand" href="#home" aria-label="Jihun Rho, home"><span class="brand-mark">JR</span> Jihun Rho<span style="color:#81bf2c">.</span></a>
     <button class="menu-button" id="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="main-nav">☰ Menu</button>
     <nav id="main-nav" class="nav-links" aria-label="Main navigation">
       <a href="#about">About</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#contact" class="nav-cta">Let's connect ↗</a>
@@ -263,10 +371,10 @@
         <div class="art-chart">
           <div class="panel-title">Performance engineering <span>PROFILING VIEW</span></div>
           <svg viewBox="0 0 380 102" aria-hidden="true">
-            <g stroke="#355276" stroke-width="1" opacity=".7"><path d="M0 22H380M0 52H380M0 82H380" /></g>
-            <path d="M0 69 C25 73 34 33 54 49 S90 79 116 57 S148 18 179 45 S224 77 246 46 S290 36 309 56 S345 72 380 29" fill="none" stroke="#68e3e6" stroke-width="2.7" stroke-linecap="round" />
-            <path d="M0 82 C31 70 46 86 68 74 S112 68 130 77 S171 82 192 67 S243 78 267 65 S320 79 344 58 S365 63 380 47" fill="none" stroke="#5f94df" stroke-width="2.1" stroke-linecap="round" opacity=".9" />
-            <circle cx="309" cy="56" r="4" fill="#68e3e6" stroke="#112c52" stroke-width="3" />
+            <g stroke="#395332" stroke-width="1" opacity=".7"><path d="M0 22H380M0 52H380M0 82H380" /></g>
+            <path d="M0 69 C25 73 34 33 54 49 S90 79 116 57 S148 18 179 45 S224 77 246 46 S290 36 309 56 S345 72 380 29" fill="none" stroke="#a8e34d" stroke-width="2.7" stroke-linecap="round" />
+            <path d="M0 82 C31 70 46 86 68 74 S112 68 130 77 S171 82 192 67 S243 78 267 65 S320 79 344 58 S365 63 380 47" fill="none" stroke="#708d56" stroke-width="2.1" stroke-linecap="round" opacity=".9" />
+            <circle cx="309" cy="56" r="4" fill="#a8e34d" stroke="#162313" stroke-width="3" />
           </svg>
           <div class="chart-legend">Illustrative profiling graphic · not measured latency data</div>
         </div>
@@ -284,7 +392,7 @@
       <div class="section-heading"><div class="eyebrow">01 / WHAT I DO</div><h2>Optimizing the systems behind vision AI.</h2><p>I work at the intersection of computer vision and systems performance, connecting algorithms with the hardware and software required to run them efficiently.</p></div>
       <div class="expertise-grid">
         <article class="expertise-card"><div class="expertise-icon" aria-hidden="true">⌘</div><h3>CUDA & GPU optimization</h3><p>Design and optimize CUDA kernels, memory access patterns, thread configurations, and CPU–GPU processing pipelines. Profile bottlenecks using NVIDIA Nsight tools.</p><div class="tagline">KERNELS · MEMORY · PROFILING</div></article>
-        <article class="expertise-card"><div class="expertise-icon" aria-hidden="true">▣</div><h3>Real-time computer vision</h3><p>Build image-processing and object-detection pipelines for industrial vision and autonomous sensing, with attention to throughput, timing, and reliability.</p><div class="tagline">OPENCV · DETECTION · TRACKING</div></article>
+        <article class="expertise-card"><div class="expertise-icon" aria-hidden="true">▣</div><h3>Real-time computer vision</h3><p>Build image-processing and object-detection pipelines for industrial vision and autonomous sensing, with attention to throughput, latency, and correctness.</p><div class="tagline">OPENCV · DETECTION · TRACKING</div></article>
         <article class="expertise-card"><div class="expertise-icon" aria-hidden="true">↗</div><h3>Inference & system integration</h3><p>Integrate GPU inference into working systems using C++, TensorRT, multithreaded processing, sensor interfaces, and real-time monitoring tools.</p><div class="tagline">TENSORRT · C++ · QT · SYSTEMS</div></article>
       </div>
     </div>
@@ -309,15 +417,15 @@
               <rect width="460" height="220" rx="7" fill="url(#sky)"/>
               <path d="M0 86L32 75L88 78L121 66L175 71L221 65L260 78L314 66L369 72L410 60L460 77V124H0Z" fill="#294666"/>
               <path d="M156 103H307L449 220H13Z" fill="url(#road)"/>
-              <path d="M225 111L208 220" stroke="#adc9d5" stroke-width="2" stroke-dasharray="10 11" opacity=".7"/><path d="M236 111L277 220" stroke="#adc9d5" stroke-width="2" stroke-dasharray="10 11" opacity=".7"/>
-              <path d="M154 102L3 220M307 102L457 220" stroke="#8ba9bf" stroke-width="3" opacity=".5"/>
-              <g fill="#12243c" stroke="#68e3e6" stroke-width="2"><rect x="182" y="108" width="49" height="37" rx="4"/><rect x="290" y="116" width="63" height="48" rx="4"/></g>
-              <g fill="#c1deef"><path d="M192 108L201 100H219L227 108Z"/><path d="M302 116L313 105H333L347 116Z"/></g>
-              <g fill="none" stroke="#6af4d8" stroke-width="1.4" stroke-dasharray="4 3"><rect x="175" y="99" width="62" height="56" rx="2"/><rect x="281" y="103" width="80" height="72" rx="2"/></g>
-              <g font-family="Arial,sans-serif" font-size="10" font-weight="bold"><rect x="175" y="85" width="73" height="14" rx="3" fill="#71edcb"/><text x="180" y="95" fill="#0a2d42">TRACK ID 01</text><rect x="281" y="89" width="73" height="14" rx="3" fill="#71edcb"/><text x="286" y="99" fill="#0a2d42">TRACK ID 02</text></g>
-              <g stroke="#5c86ae" opacity=".4" fill="none"><circle cx="230" cy="215" r="72"/><circle cx="230" cy="215" r="132"/><path d="M230 215L180 111M230 215L310 112" /></g>
-              <g font-family="monospace" fill="#a0e9f4" font-size="10"><text x="13" y="20">CAM_01  /  SENSOR SYNC</text><text x="13" y="35">RGB + RADAR  /  LIVE</text><text x="370" y="20">DETECTION</text></g>
-              <path d="M18 48h28M18 48v14M442 48h-28M442 48v14" stroke="#66bedd" fill="none" stroke-width="2"/>
+              <path d="M225 111L208 220" stroke="#bbd0b4" stroke-width="2" stroke-dasharray="10 11" opacity=".7"/><path d="M236 111L277 220" stroke="#bbd0b4" stroke-width="2" stroke-dasharray="10 11" opacity=".7"/>
+              <path d="M154 102L3 220M307 102L457 220" stroke="#879e80" stroke-width="3" opacity=".5"/>
+              <g fill="#152415" stroke="#a8e34d" stroke-width="2"><rect x="182" y="108" width="49" height="37" rx="4"/><rect x="290" y="116" width="63" height="48" rx="4"/></g>
+              <g fill="#c8dbc2"><path d="M192 108L201 100H219L227 108Z"/><path d="M302 116L313 105H333L347 116Z"/></g>
+              <g fill="none" stroke="#b3ef65" stroke-width="1.4" stroke-dasharray="4 3"><rect x="175" y="99" width="62" height="56" rx="2"/><rect x="281" y="103" width="80" height="72" rx="2"/></g>
+              <g font-family="Arial,sans-serif" font-size="10" font-weight="bold"><rect x="175" y="85" width="73" height="14" rx="3" fill="#a8e34d"/><text x="180" y="95" fill="#14220f">TRACK ID 01</text><rect x="281" y="89" width="73" height="14" rx="3" fill="#a8e34d"/><text x="286" y="99" fill="#14220f">TRACK ID 02</text></g>
+              <g stroke="#6d9561" opacity=".4" fill="none"><circle cx="230" cy="215" r="72"/><circle cx="230" cy="215" r="132"/><path d="M230 215L180 111M230 215L310 112" /></g>
+              <g font-family="monospace" fill="#c7eea4" font-size="10"><text x="13" y="20">CAM_01  /  SENSOR SYNC</text><text x="13" y="35">RGB + RADAR  /  LIVE</text><text x="370" y="20">DETECTION</text></g>
+              <path d="M18 48h28M18 48v14M442 48h-28M442 48v14" stroke="#a0d85a" fill="none" stroke-width="2"/>
             </svg>
           </div>
           <div class="drive-stats"><div class="drive-stat"><strong>−39.42%</strong><span>Distance MAE on 437 radar-corrected samples</span></div><div class="drive-stat"><strong>16,491</strong><span>Samples in the common evaluation set</span></div></div>
@@ -326,7 +434,7 @@
       </article>
       <div class="project-secondary">
         <article class="small-project">
-          <div class="project-kicker">03D / WORK IN PROGRESS</div>
+          <div class="project-kicker">WORK IN PROGRESS</div>
           <h3>CudaFusion3D</h3>
           <p>Exploring a CUDA-accelerated 3D reconstruction pipeline using synchronized RGB-D and camera poses from CARLA. Planned stages include TSDF fusion, Marching Cubes, and CPU-vs-GPU performance benchmarking. <strong>In development; no performance results claimed yet.</strong></p>
           <div class="chips"><span class="chip">CUDA</span><span class="chip">C++17</span><span class="chip">RGB-D</span><span class="chip">TSDF</span><span class="chip">3D Vision</span></div>
