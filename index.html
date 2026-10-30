@@ -414,7 +414,13 @@
       .proof-stat b{font-size:11px}
       .proof-stat span{font-size:10px}
     }
-  </style>
+      .robotics-video-preview{position:relative;display:block;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:10px;margin-top:14px;background:#172219;color:#fff;text-decoration:none}
+    .robotics-video-preview img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .2s ease,opacity .2s ease}
+    .robotics-video-preview:hover img{transform:scale(1.035);opacity:.87}
+    .robotics-video-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:54px;height:38px;border-radius:12px;background:#e62117;color:#fff;font-size:18px;box-shadow:0 3px 12px rgba(0,0,0,.28)}
+    .robotics-video-label{position:absolute;bottom:0;left:0;right:0;padding:18px 12px 10px;background:linear-gradient(transparent,rgba(0,0,0,.75));font-size:11px;font-weight:800;color:#fff}
+    .robotics-video-preview:focus-visible{outline:3px solid #6a9b27;outline-offset:3px}
+</style>
 </head>
 <body>
   <a class="sr-only" href="#main">Skip to content</a>
@@ -559,7 +565,7 @@
         <div class="other-grid">
           <article class="other-card"><div class="other-card-top"><span class="other-kicker">CAMERA GEOMETRY</span></div><h3>Traffic Sign Recognition</h3><p>Recognition experiments based on 3D-to-2D projection and rotation-dependent accuracy analysis.</p><div class="other-tech">Projection · Calibration · SVM</div></article>
           <article class="other-card"><div class="other-card-top"><span class="other-kicker">COMPUTER VISION</span></div><h3>Vehicle Detection Research</h3><p>Vehicle detection experiments using YOLO and MobileNet-SSD, including dataset preparation and evaluation.</p><div class="other-tech">YOLO · MobileNet-SSD · Evaluation</div></article>
-          <article class="other-card"><div class="other-card-top"><span class="other-kicker">ROBOTICS & VISION</span></div><h3>Robotics & 3D Bin Picking</h3><p>Integrated AMR, six-axis robotics, 3D recognition and gripper control into working system demonstrations.</p><div class="other-links"><a href="https://www.youtube.com/watch?v=wLmfVy-GDSs" target="_blank" rel="noopener noreferrer">Watch demonstration ↗</a></div><div class="other-tech">Robotics · 3D Vision · Protocols</div></article>
+          <article class="other-card"><div class="other-card-top"><span class="other-kicker">ROBOTICS & VISION</span></div><h3>Robotics & 3D Bin Picking</h3><p>Integrated AMR, six-axis robotics, 3D recognition and gripper control into working system demonstrations.</p><a class="robotics-video-preview" href="https://www.youtube.com/watch?v=wLmfVy-GDSs" target="_blank" rel="noopener noreferrer" aria-label="Watch Robotics and 3D Bin Picking demonstration on YouTube"><img src="https://img.youtube.com/vi/wLmfVy-GDSs/hqdefault.jpg" alt="Robotics and 3D Bin Picking demonstration video thumbnail" loading="lazy"><span class="robotics-video-play" aria-hidden="true">▶</span><span class="robotics-video-label">Watch demonstration ↗</span></a><div class="other-tech">Robotics · 3D Vision · Protocols</div></article>
           <article class="other-card"><div class="other-card-top"><span class="other-kicker">AI APPLICATION</span></div><h3>SubSync</h3><p>AI-assisted YouTube English learning with dual subtitles, saved vocabulary and a tutor workflow.</p><div class="other-tech">FastAPI · Supabase · Gemini</div><div class="other-links"><a href="https://github.com/931njhthe-star/subsync-ai-tutor" target="_blank" rel="noopener noreferrer">View repository ↗</a></div></article>
           <article class="other-card"><div class="other-card-top"><span class="other-kicker">AI SYSTEMS</span></div><h3>CareerLens</h3><p>AI-powered resume and job matching system; contributed to LangGraph architecture and database design.</p><div class="other-tech">LangGraph · Python · Backend</div><div class="other-links"><a href="https://github.com/931njhthe-star/CareerLens-fullstack" target="_blank" rel="noopener noreferrer">View repository ↗</a></div></article>
         </div>
