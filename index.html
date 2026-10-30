@@ -277,6 +277,63 @@
       .gpu-vertical-copy h4 { font-size:18px; }
       .gpu-vertical-label { font-size:10px; letter-spacing:1.3px; }
     }
+
+    /* V6: independent CUDA specialty, with broader abilities in their own section. */
+    .core-specialization-section {
+      position:relative; overflow:hidden; background:linear-gradient(120deg,#172317 0%,#101910 60%,#0d150d 100%);
+      color:#f7fcf3; border-top:1px solid #344831; border-bottom:1px solid #344831;
+    }
+    .core-specialization-section::before {
+      content:""; pointer-events:none; position:absolute; inset:0;
+      background-image:linear-gradient(rgba(155,218,80,.048) 1px,transparent 1px),linear-gradient(90deg,rgba(155,218,80,.048) 1px,transparent 1px);
+      background-size:30px 30px; mask-image:linear-gradient(90deg,#000,transparent 80%);
+    }
+    .core-specialization-layout { position:relative; display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); gap:clamp(36px,6vw,90px); align-items:start; }
+    .core-specialization-intro { position:sticky; top:112px; }
+    .core-specialization-intro .eyebrow {color:#abe366;}
+    .core-specialization-intro h2 {font-size:clamp(36px,4vw,55px);letter-spacing:-1.9px;line-height:1.12;margin:24px 0 20px;max-width:520px;color:#fff;}
+    .core-specialization-intro p {font-size:15px;line-height:1.92;color:#becdb8;margin:0;max-width:425px;}
+    .core-specialization-list .gpu-vertical-list {margin-top:0;border-top:1px solid #3d5136;}
+    .core-specialization-list .gpu-vertical-row {grid-template-columns:58px minmax(0,1fr);gap:16px;padding:22px 0 23px;}
+    .core-specialization-list .gpu-vertical-copy p {color:#bdcbb6;font-size:13px;line-height:1.72;margin:0;max-width:720px;}
+    .core-specialization-list .gpu-vertical-copy h4 {font-size:21px;}
+    #approach .more-work {margin-top:0;}
+    @media(max-width:1040px) {
+      .core-specialization-layout {grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:30px;}
+      .core-specialization-intro h2 {font-size:clamp(33px,4.1vw,45px);}
+    }
+    @media(max-width:900px) {
+      .nav-inner {min-height:66px;}
+      .menu-toggle {display:block;}
+      .nav {display:none;position:absolute;top:66px;left:0;right:0;padding:14px 20px 22px;flex-direction:column;align-items:stretch;gap:0;background:#141a13;border-bottom:1px solid #2c3a26;}
+      .nav.open{display:flex;} .nav a{padding:13px 6px;font-size:14px;} .nav .nav-action{text-align:center;margin-top:9px;}
+    }
+    @media(max-width:760px) {
+      .core-specialization-layout {grid-template-columns:1fr;gap:26px;}
+      .core-specialization-intro {position:static;}
+      .core-specialization-intro h2 {font-size:clamp(32px,8.2vw,44px);max-width:590px;margin:17px 0 12px;}
+      .core-specialization-intro p{font-size:13px;}
+      .core-specialization-list .gpu-vertical-row {grid-template-columns:45px minmax(0,1fr);gap:12px;padding:17px 0 18px;}
+      .core-specialization-list .gpu-vertical-copy h4 {font-size:18px;margin:6px 0;}
+      .core-specialization-list .gpu-vertical-copy p {font-size:12px;}
+    }
+
+    /* V8: Hero carries the narrative; Core is a compact technical summary. */
+    .core-specialization-section {padding-top:47px;padding-bottom:47px;}
+    .core-compact-layout {position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(28px,5vw,75px);align-items:center;}
+    .core-compact-heading .eyebrow {color:#abe366;}
+    .core-compact-heading h2 {color:#fff;font-size:clamp(27px,3vw,38px);line-height:1.18;letter-spacing:-1.1px;margin:13px 0 0;max-width:490px;}
+    .core-compact-capabilities {list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 19px;}
+    .core-compact-capabilities li {color:#f4faee;font-size:13px;line-height:1.45;font-weight:600;display:flex;gap:10px;align-items:flex-start;}
+    .core-compact-capabilities li::before {content:'✓';color:#abe366;font-weight:800;flex:none;}
+    @media(max-width:760px){
+      .core-specialization-section {padding-top:36px;padding-bottom:36px;}
+      .core-compact-layout {grid-template-columns:1fr;gap:22px;}
+      .core-compact-heading h2 {font-size:clamp(27px,7vw,34px);}
+      .core-compact-capabilities {gap:13px;}
+      .core-compact-capabilities li {font-size:12px;}
+    }
+    @media(max-width:380px){.core-compact-capabilities{grid-template-columns:1fr;gap:10px;}}
   </style>
 </head>
 <body>
@@ -286,7 +343,7 @@
       <a class="brand" href="#home" aria-label="Jihun Rho home"><span class="logo">JR</span> Jihun Rho<span class="dot">.</span></a>
       <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-nav" type="button">☰ Menu</button>
       <nav class="nav" id="main-nav" aria-label="Main navigation">
-        <a href="#approach">What I Do</a><a href="#projects">Featured</a><a href="#other-projects">Other Projects</a><a href="#experience">Experience</a><a href="#stack">Skills</a><a href="#contact" class="nav-action">Contact ↗</a>
+        <a href="#specialization">CUDA &amp; GPU</a><a href="#approach">What I Do</a><a href="#projects">Featured</a><a href="#other-projects">Other Projects</a><a href="#experience">Experience</a><a href="#stack">Skills</a><a href="#contact" class="nav-action">Contact ↗</a>
       </nav>
     </div>
   </header>
@@ -297,8 +354,8 @@
         <div class="hero-content">
           <div class="eyebrow">JIHUN RHO · CUDA / C++ ENGINEER</div>
           <h1>Engineering speed into <span>computer vision.</span></h1>
-          <p class="hero-lead">GPU Performance · Real-Time Systems</p>
-          <p class="hero-intro">I build and optimize high-performance software across computer vision, robotics and AI applications—from CUDA kernels to end-to-end systems.</p>
+          <p class="hero-lead">GPU Performance · Computer Vision · Real-Time Systems</p>
+          <p class="hero-intro">I specialize in CUDA/C++ optimization and high-performance software engineering, with hands-on experience in computer vision, 3D perception, robotics, and AI applications.</p>
           <div class="hero-meta"><span class="availability"><i></i>Open to opportunities</span><span>Seoul, South Korea</span></div>
           <div class="actions"><a href="#projects" class="button button-green">Explore projects ↗</a><a href="https://github.com/931njhthe-star" target="_blank" rel="noopener noreferrer" class="button button-light">GitHub profile ↗</a></div>
         </div>
@@ -309,62 +366,36 @@
       </div>
     </section>
 
-    <section class="section section-white" id="approach">
+    <section class="section core-specialization-section" id="specialization" aria-labelledby="specialization-heading">
+      <div class="container core-compact-layout">
+        <div class="core-compact-heading">
+          <div class="eyebrow">01 / CORE SPECIALIZATION</div>
+          <h2 id="specialization-heading">CUDA &amp; GPU Performance Engineering</h2>
+        </div>
+        <ul class="core-compact-capabilities" aria-label="GPU optimization capabilities">
+          <li>Kernel Optimization</li>
+          <li>GPU Memory Optimization</li>
+          <li>CPU–GPU Pipeline Optimization</li>
+          <li>Nsight Profiling &amp; Analysis</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section-white" id="approach" aria-labelledby="approach-heading">
       <div class="container">
-        <div class="section-head"><div><div class="eyebrow">01 / WHAT I DO</div><h2>From GPU kernels to complete systems.</h2></div><p>GPU optimization is my core strength. I also develop computer vision, robotics, real-time inference and full-stack AI applications.</p></div>
-        <div class="gpu-feature gpu-feature-vertical">
-          <div class="gpu-feature-left">
-            <div class="eyebrow">PRIMARY SPECIALIZATION</div>
-            <h3>CUDA &amp; GPU Performance Engineering</h3>
-            <p>Optimizing GPU workloads through efficient computation, memory access, concurrent execution, and measurement-driven profiling.</p>
-            <div class="gpu-vertical-list" aria-label="GPU optimization capabilities">
-              <div class="gpu-vertical-row">
-                <span class="gpu-vertical-num">01</span>
-                <div class="gpu-vertical-copy">
-                  <span class="gpu-vertical-label">COMPUTE</span>
-                  <h4>Kernel Optimization</h4>
-                  <p>Thread layout, block configuration, occupancy, and execution efficiency.</p>
-                </div>
-              </div>
-              <div class="gpu-vertical-row">
-                <span class="gpu-vertical-num">02</span>
-                <div class="gpu-vertical-copy">
-                  <span class="gpu-vertical-label">MEMORY</span>
-                  <h4>Memory Optimization</h4>
-                  <p>Coalesced access and efficient use of global, shared, and constant memory.</p>
-                </div>
-              </div>
-              <div class="gpu-vertical-row">
-                <span class="gpu-vertical-num">03</span>
-                <div class="gpu-vertical-copy">
-                  <span class="gpu-vertical-label">SCHEDULING</span>
-                  <h4>Pipeline Optimization</h4>
-                  <p>Multithreading, CUDA streams, and CPU–GPU execution overlap.</p>
-                </div>
-              </div>
-              <div class="gpu-vertical-row">
-                <span class="gpu-vertical-num">04</span>
-                <div class="gpu-vertical-copy">
-                  <span class="gpu-vertical-label">PROFILING</span>
-                  <h4>Performance Analysis</h4>
-                  <p>Nsight Systems and Nsight Compute for bottleneck identification and validation.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="section-head"><div><div class="eyebrow">02 / WHAT I DO</div><h2 id="approach-heading">Beyond GPU optimization.</h2></div><p>Computer vision, high-performance software, robotics, and AI applications—from algorithms to working systems.</p></div>
         <div class="more-work more-work-four">
-          <article class="work-card"><div class="work-icon" aria-hidden="true">▣</div><div><h3>Computer Vision &amp; 3D Perception</h3><p>Classical image processing, object detection, tracking, camera calibration and 2D/3D geometry.</p><div class="work-foot">OpenCV · YOLO · 3D Vision</div></div></article>
-          <article class="work-card"><div class="work-icon" aria-hidden="true">⌘</div><div><h3>Robotics &amp; System Integration</h3><p>Integrating AMRs, robot arms, 3D sensing and device controllers through software interfaces and industrial protocols.</p><div class="work-foot">Robotics · Sensors · TCP/IP · Modbus</div></div></article>
-          <article class="work-card"><div class="work-icon" aria-hidden="true">↗</div><div><h3>GPU Inference &amp; Real-Time Software</h3><p>Connecting TensorRT inference, tracking and sensor fusion with multithreaded C++ and Qt applications.</p><div class="work-foot">TensorRT · C++ · Qt · CMake</div></div></article>
-          <article class="work-card"><div class="work-icon" aria-hidden="true">◇</div><div><h3>Full-Stack AI Applications</h3><p>Building end-to-end project applications with user interfaces, FastAPI services, databases, automated tests and Docker-based delivery workflows.</p><div class="work-foot">FastAPI · Streamlit · Supabase · Docker</div></div></article>
-        </div>
+<article class="work-card"><div aria-hidden="true" class="work-icon">▣</div><div><h3>Computer Vision &amp; 3D Perception</h3><p>Image processing, object detection, tracking, camera calibration, and 3D reconstruction.</p><div class="work-foot">OpenCV · YOLO · 3D Vision</div></div></article>
+<article class="work-card"><div aria-hidden="true" class="work-icon">↗</div><div><h3>High-Performance Software Engineering</h3><p>Cross-platform C++/Python development, multithreading, real-time processing, and system-level optimization.</p><div class="work-foot">C++ · Python · Qt · CMake</div></div></article>
+<article class="work-card"><div aria-hidden="true" class="work-icon">⌘</div><div><h3>Robotics &amp; Sensor Integration</h3><p>Robotic automation, sensor fusion, device communication, and vision-guided system integration.</p><div class="work-foot">Robotics · Sensors · TCP/IP · Modbus</div></div></article>
+<article class="work-card"><div aria-hidden="true" class="work-icon">◇</div><div><h3>AI Applications &amp; Deployment</h3><p>AI-powered applications, backend APIs, databases, agent workflows, and deployment pipelines.</p><div class="work-foot">FastAPI · LangGraph · Supabase · Docker</div></div></article>
+</div>
       </div>
     </section>
 
     <section class="section projects-section" id="projects">
       <div class="container">
-        <div class="section-head"><div><div class="eyebrow">02 / FEATURED PROJECTS</div><h2>Selected engineering work.</h2></div><p>Detailed work that shows how I approach performance, system integration and measurable results.</p></div>
+        <div class="section-head"><div><div class="eyebrow">03 / FEATURED PROJECTS</div><h2>Selected engineering work.</h2></div><p>Detailed work that shows how I approach performance, system integration and measurable results.</p></div>
       <article class="project-feature industrial-feature">
         <div class="project-info">
           <span class="pill">FEATURED PROJECT / 01</span>
@@ -440,22 +471,20 @@
     </section>
     <section class="section section-white other-projects-section" id="other-projects">
       <div class="container">
-        <div class="section-head"><div><div class="eyebrow">03 / OTHER PROJECTS</div><h2>More things I've built.</h2></div><p>Additional work across vision research, robotics, 3D reconstruction and applied AI systems.</p></div>
+        <div class="section-head"><div><div class="eyebrow">04 / OTHER PROJECTS</div><h2>More things I've built.</h2></div><p>Additional work across vision research, robotics and applied AI systems.</p></div>
         <div class="other-grid">
-          <article class="other-card"><div class="other-card-top"><span class="other-kicker">3D RECONSTRUCTION</span><span class="other-status">In development</span></div><h3>CudaFusion3D</h3><p>CUDA-based RGB-D reconstruction with planned TSDF fusion, Marching Cubes and CPU/GPU correctness benchmarks.</p><div class="other-tech">CUDA · C++17 · RGB-D</div></article>
           <article class="other-card"><div class="other-card-top"><span class="other-kicker">ROBOTICS & VISION</span></div><h3>Robotics & 3D Bin Picking</h3><p>Integrated AMR, six-axis robotics, 3D recognition and gripper control into working system demonstrations.</p><div class="other-tech">Robotics · 3D Vision · Protocols</div></article>
           <article class="other-card"><div class="other-card-top"><span class="other-kicker">COMPUTER VISION</span></div><h3>Vehicle Detection Research</h3><p>Vehicle detection experiments using YOLO and MobileNet-SSD, including dataset preparation and evaluation.</p><div class="other-tech">YOLO · MobileNet-SSD · Evaluation</div></article>
           <article class="other-card"><div class="other-card-top"><span class="other-kicker">CAMERA GEOMETRY</span></div><h3>Traffic Sign Recognition</h3><p>Recognition experiments based on 3D-to-2D projection and rotation-dependent accuracy analysis.</p><div class="other-tech">Projection · Calibration · SVM</div></article>
           <article class="other-card"><div class="other-card-top"><span class="other-kicker">AI APPLICATION</span></div><h3>SubSync</h3><p>AI-assisted YouTube English learning with dual subtitles, saved vocabulary and a tutor workflow.</p><div class="other-tech">FastAPI · Supabase · Gemini</div></article>
           <article class="other-card"><div class="other-card-top"><span class="other-kicker">AI SYSTEMS</span></div><h3>CareerLens</h3><p>AI-powered resume and job matching system; contributed to LangGraph architecture and database design.</p><div class="other-tech">LangGraph · Python · Backend</div></article>
-          <article class="other-card"><div class="other-card-top"><span class="other-kicker">INFERENCE BENCHMARK</span></div><h3>LLM Inference Benchmark</h3><p>Performance evaluation of Qwen3-4B inference with attention to latency, throughput and batch scaling.</p><div class="other-tech">GPU · Benchmarking · Inference</div></article>
         </div>
         <div class="other-footer"><span>Selected work spans multiple engineering settings. Project descriptions focus on technical scope and contribution.</span><a href="https://github.com/931njhthe-star" target="_blank" rel="noopener noreferrer">Explore GitHub ↗</a></div>
       </div>
     </section>
     <section class="section" id="experience">
       <div class="container">
-        <div class="section-head"><div><div class="eyebrow">04 / EXPERIENCE</div><h2>Where I built and applied it.</h2></div><p>Industrial software development, computer vision research and robotic system integration.</p></div>
+        <div class="section-head"><div><div class="eyebrow">05 / EXPERIENCE</div><h2>Where I built and applied it.</h2></div><p>Industrial software development, computer vision research and robotic system integration.</p></div>
         <div class="timeline">
           <article class="timeline-item"><div class="timeline-top"><h3>Enclony · Advanced Technology Research Institute</h3><time>Mar 2021 – Oct 2025</time></div><div class="timeline-role">Research Engineer · CUDA & GPU Performance Optimization</div><p>Developed C++/CUDA software for high-volume industrial machine vision inspection, contributing to a performance-focused real-time processing pipeline.</p></article>
           <article class="timeline-item"><div class="timeline-top"><h3>Sejong University · Vision Research Laboratory</h3><time>Nov 2019 – Oct 2020</time></div><div class="timeline-role">Researcher · Computer Vision</div><p>Investigated vehicle detection and traffic-sign recognition, including dataset evaluation and 3D-to-2D camera projection studies.</p></article>
@@ -466,7 +495,7 @@
 
     <section class="section section-white" id="stack">
       <div class="container">
-        <div class="section-head"><div><div class="eyebrow">05 / TECHNICAL SKILLS</div><h2>Tools I work with.</h2></div><p>Core GPU and vision tools complemented by application and deployment experience.</p></div>
+        <div class="section-head"><div><div class="eyebrow">06 / TECHNICAL SKILLS</div><h2>Tools I work with.</h2></div><p>Core GPU and vision tools complemented by application and deployment experience.</p></div>
         <div class="stack-grid">
           <div class="stack-card"><h3>GPU & Performance</h3><div class="chips"><span class="chip">CUDA</span><span class="chip">C++</span><span class="chip">Nsight Systems</span><span class="chip">Nsight Compute</span><span class="chip">Multithreading</span></div></div>
           <div class="stack-card"><h3>Vision & Inference</h3><div class="chips"><span class="chip">OpenCV</span><span class="chip">TensorRT</span><span class="chip">YOLO</span><span class="chip">Camera Calibration</span><span class="chip">Sensor Fusion</span></div></div>
@@ -477,7 +506,7 @@
     </section>
 
     <section class="contact-area" id="contact">
-      <div class="container"><div class="contact-card"><div><div class="eyebrow">06 / CONTACT</div><h2>Let's build faster systems.</h2><p>Open to roles in GPU performance, CUDA software and computer vision engineering.</p></div><div class="contact-actions"><a href="mailto:hunjirho@gmail.com" class="button button-green">Email me ↗</a><a href="https://github.com/931njhthe-star" class="button button-light" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div></div>
+      <div class="container"><div class="contact-card"><div><div class="eyebrow">07 / CONTACT</div><h2>Let's build faster systems.</h2><p>Open to roles in GPU performance, CUDA software and computer vision engineering.</p></div><div class="contact-actions"><a href="mailto:hunjirho@gmail.com" class="button button-green">Email me ↗</a><a href="https://github.com/931njhthe-star" class="button button-light" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div></div>
     </section>
   </main>
   <footer class="footer"><div class="container footer-inner"><span>© <span id="year">2026</span> Jihun Rho · Built for GitHub Pages</span><span>Seoul, South Korea · <a href="#home">Back to top ↑</a></span></div></footer>
