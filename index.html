@@ -239,6 +239,13 @@
     .proof-stat b{display:block;font-size:12px;margin-top:13px;color:#f0f6ec}
     .proof-stat span{display:block;font-size:11px;color:#afc5a5;margin-top:6px;line-height:1.55}
     .industrial-proof>p{font-size:10px;line-height:1.65;margin:17px 0 0;color:#a9bea0}
+    .industrial-proof .production-badge{display:flex;align-items:center;gap:8px;flex-wrap:wrap;color:#b8ed76;font-size:10px;letter-spacing:1.35px;font-weight:850;line-height:1.5}
+    .production-check{display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;border:1px solid #94cd54;border-radius:50%;color:#b8ed76;font-size:12px;line-height:1;letter-spacing:0}
+    .production-separator{font-weight:900;color:#688953}
+    .industrial-proof .production-heading{font-size:clamp(22px,2.5vw,31px);color:#f4faef;font-weight:800;letter-spacing:-.7px;line-height:1.2;margin:15px 0 8px}
+    .industrial-proof .production-summary{max-width:810px;color:#becfb7;font-size:13px;line-height:1.7;margin:0 0 24px}
+    .industrial-proof .production-note{border-top:1px solid #394b32;padding-top:15px;margin-top:20px;color:#adc2a4;font-size:10.5px;line-height:1.7}
+    .industrial-proof .production-note::before{content:"ⓘ";color:#b8ed76;margin-right:8px}
     @media(max-width:1100px){.industrial-feature{grid-template-columns:1fr}}
     @media(max-width:760px){.industrial-proof{padding:23px 20px}.industrial-proof-grid{grid-template-columns:1fr;gap:8px}.proof-stat{padding:16px 18px}.proof-stat strong{font-size:32px}.proof-stat b{margin-top:7px}.industrial-proof-top small{font-size:10px}.more-work-four .work-card{min-height:0}}
 
@@ -388,14 +395,16 @@
           </div>
           <p class="industrial-viz-caption">Conceptual visualization — not a reproduction of a proprietary processing pipeline.</p>
         </div>
-        <div class="industrial-proof" aria-label="Measured industrial performance results">
-          <div class="industrial-proof-top"><span>MEASURED INDUSTRIAL PERFORMANCE</span><small>Results from professional CUDA/C++ image-processing work</small></div>
+        <div class="industrial-proof" aria-label="Production-deployed industrial GPU performance results">
+          <div class="production-badge"><span class="production-check" aria-hidden="true">✓</span> PRODUCTION-DEPLOYED <span class="production-separator" aria-hidden="true">·</span> INDUSTRIAL MACHINE VISION</div>
+          <h4 class="production-heading">GPU Optimization Proven in Production</h4>
+          <p class="production-summary">Measured performance improvements from a CUDA/C++ image-processing pipeline deployed in a real industrial inspection system.</p>
           <div class="industrial-proof-grid">
             <div class="proof-stat"><strong>11.2×</strong><b>Processing throughput</b><span>vs. single-core CPU baseline</span></div>
-            <div class="proof-stat"><strong>~40%</strong><b>Additional throughput</b><span>vs. multi-core CPU-only pipeline</span></div>
+            <div class="proof-stat"><strong>~40%</strong><b>Higher throughput</b><span>vs. multi-core CPU-only pipeline</span></div>
             <div class="proof-stat"><strong>2.52M</strong><b>Images per hour</b><span>Industrial inspection workload</span></div>
           </div>
-          <p>Measured in industrial vision engineering, not DriveFusion. Proprietary algorithms and implementation details are not disclosed.</p>
+          <p class="production-note">Results from an operational industrial vision system—not a simulation or portfolio benchmark. Proprietary algorithms and implementation details are not disclosed.</p>
         </div>
       </article>
       <article class="project-feature">
