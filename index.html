@@ -388,9 +388,32 @@
     .arch-inspection-preview{width:170px;max-width:100%;margin:0 auto}
     .arch-inspection-preview svg{display:block;width:100%;height:auto}
     .arch-transfer{margin-top:17px;font-size:11px;color:#a6c996;text-align:center}
-    @media(max-width:850px){.inspection-architecture{margin:0 20px 23px}.arch-flow-viewport{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#657c63 #18231a}.arch-flow{min-width:690px}}
-    @media(max-width:480px){.inspection-architecture{padding:18px 15px;margin:0 13px 20px}.arch-header{flex-direction:column;align-items:flex-start;gap:5px}.arch-compute{padding:15px}.arch-processors{gap:12px}.arch-processor h5{font-size:12px}.arch-processor p{font-size:10px}}
+    @media(max-width:850px){
+      .inspection-architecture{margin:0 20px 23px}
+      .arch-flow-viewport{overflow:visible;min-width:0;width:100%}
+      .arch-flow{display:flex;flex-direction:column;gap:13px;min-width:0;width:100%;box-sizing:border-box}
+      .arch-endpoint{width:100%;max-width:100%;padding:8px 0}
+      .arch-arrow{transform:none;font-size:0;line-height:1;height:24px}.arch-arrow::before{content:"↓";font-size:23px}
+      .arch-compute{width:100%;max-width:100%;box-sizing:border-box}
+      .arch-processors{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .arch-processor{min-width:0}
+      .arch-processor p{overflow-wrap:anywhere}
+    }
+    @media(max-width:480px){.arch-processors{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.arch-processor+.arch-processor{border-top:0;padding-top:0;border-left:1px solid #45634a;padding-left:10px}.inspection-architecture{padding:18px 15px;margin:0 13px 20px}.arch-header{flex-direction:column;align-items:flex-start;gap:5px}.arch-compute{padding:15px}.arch-processors{gap:12px}.arch-processor h5{font-size:12px}.arch-processor p{font-size:10px}}
 
+  
+    /* Mobile: balanced CPU/GPU columns and compact 2-column metrics */
+    @media (max-width:760px){
+      .arch-processors{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0}
+      .arch-processor{min-width:0;padding:0 10px;text-align:center}
+      .arch-processor+.arch-processor{border-left:1px solid #45634a;border-top:0;padding:0 10px}
+      .arch-processor p{overflow-wrap:normal;word-break:normal;font-size:clamp(9px,2.6vw,11px);line-height:1.65}
+      .industrial-proof-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+      .proof-stat{padding:14px 10px}
+      .proof-stat strong{font-size:clamp(23px,6.8vw,32px)}
+      .proof-stat b{font-size:11px}
+      .proof-stat span{font-size:10px}
+    }
   </style>
 </head>
 <body>
