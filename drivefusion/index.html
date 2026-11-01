@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101410">
+<meta name="description" content="DriveFusion: a CARLA-based real-time camera-radar vehicle perception and distance evaluation system by Jihun Rho.">
+<title>DriveFusion — Camera-Radar Perception &amp; Evaluation | Jihun Rho</title>
+<style>
+:root{--ink:#172117;--muted:#5d695b;--line:#dce5d7;--green:#76b900;--green-dark:#4f7f00;--pale:#f4f8ef;--dark:#101710;--dark2:#1a2818;--lime:#b9ed73}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:84px}body{margin:0;background:#f8faf6;color:var(--ink);font:16px/1.65 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit}.container{width:min(1120px,calc(100% - 48px));margin:auto}
+header{position:sticky;top:0;z-index:20;background:rgba(16,23,16,.97);border-bottom:1px solid #34442f;backdrop-filter:blur(12px);color:white}.nav{height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-weight:850;font-size:14px;letter-spacing:.04em}.brand b{color:#9cda3b}.navlinks{display:flex;gap:24px;align-items:center}.navlinks a{font-size:12px;font-weight:700;color:#d1ddca;text-decoration:none}.navlinks a:hover{color:var(--lime)}.navlinks .back{color:#aee66a}
+.hero{background:linear-gradient(120deg,#fff 0%,#f9fcf6 54%,#edf6e3 100%);border-bottom:1px solid var(--line)}.hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:48px;align-items:center;padding:78px 0 72px}.eyebrow{font-size:11px;letter-spacing:.17em;text-transform:uppercase;font-weight:850;color:#5c8d08}.hero h1{font-size:clamp(40px,5vw,65px);line-height:1.02;letter-spacing:-.055em;margin:17px 0 20px;max-width:650px}.hero h1 span{color:#588e00}.lead{max-width:620px;font-size:17px;line-height:1.8;color:#4e5d4a;margin:0}.hero-actions{display:flex;gap:11px;flex-wrap:wrap;margin-top:26px}.button{display:inline-flex;padding:12px 17px;border-radius:8px;text-decoration:none;font-size:12px;font-weight:800}.button-green{background:var(--green);color:#15210c}.button-ghost{background:#fff;border:1px solid #cad8c2;color:#263322}
+.hero-visual{position:relative;padding:12px;background:#fff;border:1px solid #d7e1d0;border-radius:18px;box-shadow:0 22px 55px #172b0c16}.hero-visual img{display:block;width:100%;height:auto;border-radius:10px}.visual-caption{display:flex;justify-content:space-between;gap:16px;padding:11px 5px 2px;color:#68745f;font-size:10px;font-weight:750;letter-spacing:.07em;text-transform:uppercase}.live-dot{color:#548b00}.live-dot:before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:7px}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:29px}.metric{border:1px solid #deead4;border-radius:12px;padding:14px 15px;background:#fff}.metric strong{display:block;font-size:25px;line-height:1.15;letter-spacing:-.04em;color:#4f8000}.metric span{display:block;font-size:10px;color:#6c7866;margin-top:6px;line-height:1.45;font-weight:700}
+.section{padding:76px 0}.section-white{background:#fff;border-top:1px solid #e8eee4;border-bottom:1px solid #e8eee4}.section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:26px}.section-head .eyebrow{margin-bottom:7px}.section h2{font-size:clamp(27px,3.4vw,39px);line-height:1.12;letter-spacing:-.045em;margin:0}.section-head p{max-width:470px;margin:0;color:var(--muted);font-size:13px;line-height:1.75}
+.panel{border:1px solid var(--line);border-radius:17px;background:white;overflow:hidden;box-shadow:0 10px 30px #172b0c08}.architecture{display:block;width:100%;height:auto;background:#fff}.arch-note{padding:12px 18px;border-top:1px solid var(--line);color:#68745f;font-size:11px}
+.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:20px}.flow-step{min-height:150px;padding:18px 15px;background:#fff;border:1px solid var(--line);border-radius:13px}.flow-step .number{font-size:10px;font-weight:850;letter-spacing:.12em;color:#6b9d1e}.flow-step h3{font-size:14px;line-height:1.35;margin:10px 0 7px}.flow-step p{font-size:11px;line-height:1.65;color:var(--muted);margin:0}.flow-step.accent{background:#f2f8e9;border-color:#cfe2b9}
+.dashboard-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:stretch}.dashboard-card{border:1px solid var(--line);border-radius:15px;background:white;overflow:hidden}.dashboard-card img{display:block;width:100%;height:100%;max-height:430px;object-fit:cover;object-position:top}.dashboard-copy{padding:28px}.dashboard-copy h3{font-size:19px;margin:0 0 11px}.dashboard-copy p{font-size:13px;line-height:1.8;color:var(--muted);margin:0 0 17px}.feature-list{display:grid;gap:9px;list-style:none;padding:0;margin:0}.feature-list li{position:relative;padding-left:19px;color:#465444;font-size:12px}.feature-list li:before{content:"✓";position:absolute;left:0;color:#68a700;font-weight:900}
+.methods{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.method{padding:20px;border-radius:13px;border:1px solid var(--line);background:#fff}.method .code{font-size:11px;font-weight:850;color:#648e20;letter-spacing:.1em}.method h3{font-size:15px;margin:9px 0}.method p{font-size:12px;line-height:1.75;color:var(--muted);margin:0}.method.active{border-color:#bed89e;background:#f7fbf2}
+.results{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:#fff}.results table{width:100%;border-collapse:collapse;min-width:680px}.results th,.results td{padding:14px 16px;text-align:left;border-bottom:1px solid #e9eee5;font-size:12px}.results th{background:#f1f6eb;color:#44553d;text-transform:uppercase;letter-spacing:.06em;font-size:10px}.results tr:last-child td{border-bottom:0}.results td strong{color:#4f8000;font-size:14px}.results .subset{background:#fbfdf8}.results-note{margin:13px 2px 0;color:#68745f;font-size:11px;line-height:1.7}
+.result-visual{display:grid;grid-template-columns:.83fr 1.17fr;gap:22px;align-items:center;margin-top:20px;padding:22px;background:#fff;border:1px solid var(--line);border-radius:15px}.result-visual img{display:block;width:100%;height:auto;border-radius:9px}.result-visual h3{font-size:17px;margin:0 0 8px}.result-visual p{font-size:12px;color:var(--muted);line-height:1.8;margin:0}
+.experiment{display:grid;grid-template-columns:1fr 1fr;gap:20px}.experiment-card{padding:23px;border-radius:14px;border:1px solid var(--line);background:white}.experiment-card h3{font-size:15px;margin:0 0 10px}.experiment-card p{font-size:12px;line-height:1.8;color:var(--muted);margin:0}.weather-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}.weather-grid img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:7px;border:1px solid #e4e9df}.weather-labels{display:flex;justify-content:space-between;font-size:9px;color:#778270;margin-top:6px}
+.stack{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stack-item{padding:17px;border-radius:12px;background:#fff;border:1px solid var(--line)}.stack-item b{display:block;font-size:12px;margin-bottom:6px}.stack-item span{font-size:11px;line-height:1.6;color:var(--muted)}
+.cta{padding:33px;border-radius:18px;background:linear-gradient(125deg,#152014,#26391d);color:white;display:flex;justify-content:space-between;align-items:center;gap:24px}.cta h2{font-size:25px;margin:0 0 7px;letter-spacing:-.035em}.cta p{font-size:12px;color:#c2d1bb;margin:0}.cta .button{white-space:nowrap}
+footer{padding:26px 0;background:var(--dark);color:#b5c2ad;font-size:11px}.footer-inner{display:flex;justify-content:space-between;gap:16px}.footer-inner a{color:#b9ed73;text-decoration:none}
+@media(max-width:850px){.hero-grid,.dashboard-grid,.result-visual{grid-template-columns:1fr}.hero-grid{gap:32px;padding:54px 0}.hero-visual{max-width:700px}.flow{grid-template-columns:repeat(2,minmax(0,1fr))}.methods{grid-template-columns:1fr}.experiment{grid-template-columns:1fr}.stack{grid-template-columns:repeat(2,1fr)}.section{padding:58px 0}.section-head{display:block}.section-head p{margin-top:12px}}
+@media(max-width:560px){.container{width:calc(100% - 32px)}.navlinks{gap:11px}.navlinks a{font-size:10px}.metrics{gap:7px}.metric{padding:12px 9px}.metric strong{font-size:20px}.metric span{font-size:9px}.flow{grid-template-columns:1fr}.flow-step{min-height:auto}.stack{grid-template-columns:1fr 1fr}.cta{padding:25px;display:block}.cta .button{margin-top:18px}.footer-inner{display:block}.footer-inner span{display:block;margin-top:6px}.section-head{margin-bottom:20px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header>
+  <nav class="container nav" aria-label="Primary navigation">
+    <a class="brand" href="https://931njhthe-star.github.io/" style="color:white;text-decoration:none">JIHUN RHO <b>·</b> DRIVEFUSION</a>
+    <div class="navlinks">
+      <a href="#system">System</a><a href="#evaluation">Evaluation</a><a href="#results">Results</a>
+      <a class="back" href="https://github.com/931njhthe-star/DriveFusion">Repository ↗</a>
+    </div>
+  </nav>
+</header>
+<main>
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">Automotive Vision · Radar Fusion · Real-Time Evaluation</div>
+      <h1>DriveFusion:<br><span>Camera meets radar.</span></h1>
+      <p class="lead">I independently built a CARLA-based vehicle perception and distance-evaluation system that connects real-time camera and radar streams, YOLO11n detection, vehicle tracking, a Qt dashboard, and repeatable experiments.</p>
+      <div class="hero-actions">
+        <a class="button button-green" href="#results">Explore measured results ↓</a>
+        <a class="button button-ghost" href="https://github.com/931njhthe-star/DriveFusion">View repository ↗</a>
+      </div>
+      <div class="metrics" aria-label="Project results">
+        <div class="metric"><strong>16,491</strong><span>common evaluation samples</span></div>
+        <div class="metric"><strong>−5.41%</strong><span>overall distance MAE</span></div>
+        <div class="metric"><strong>−39.42%</strong><span>MAE on 437 radar-corrected samples</span></div>
+      </div>
+    </div>
+    <figure class="hero-visual">
+      <img src="https://931njhthe-star.github.io/assets/drivefusion.gif" alt="DriveFusion Qt dashboard comparing camera-only and radar-assisted vehicle tracking" fetchpriority="high">
+      <figcaption class="visual-caption"><span>Live perception and evaluation dashboard</span><span class="live-dot">CARLA · YOLO11n · RADAR</span></figcaption>
+    </figure>
+  </div>
+</section>
+<section class="section" id="system">
+  <div class="container">
+    <div class="section-head"><div><div class="eyebrow">01 / SYSTEM OVERVIEW</div><h2>From simulated sensors to measurable results.</h2></div><p>A single workflow collects synchronized sensor data, runs detection and tracking, estimates inter-vehicle distance, and records results for replay and evaluation.</p></div>
+    <figure class="panel">
+      <img class="architecture" src="https://github.com/user-attachments/assets/8133445e-add3-4e75-9d26-4ab0d1940032" alt="DriveFusion system architecture from CARLA sensors through detection, tracking, fusion, dashboard, and evaluation">
+      <figcaption class="arch-note">System overview from the project repository. CARLA ground-truth vehicle state is used for evaluation, not as an input to the perception pipeline.</figcaption>
+    </figure>
+    <div class="flow" aria-label="DriveFusion processing stages">
+      <article class="flow-step"><div class="number">01 · INPUT</div><h3>CARLA sensor streams</h3><p>RGB camera, radar, IMU, GNSS, vehicle state, and event sensors.</p></article>
+      <article class="flow-step"><div class="number">02 · DETECT</div><h3>YOLO11n inference</h3><p>C++/CUDA TensorRT module returns vehicle detections to the runtime.</p></article>
+      <article class="flow-step"><div class="number">03 · TRACK</div><h3>Camera + radar tracking</h3><p>Vehicle IDs use class, IoU, and center distance, with radar-assisted association and position correction.</p></article>
+      <article class="flow-step accent"><div class="number">04 · ESTIMATE</div><h3>Distance calculation</h3><p>Camera ground projection with conditional radar distance correction.</p></article>
+      <article class="flow-step"><div class="number">05 · REVIEW</div><h3>Monitor, record, evaluate</h3><p>Qt dashboard, session recording, saved-input replay, and Ground Truth comparison.</p></article>
+    </div>
+  </div>
+</section>
+<section class="section section-white">
+  <div class="container">
+    <div class="section-head"><div><div class="eyebrow">02 / REAL-TIME MONITORING</div><h2>See both tracking paths side by side.</h2></div><p>The Qt application combines live monitoring, experiment controls, session capture, and post-run evaluation in one interface.</p></div>
+    <div class="dashboard-grid">
+      <figure class="dashboard-card"><img src="https://931njhthe-star.github.io/assets/drivefusion.gif" alt="Animated view of the DriveFusion Qt monitoring dashboard"></figure>
+      <article class="dashboard-card dashboard-copy">
+        <h3>Built for live comparison and repeatable runs</h3>
+        <p>The dashboard displays the camera image, YOLO detections, camera-only tracks, radar-assisted tracks, and estimated vehicle distance. It also controls selected tracking and collection settings and supports session recording and replay.</p>
+        <ul class="feature-list">
+          <li>Compare camera-only and radar-assisted tracking on the same frames.</li>
+          <li>Inspect distance estimates alongside sensor and vehicle information.</li>
+          <li>Record sessions manually or through scheduled weather workflows.</li>
+          <li>Replay saved data to generate comparable evaluation reports.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="section" id="evaluation">
+  <div class="container">
+    <div class="section-head"><div><div class="eyebrow">03 / EVALUATION DESIGN</div><h2>Separate radar distance correction from track correction.</h2></div><p>Three methods run on the same recorded input. This keeps the comparison focused on the contribution of each step.</p></div>
+    <div class="methods">
+      <article class="method"><div class="code">M1 · BASELINE</div><h3>Image tracking + camera distance</h3><p>YOLO detections are associated by class, IoU, and center distance. Distance is estimated by projecting the tracked box onto the ground plane.</p></article>
+      <article class="method"><div class="code">M2 · DISTANCE FUSION</div><h3>Camera tracking + conditional radar distance</h3><p>Uses the M1 tracks. When radar cluster quality and consistency checks pass, the camera distance is replaced with radar distance; otherwise the valid camera estimate is retained.</p></article>
+      <article class="method active"><div class="code">M3 · RADAR-ASSISTED</div><h3>Radar-assisted tracking + distance fusion</h3><p>Adds radar-based association and position correction during camera detection gaps, then applies the same conditional distance rule used by M2.</p></article>
+    </div>
+  </div>
+</section>
+<section class="section section-white" id="results">
+  <div class="container">
+    <div class="section-head"><div><div class="eyebrow">04 / MEASURED RESULTS</div><h2>Radar assistance helped most when correction applied.</h2></div><p>Distance errors are compared against CARLA vehicle-state Ground Truth. Lower MAE and RMSE indicate more accurate estimates.</p></div>
+    <div class="results">
+      <table>
+        <thead><tr><th>Evaluation group</th><th>Samples</th><th>Share of total</th><th>MAE reduction</th><th>RMSE reduction</th></tr></thead>
+        <tbody>
+          <tr><td>All common samples</td><td>16,491</td><td>100%</td><td><strong>5.41%</strong></td><td><strong>0.83%</strong></td></tr>
+          <tr class="subset"><td>Radar-corrected tracks (A + B)</td><td>437</td><td>2.65%</td><td><strong>39.42%</strong></td><td><strong>25.15%</strong></td></tr>
+          <tr><td>A · Final distance uses radar</td><td>242</td><td>1.47%</td><td><strong>80.95%</strong></td><td><strong>71.43%</strong></td></tr>
+          <tr><td>B · Final distance uses camera</td><td>195</td><td>1.18%</td><td><strong>8.77%</strong></td><td><strong>11.68%</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="results-note">The 437 radar-corrected samples are a subset of the 16,491 common samples. Their larger gains apply to this selected subset; they should not be interpreted as the overall system improvement.</p>
+    <div class="result-visual">
+      <img src="https://github.com/user-attachments/assets/04073d52-53da-42d1-883e-50f904410c5e" alt="DriveFusion camera-radar distance evaluation visualization">
+      <div><h3>Overall results and conditional gains tell different parts of the story.</h3><p>Across all common samples, M3 reduced MAE by 5.41% and RMSE by 0.83% compared with M1. Among 437 predictions where radar corrected the track position, M3 reduced MAE by 39.42% and RMSE by 25.15%. The overall result remains modest because the corrected cases account for 2.65% of the common sample set.</p></div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-head"><div><div class="eyebrow">05 / EXPERIMENTS &amp; LIMITS</div><h2>Controlled simulation, clearly scoped conclusions.</h2></div><p>CARLA provides repeatable conditions and Ground Truth for quantitative analysis. The results describe simulation experiments, not proof of real-road performance.</p></div>
+    <div class="experiment">
+      <article class="experiment-card">
+        <h3>Nine weather and time-of-day sessions</h3>
+        <p>Data was collected for clear, cloudy, and heavy-rain conditions across noon, sunset, and night. Each condition was collected once for approximately two minutes, then evaluated with the same saved input.</p>
+        <div class="weather-grid" aria-label="Representative CARLA weather scenes">
+          <img src="https://raw.githubusercontent.com/931njhthe-star/DriveFusion/main/docs/images/weather/ClearNoon.jpg" alt="CARLA clear noon scene" loading="lazy">
+          <img src="https://raw.githubusercontent.com/931njhthe-star/DriveFusion/main/docs/images/weather/CloudySunset.jpg" alt="CARLA cloudy sunset scene" loading="lazy">
+          <img src="https://raw.githubusercontent.com/931njhthe-star/DriveFusion/main/docs/images/weather/HardRainNight.jpg" alt="CARLA heavy rain at night scene" loading="lazy">
+        </div>
+        <div class="weather-labels"><span>Clear · Noon</span><span>Cloudy · Sunset</span><span>Heavy Rain · Night</span></div>
+      </article>
+      <article class="experiment-card">
+        <h3>Interpretation and limitations</h3>
+        <p>The experiment uses a limited set of CARLA scenarios. The 437 radar-corrected samples are only 2.65% of all common samples, and scene composition differs between weather/time sessions. The evaluation therefore does not isolate weather effects or establish generalization to real-road conditions.</p>
+        <p style="margin-top:12px">Next steps include repeated runs with matched traffic and routes, broader distance and occlusion scenarios, and validation with real sensor data. Future evaluation can also include track continuity, ID switches, missed-detection recovery, and processing latency.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="section section-white">
+  <div class="container">
+    <div class="section-head"><div><div class="eyebrow">06 / IMPLEMENTATION</div><h2>One project across inference, integration, and evaluation.</h2></div><p>Independently designed and implemented the CARLA-based application, with a separate native inference module and an interactive monitoring workflow.</p></div>
+    <div class="stack">
+      <div class="stack-item"><b>Inference</b><span>YOLO11n · C++/CUDA · TensorRT DLL</span></div>
+      <div class="stack-item"><b>Sensor &amp; tracking runtime</b><span>Python · Camera/radar association · Distance estimation</span></div>
+      <div class="stack-item"><b>Monitoring</b><span>Qt dashboard · Live comparison · Session recording</span></div>
+      <div class="stack-item"><b>Evaluation</b><span>CARLA Ground Truth · Replay · MAE/RMSE reports</span></div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="cta"><div><h2>Explore the implementation.</h2><p>Source code, setup notes, system details, and the complete evaluation write-up.</p></div><a class="button button-green" href="https://github.com/931njhthe-star/DriveFusion">Open DriveFusion repository ↗</a></div>
+  </div>
+</section>
+</main>
+<footer><div class="container footer-inner"><span>Jihun Rho · DriveFusion</span><span><a href="https://931njhthe-star.github.io/">Back to portfolio ↗</a></span></div></footer>
+</body>
+</html>
