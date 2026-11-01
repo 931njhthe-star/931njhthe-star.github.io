@@ -453,7 +453,29 @@ Added CareerLens card only: /workspace/scratch/ebeae0ed8f84/portfolio-full-reord
 
 
 
-</style>
+/* Compact the architecture panel vertically while keeping the diagram readable. */
+    .inspection-architecture{margin:0 20px 18px;padding:15px 18px}
+    .arch-header{margin-bottom:11px}
+    .arch-flow{gap:6px}
+    .arch-endpoint{gap:6px}
+    .arch-compute{padding:12px 12px}
+    .arch-compute-title{margin-bottom:9px}
+    .arch-processors{gap:14px}
+    .arch-processor h5{margin-bottom:5px}
+    .arch-processor p{line-height:1.5}
+    .arch-blackbox{margin-top:9px;padding:8px 8px}
+    .arch-transfer{margin-top:9px}
+    @media(max-width:850px){
+      .inspection-architecture{margin:0 16px 16px;padding:14px 16px}
+      .arch-flow{gap:8px}
+      .arch-endpoint{padding:4px 0}
+      .arch-compute{padding:12px}
+      .arch-compute-title{margin-bottom:8px}
+      .arch-processors{gap:10px}
+      .arch-blackbox{margin-top:8px;padding:8px}
+      .arch-transfer{margin-top:8px}
+    }
+    </style>
 <style>
 /* Consistent project card order: title, media, description, details. */
 .other-card > h3 + .drivefusion-video-wrap,
