@@ -247,30 +247,26 @@ Added CareerLens card only: /workspace/scratch/ebeae0ed8f84/portfolio-full-reord
     .more-work-four .work-card{min-height:185px}
     .more-work-four .work-card h3{line-height:1.32}
     .industrial-feature{grid-template-columns:1fr 1fr}
-    .industrial-proof{grid-column:1 / -1;background:#111a10;color:#f1f8ec;border-top:1px solid #405838;padding:27px 38px 24px}
-    .industrial-proof-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;margin-bottom:20px}
-    .industrial-proof-top span{font-size:11px;letter-spacing:1.65px;color:#b8ed76;font-weight:850}
-    .industrial-proof-top small{font-size:11px;color:#bacab3}
-    .industrial-proof-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
-    .metric-group-heading{display:flex;align-items:center;gap:10px;margin:24px 0 13px;color:#b0e967;font-size:11px;letter-spacing:1.35px;font-weight:850}
-    .metric-group-heading::before{content:"";display:block;width:3px;height:17px;border-radius:2px;background:#b0e967;flex:none}
-    .metric-group-heading span{color:#afc5a5;font-size:10px;letter-spacing:0;font-weight:600}
-    .metric-group-heading.workload{padding-top:21px;border-top:1px solid #394b32;margin-top:23px}
-
-    .proof-stat{padding:19px 20px 18px;background:#1e2d1a;border:1px solid #415a36;border-radius:12px;min-width:0}
-    .proof-stat strong{display:block;font-size:38px;letter-spacing:-1.5px;line-height:1.1;color:#b0e967;font-weight:850}
-    .proof-stat b{display:block;font-size:12px;margin-top:13px;color:#f0f6ec}
-    .proof-stat span{display:block;font-size:11px;color:#afc5a5;margin-top:6px;line-height:1.55}
-    .industrial-proof>p{font-size:10px;line-height:1.65;margin:17px 0 0;color:#a9bea0}
-    .industrial-proof .production-badge{display:flex;align-items:center;gap:8px;flex-wrap:wrap;color:#b8ed76;font-size:10px;letter-spacing:1.35px;font-weight:850;line-height:1.5}
-    .production-check{display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;border:1px solid #94cd54;border-radius:50%;color:#b8ed76;font-size:12px;line-height:1;letter-spacing:0}
+    .industrial-proof{grid-column:1 / -1;background:#111a10;color:#f1f8ec;border-top:1px solid #405838;padding:20px 30px 17px}
+    .industrial-proof .production-badge{display:flex;align-items:center;gap:8px;flex-wrap:wrap;color:#b8ed76;font-size:9px;letter-spacing:1.2px;font-weight:850;line-height:1.4}
+    .production-check{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border:1px solid #94cd54;border-radius:50%;color:#b8ed76;font-size:11px;line-height:1;letter-spacing:0}
     .production-separator{font-weight:900;color:#688953}
-    .industrial-proof .production-heading{font-size:clamp(22px,2.5vw,31px);color:#f4faef;font-weight:800;letter-spacing:-.7px;line-height:1.2;margin:15px 0 8px}
-    .industrial-proof .production-summary{max-width:810px;color:#becfb7;font-size:13px;line-height:1.7;margin:0 0 24px}
-    .industrial-proof .production-note{border-top:1px solid #394b32;padding-top:15px;margin-top:20px;color:#adc2a4;font-size:10.5px;line-height:1.7}
-    .industrial-proof .production-note::before{content:"ⓘ";color:#b8ed76;margin-right:8px}
+    .industrial-proof .production-heading{font-size:22px;color:#f4faef;font-weight:800;letter-spacing:-.55px;line-height:1.2;margin:8px 0 4px}
+    .industrial-proof .production-summary{color:#becfb7;font-size:11px;line-height:1.5;margin:0 0 13px}
+    .proof-metric-groups{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .proof-metric-group{min-width:0}
+    .industrial-proof-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+    .metric-group-heading{display:flex;align-items:center;gap:8px;margin:0 0 8px;color:#b0e967;font-size:9px;letter-spacing:1.1px;font-weight:850}
+    .metric-group-heading::before{content:"";display:block;width:3px;height:13px;border-radius:2px;background:#b0e967;flex:none}
+    .proof-stat{padding:11px 12px 10px;background:#1e2d1a;border:1px solid #415a36;border-radius:9px;min-width:0}
+    .proof-stat strong{display:block;font-size:25px;letter-spacing:-.8px;line-height:1.05;color:#b0e967;font-weight:850;white-space:nowrap}
+    .proof-stat b{display:block;font-size:10px;margin-top:6px;color:#f0f6ec;line-height:1.3}
+    .proof-stat span{display:block;font-size:9px;color:#afc5a5;margin-top:3px;line-height:1.35}
+    .industrial-proof>p{font-size:9px;line-height:1.5;margin:10px 0 0;color:#a9bea0}
+    .industrial-proof .production-note{border-top:1px solid #394b32;padding-top:8px}
+    .industrial-proof .production-note::before{content:"ⓘ";color:#b8ed76;margin-right:6px}
     @media(max-width:1100px){.industrial-feature{grid-template-columns:1fr}}
-    @media(max-width:760px){.industrial-proof{padding:23px 20px}.industrial-proof-grid{grid-template-columns:1fr;gap:8px}.proof-stat{padding:16px 18px}.proof-stat strong{font-size:32px}.proof-stat b{margin-top:7px}.industrial-proof-top small{font-size:10px}.more-work-four .work-card{min-height:0}}
+    @media(max-width:760px){.industrial-proof{padding:19px 17px}.proof-metric-groups{grid-template-columns:1fr;gap:13px}.industrial-proof-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.proof-stat{padding:10px 9px}.proof-stat strong{font-size:22px}.proof-stat b{font-size:9px}.proof-stat span{font-size:8px}.industrial-proof-grid{grid-template-columns:1fr;gap:8px}.proof-stat{padding:16px 18px}.proof-stat strong{font-size:32px}.proof-stat b{margin-top:7px}.industrial-proof-top small{font-size:10px}.more-work-four .work-card{min-height:0}}
 
     /* V4: full-width black editorial list, replacing the workflow chips and duplicate CUDA cards. */
     .gpu-feature-vertical { display:block; border-color:#31452c; }
@@ -557,19 +553,25 @@ Added CareerLens card only: /workspace/scratch/ebeae0ed8f84/portfolio-full-reord
 <div class="production-badge"><span aria-hidden="true" class="production-check">✓</span> PRODUCTION-DEPLOYED <span aria-hidden="true" class="production-separator">·</span> INDUSTRIAL MACHINE VISION</div>
 <h4 class="production-heading">GPU Optimization Proven in Production</h4>
 <p class="production-summary">Measured performance improvements from a CUDA/C++ image-processing pipeline deployed in a real industrial inspection system.</p>
+<div class="proof-metric-groups">
+<section class="proof-metric-group" aria-label="Performance gains">
 <div class="metric-group-heading">PERFORMANCE GAINS</div>
-<div aria-label="Performance gains" class="industrial-proof-grid">
-<div class="proof-stat"><strong>11.2×</strong><b>Processing Throughput</b><span>vs. single-core CPU baseline</span></div>
-<div class="proof-stat"><strong>~40%</strong><b>Higher Throughput</b><span>vs. multi-core CPU-only pipeline</span></div>
-<div class="proof-stat"><strong>10s–100s×</strong><b>CUDA Kernel Speedups</b><span>Individual operations vs. single-core CPU</span></div>
+<div class="industrial-proof-grid">
+<div class="proof-stat"><strong>11.2×</strong><b>Throughput</b><span>vs. single-core CPU</span></div>
+<div class="proof-stat"><strong>~40%</strong><b>More Throughput</b><span>vs. multi-core CPU</span></div>
+<div class="proof-stat"><strong>10s–100s×</strong><b>Kernel Speedups</b><span>Individual operations</span></div>
 </div>
-<div class="metric-group-heading workload">PRODUCTION WORKLOAD SCALE</div>
-<div aria-label="Production workload scale" class="industrial-proof-grid">
-<div class="proof-stat"><strong>2.52M</strong><b>Images per Hour</b><span>Industrial inspection workload</span></div>
-<div class="proof-stat"><strong>~1.55 TB</strong><b>Data per Hour</b><span>Multi-angle imaging inspection</span></div>
-<div class="proof-stat"><strong>12</strong><b>Images per Object</b><span>640 × 480 · RGB + height maps</span></div>
+</section>
+<section class="proof-metric-group" aria-label="Production workload scale">
+<div class="metric-group-heading">PRODUCTION WORKLOAD</div>
+<div class="industrial-proof-grid">
+<div class="proof-stat"><strong>2.52M</strong><b>Images / Hour</b><span>Inspection workload</span></div>
+<div class="proof-stat"><strong>~1.55 TB</strong><b>Data / Hour</b><span>Multi-angle imaging</span></div>
+<div class="proof-stat"><strong>12</strong><b>Images / Object</b><span>640×480 · RGB + height</span></div>
 </div>
-<p class="production-note">Kernel-level speedups refer to individual image-processing operations, not end-to-end pipeline throughput. Results from an operational industrial vision system—not a simulation or portfolio benchmark. Proprietary algorithms and implementation details are not disclosed.</p>
+</section>
+</div>
+<p class="production-note">Kernel gains are per operation, not end-to-end. Results are from a production inspection system; proprietary implementation details are not disclosed.</p>
 </div>
 </article>
 </div>
