@@ -31,11 +31,12 @@ Added CareerLens card only: /workspace/scratch/ebeae0ed8f84/portfolio-full-reord
     .brand{display:flex;align-items:center;gap:12px;color:#fff;font-weight:830;letter-spacing:-.5px;font-size:17px}
     .logo{display:grid;place-items:center;background:var(--green);color:#18230f;border-radius:10px;width:35px;height:35px;font-size:12px}
     .brand .dot{color:#83c922}
-    .nav{display:flex;align-items:center;gap:28px}
+    .nav{display:flex;align-items:center;gap:12px}
     .nav a{font-size:12px;color:#d2d9ce;font-weight:720;transition:color .15s}
     .nav a:hover{color:#b0ea56}
     .nav .nav-action{background:var(--green);color:#10170e;padding:12px 17px;border-radius:7px}
     .nav .nav-action:hover{background:#95d237;color:#10170e}
+    .nav .nav-resume{padding:10px 11px;font-size:11px;white-space:nowrap}
     .menu-toggle{display:none;padding:9px 13px;border:1px solid #46513f;border-radius:8px;background:#202720;color:#fff;cursor:pointer}
     .hero{position:relative;background:linear-gradient(115deg,#fff 0%,#fbfdf9 52%,#f0f7e9 100%);overflow:hidden;border-bottom:1px solid var(--line)}
     .hero::before{content:"";position:absolute;right:-250px;top:-280px;width:720px;height:720px;background:radial-gradient(circle,rgba(118,185,0,.11),transparent 68%);pointer-events:none}
@@ -143,6 +144,7 @@ Added CareerLens card only: /workspace/scratch/ebeae0ed8f84/portfolio-full-reord
     .contact-card h2{font-size:36px;letter-spacing:-1px;margin:14px 0 12px}
     .contact-card p{font-size:13px;color:#64745d;margin:0;line-height:1.8}
     .contact-actions{display:flex;gap:11px;flex-wrap:wrap}
+    .contact-resume{flex:0 0 100%;margin-top:-12px;padding-top:13px;border-top:1px solid var(--line)}
     .footer{background:var(--dark);color:#a9b7a2;font-size:11px;padding:31px 0 36px;border-top:1px solid #2c3a26}
     .footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center}
     .footer a{color:#b1e86a}
@@ -472,7 +474,7 @@ Added CareerLens card only: /workspace/scratch/ebeae0ed8f84/portfolio-full-reord
 <a aria-label="Jihun Rho home" class="brand" href="#home"><span class="logo">JR</span> Jihun Rho<span class="dot">.</span></a>
 <button aria-controls="main-nav" aria-expanded="false" class="menu-toggle" id="menu-toggle" type="button">☰ Menu</button>
 <nav aria-label="Main navigation" class="nav" id="main-nav">
-<a href="#specialization">CUDA &amp; GPU</a><a href="#approach">What I Do</a><a href="#projects">Featured</a><a href="#other-projects">Other Projects</a><a href="#experience">Experience</a><a href="#stack">Skills</a><a href="https://931njhthe-star.github.io/robotics-vision/">Robotics &amp; Vision</a><a class="nav-action" href="#contact">Contact ↗</a>
+<a href="#specialization">CUDA &amp; GPU</a><a href="#approach">What I Do</a><a href="#projects">Featured</a><a href="#other-projects">Other Projects</a><a href="#experience">Experience</a><a href="#stack">Skills</a><a href="https://931njhthe-star.github.io/robotics-vision/">Robotics &amp; Vision</a><a class="nav-action nav-resume" href="/assets/Jihun_Rho_Resume_English.pdf" download>Resume EN ↓</a><a class="nav-action nav-resume" href="/assets/Jihun_Rho_Resume_Korean.pdf" download>Resume KO ↓</a>
 </nav>
 </div>
 </header>
@@ -485,7 +487,7 @@ Added CareerLens card only: /workspace/scratch/ebeae0ed8f84/portfolio-full-reord
 <p class="hero-lead">GPU Performance · Computer Vision · Real-Time Systems</p>
 <p class="hero-intro">I specialize in CUDA/C++ optimization and high-performance software engineering, with hands-on experience in computer vision, 3D perception, robotics, and AI applications.</p>
 <div class="hero-meta"><span class="availability"><i></i>Open to opportunities</span><span>Seoul, South Korea</span></div>
-<div class="actions"><a class="button button-green" href="#projects">Explore projects ↗</a><a class="button button-light" href="https://github.com/931njhthe-star" rel="noopener noreferrer" target="_blank">GitHub profile ↗</a></div>
+<div class="actions"><a class="button button-green" href="mailto:hunjirho@gmail.com">Email me ↗</a><a class="button button-light" href="https://github.com/931njhthe-star" rel="noopener noreferrer" target="_blank">GitHub profile ↗</a></div>
 <div class="resume-downloads" aria-label="Resume downloads"><span class="resume-download-label">RESUME</span><a href="/assets/Jihun_Rho_Resume_English.pdf" download>English Resume (PDF) ↓</a><a href="/assets/Jihun_Rho_Resume_Korean.pdf" download>한국어 이력서 (PDF) ↓</a></div>
 </div>
 <figure aria-label="Professional portrait of Jihun Rho" class="portrait-wrap">
@@ -626,7 +628,7 @@ Added CareerLens card only: /workspace/scratch/ebeae0ed8f84/portfolio-full-reord
 </div>
 </section>
 <section class="contact-area" id="contact">
-<div class="container"><div class="contact-card"><div><div class="eyebrow">08 / CONTACT</div><h2>Let's build faster systems.</h2><p>Open to roles in GPU performance, CUDA software and computer vision engineering.</p></div><div class="contact-actions"><a class="button button-green" href="mailto:hunjirho@gmail.com">Email me ↗</a><a class="button button-light" href="https://github.com/931njhthe-star" rel="noopener noreferrer" target="_blank">GitHub ↗</a></div></div></div>
+<div class="container"><div class="contact-card"><div><div class="eyebrow">08 / CONTACT</div><h2>Let's build faster systems.</h2><p>Open to roles in GPU performance, CUDA software and computer vision engineering.</p></div><div class="contact-actions"><a class="button button-green" href="mailto:hunjirho@gmail.com">Email me ↗</a><a class="button button-light" href="https://github.com/931njhthe-star" rel="noopener noreferrer" target="_blank">GitHub ↗</a></div><div class="resume-downloads contact-resume" aria-label="Resume downloads"><span class="resume-download-label">RESUME</span><a href="/assets/Jihun_Rho_Resume_English.pdf" download>English Resume (PDF) ↓</a><a href="/assets/Jihun_Rho_Resume_Korean.pdf" download>한국어 이력서 (PDF) ↓</a></div></div></div>
 </section>
 </main>
 <footer class="footer"><div class="container footer-inner"><span>© <span id="year">2026</span> Jihun Rho · Built for GitHub Pages</span><span>Seoul, South Korea · <a href="#home">Back to top ↑</a></span></div></footer>
