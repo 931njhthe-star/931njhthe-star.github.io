@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#101410">
-<meta name="description" content="DriveFusion: a CARLA-based real-time camera-radar vehicle perception and distance evaluation system by Jihun Rho.">
-<title>DriveFusion — Camera-Radar Perception &amp; Evaluation | Jihun Rho</title>
+<meta name="description" content="DriveFusion: a CARLA-based real-time camera-radar vehicle perception and distance evaluation system by 노지훈.">
+<title>DriveFusion — Camera-Radar Perception &amp; Evaluation | 노지훈</title>
 <style>
 :root{--ink:#172117;--muted:#5d695b;--line:#dce5d7;--green:#76b900;--green-dark:#4f7f00;--pale:#f4f8ef;--dark:#101710;--dark2:#1a2818;--lime:#b9ed73}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:84px}body{margin:0;background:#f8faf6;color:var(--ink);font:16px/1.65 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit}.container{width:min(1120px,calc(100% - 48px));margin:auto}
@@ -35,12 +35,19 @@ footer{padding:26px 0;background:var(--dark);color:#b5c2ad;font-size:11px}.foote
 .floating-language-switch .language-choice:hover,.floating-language-switch .language-choice:focus-visible{background:#334737;color:white;outline:2px solid #8edb5e;outline-offset:1px}
 .floating-language-switch .language-choice.active{background:#79c943;color:#10200b;pointer-events:none}
 @media(max-width:600px){.floating-language-switch{top:auto;bottom:calc(14px + env(safe-area-inset-bottom,0px));right:12px;padding:5px}.floating-language-switch .language-choice{min-height:38px;padding:0 13px}}
+
+/* Persistent portfolio-home shortcut, visually distinct from language switch */
+.portfolio-home-fab{position:fixed;top:76px;right:16px;z-index:99998;display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;padding:10px 17px;border:1px solid #6fae3d;border-radius:999px;background:#76b900;color:#101b0c!important;text-decoration:none!important;font:750 14px/1.2 system-ui,-apple-system,sans-serif;box-shadow:0 5px 20px rgba(0,0,0,.25);transition:transform .15s,background .15s}
+.portfolio-home-fab:hover,.portfolio-home-fab:focus-visible{background:#a5e85b;transform:translateY(-2px);outline:2px solid #274d12;outline-offset:2px}
+.portfolio-home-fab .home-symbol{font-size:18px;line-height:1}
+@media(max-width:600px){.portfolio-home-fab{top:auto;bottom:calc(75px + env(safe-area-inset-bottom,0px));right:12px;min-height:44px;padding:10px 15px;font-size:13px}}
 </style>
 </head>
 <body><nav class="floating-language-switch" aria-label="언어 선택"><span class="language-globe" aria-hidden="true">🌐</span><a href="/drivefusion/" class="language-choice active" aria-current="page" lang="ko" tabindex="-1">한국어</a><a href="/en/drivefusion/" class="language-choice" lang="en" >EN</a></nav>
+<a class="portfolio-home-fab" href="/" aria-label="전체 포트폴리오 홈페이지로 이동"><span class="home-symbol" aria-hidden="true">⌂</span><span>전체 포트폴리오</span><span aria-hidden="true">↗</span></a>
 <header>
   <nav class="container nav" aria-label="Primary navigation">
-    <a class="brand" href="/" style="color:white;text-decoration:none">JIHUN RHO <b>·</b> DRIVEFUSION</a>
+    <a class="brand" href="/" style="color:white;text-decoration:none">노지훈 <b>·</b> DRIVEFUSION</a>
     <div class="navlinks">
       <a href="#system">System</a><a href="#evaluation">Evaluation</a><a href="#results">Results</a>
       <a class="back" href="https://github.com/931njhthe-star/DriveFusion">Repository ↗</a>
@@ -179,6 +186,6 @@ footer{padding:26px 0;background:var(--dark);color:#b5c2ad;font-size:11px}.foote
   </div>
 </section>
 </main>
-<footer><div class="container footer-inner"><span>Jihun Rho · DriveFusion</span><span><a href="/">Back to portfolio ↗</a></span></div></footer>
+<footer><div class="container footer-inner"><span>노지훈 · DriveFusion</span><span><a href="/">Back to portfolio ↗</a></span></div></footer>
 </body>
 </html>
