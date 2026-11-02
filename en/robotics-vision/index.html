@@ -14,9 +14,16 @@
 .floating-language-switch .language-choice:hover,.floating-language-switch .language-choice:focus-visible{background:#334737;color:white;outline:2px solid #8edb5e;outline-offset:1px}
 .floating-language-switch .language-choice.active{background:#79c943;color:#10200b;pointer-events:none}
 @media(max-width:600px){.floating-language-switch{top:auto;bottom:calc(14px + env(safe-area-inset-bottom,0px));right:12px;padding:5px}.floating-language-switch .language-choice{min-height:38px;padding:0 13px}}
+
+/* Persistent portfolio-home shortcut, visually distinct from language switch */
+.portfolio-home-fab{position:fixed;top:76px;right:16px;z-index:99998;display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;padding:10px 17px;border:1px solid #6fae3d;border-radius:999px;background:#76b900;color:#101b0c!important;text-decoration:none!important;font:750 14px/1.2 system-ui,-apple-system,sans-serif;box-shadow:0 5px 20px rgba(0,0,0,.25);transition:transform .15s,background .15s}
+.portfolio-home-fab:hover,.portfolio-home-fab:focus-visible{background:#a5e85b;transform:translateY(-2px);outline:2px solid #274d12;outline-offset:2px}
+.portfolio-home-fab .home-symbol{font-size:18px;line-height:1}
+@media(max-width:600px){.portfolio-home-fab{top:auto;bottom:calc(75px + env(safe-area-inset-bottom,0px));right:12px;min-height:44px;padding:10px 15px;font-size:13px}}
 </style>
 </head>
 <body><nav class="floating-language-switch" aria-label="Choose language"><span class="language-globe" aria-hidden="true">🌐</span><a href="/robotics-vision/" class="language-choice" lang="ko" >한국어</a><a href="/en/robotics-vision/" class="language-choice active" aria-current="page" lang="en" tabindex="-1">EN</a></nav>
+<a class="portfolio-home-fab" href="/en/" aria-label="Go to full portfolio homepage"><span class="home-symbol" aria-hidden="true">⌂</span><span>Full Portfolio</span><span aria-hidden="true">↗</span></a>
 <header><nav class="nav"><a class="brand" href="/en/" style="color:inherit;text-decoration:none">JIHUN RHO · PORTFOLIO</a><a href="/en/">← Portfolio Home</a><a href="#videos">Project Technologies</a></nav></header>
 <main>
 <p class="eyebrow">Robotics · Vision · System Integration</p>
