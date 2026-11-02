@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#111410" name="theme-color"/>
+<meta content="Jihun Rho — CUDA/C++ Engineer focused on GPU performance, real-time computer vision and inference systems." name="description"/>
+<meta content="Jihun Rho | CUDA &amp; GPU Performance Engineer" property="og:title"/>
+<meta content="GPU performance engineering, vision systems, and selected technical projects." property="og:description"/>
+<meta content="website" property="og:type"/>
+<title>Jihun Rho — GPU Performance Engineer</title>
+<style>
+    :root {
+      --dark:#101410; --dark2:#1b211a; --green:#76b900; --green2:#5c9000; --lime:#b0e35e;
+      --paper:#f7f9f5; --white:#ffffff; --ink:#1b2218; --secondary:#44503d; --muted:#687363;
+      --line:#e1e8dc; --soft:#edf4e7; --shadow:0 16px 44px rgba(23,41,16,.065);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+    a{text-decoration:none;color:inherit}
+    button{font:inherit}
+    img{max-width:100%;display:block}
+    .container{width:min(1160px,calc(100% - 56px));margin:0 auto}
+    .eyebrow{font-size:11px;letter-spacing:2.3px;text-transform:uppercase;font-weight:850;color:#5a8a03}
+    .eyebrow::before{content:"";display:inline-block;width:19px;height:2px;background:var(--green);margin:0 11px 3px 0}
+    .site-header{position:sticky;top:0;z-index:30;background:rgba(16,20,16,.97);border-bottom:1px solid #313b2e;backdrop-filter:blur(12px)}
+    .nav-inner{min-height:75px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:12px;color:#fff;font-weight:830;letter-spacing:-.5px;font-size:17px}
+    .logo{display:grid;place-items:center;background:var(--green);color:#18230f;border-radius:10px;width:35px;height:35px;font-size:12px}
+    .brand .dot{color:#83c922}
+    .nav{display:flex;align-items:center;gap:12px}
+    .nav a{font-size:12px;color:#d2d9ce;font-weight:720;transition:color .15s}
+    .nav a:hover{color:#b0ea56}
+    .nav .nav-action{background:var(--green);color:#10170e;padding:12px 17px;border-radius:7px}
+    .nav .nav-action:hover{background:#95d237;color:#10170e}
+    .nav .nav-resume{padding:10px 11px;font-size:11px;white-space:nowrap}
+    .menu-toggle{display:none;padding:9px 13px;border:1px solid #46513f;border-radius:8px;background:#202720;color:#fff;cursor:pointer}
+    .hero{position:relative;background:linear-gradient(115deg,#fff 0%,#fbfdf9 52%,#f0f7e9 100%);overflow:hidden;border-bottom:1px solid var(--line)}
+    .hero::before{content:"";position:absolute;right:-250px;top:-280px;width:720px;height:720px;background:radial-gradient(circle,rgba(118,185,0,.11),transparent 68%);pointer-events:none}
+    .hero-inner{position:relative;min-height:600px;display:grid;grid-template-columns:1.14fr .86fr;gap:72px;align-items:center;padding-top:72px;padding-bottom:74px}
+    .hero h1{font-size:clamp(49px,5.4vw,76px);line-height:1.055;letter-spacing:-3.6px;margin:22px 0 18px;max-width:690px;font-weight:830}
+    .hero h1 span{color:#5b9200}
+    .hero-lead{color:#354333;font-size:20px;font-weight:750;letter-spacing:-.5px;margin:0 0 22px}
+    .hero-intro{font-size:15px;color:#596556;line-height:1.9;max-width:575px;margin:0}
+    .hero-meta{display:flex;gap:23px;flex-wrap:wrap;margin:25px 0 0;font-size:12px;font-weight:670;color:#64715e}
+    .availability{display:inline-flex;align-items:center;gap:8px}
+    .availability i{display:inline-block;width:8px;height:8px;background:var(--green);border-radius:50%;box-shadow:0 0 0 4px #eaf5db}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:31px}
+    .resume-downloads{display:flex;align-items:center;gap:10px 18px;flex-wrap:wrap;margin-top:18px}.resume-download-label{font-size:10px;letter-spacing:1.6px;color:#778171;font-weight:850}.resume-downloads a{font-size:12px;font-weight:760;color:#4f8100;display:inline-flex;align-items:center;gap:6px}.resume-downloads a:hover{text-decoration:underline}
+    .button{display:inline-flex;align-items:center;justify-content:center;min-height:47px;padding:12px 21px;border-radius:8px;font-weight:790;font-size:13px;transition:transform .15s,background .15s}
+    .button:hover{transform:translateY(-2px)}
+    .button-green{background:var(--green);color:#16220c}
+    .button-green:hover{background:#8bc728}
+    .button-light{background:#fff;border:1px solid #cbd8c5;color:#273123}
+    .button-light:hover{border-color:var(--green)}
+    .portrait-wrap{width:min(100%,235px);justify-self:center;padding:15px 15px 0 15px;position:relative;background:#eaf2e4;border-radius:24px;box-shadow:0 23px 55px rgba(29,44,19,.13);border:1px solid #d4e2ca}
+    .portrait-wrap::after{content:"";position:absolute;right:-12px;top:-12px;width:77px;height:77px;border-top:6px solid var(--green);border-right:6px solid var(--green);border-radius:0 16px 0 0}
+    .portrait{width:100%;height:auto;aspect-ratio:auto;object-fit:contain;border-radius:14px 14px 0 0;background:#eef4f7}
+    .photo-caption{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:18px 17px;background:var(--dark);color:#fff;margin:0 -15px;border-radius:0 0 23px 23px}
+    .photo-caption b{font-size:13px;letter-spacing:.2px}
+    .photo-caption span{font-size:10px;color:#b1c2a9;text-transform:uppercase;letter-spacing:1.4px;font-weight:750}
+    .section{padding:91px 0}
+    .section-white{background:#fff;border-top:1px solid #e8eee4;border-bottom:1px solid #e8eee4}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:32px}
+    .section-head h2{font-size:clamp(31px,3.3vw,43px);line-height:1.15;letter-spacing:-1.6px;margin:13px 0 0;max-width:680px}
+    .section-head p{max-width:340px;color:var(--muted);line-height:1.8;font-size:13px;margin:0 0 4px}
+    .gpu-feature{display:grid;grid-template-columns:.93fr 1.07fr;border-radius:23px;overflow:hidden;border:1px solid #d9e2d3;box-shadow:var(--shadow);background:#fff}
+    .gpu-feature-left{background:#142014;color:#f3f9ee;padding:37px 34px 32px;position:relative;overflow:hidden}
+    .gpu-feature-left::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(155,218,80,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(155,218,80,.055) 1px,transparent 1px);background-size:26px 26px;mask-image:linear-gradient(to bottom,black,transparent)}
+    .gpu-feature-left > *{position:relative}
+    .gpu-feature-left .eyebrow{color:#a9e054}
+    .gpu-feature-left h3{font-size:34px;letter-spacing:-1.25px;line-height:1.13;margin:28px 0 14px}
+    .gpu-feature-left p{font-size:13px;line-height:1.9;color:#b4c3ad;max-width:395px;margin:0}
+    .workflow{margin-top:34px;display:flex;gap:7px;align-items:center}
+    .workflow span{display:flex;flex:1;align-items:center;justify-content:center;text-align:center;min-height:55px;padding:9px 4px;border:1px solid #3a5231;background:#21331e;color:#d2f4ac;border-radius:8px;font-size:10px;font-weight:820;letter-spacing:.2px}
+    .workflow b{color:#a5df5a;font-size:18px}
+    .gpu-feature-right{padding:34px;display:grid;grid-template-columns:1fr 1fr;gap:19px}
+    .capability{padding:23px 21px;border-radius:13px;background:#f7faf4;border:1px solid #e2ebdb;min-height:166px}
+    .capability-index{color:#64a000;font-weight:850;font-size:11px;letter-spacing:1.3px}
+    .capability h4{font-size:15px;margin:13px 0 10px;letter-spacing:-.3px}
+    .capability p{font-size:12px;color:#65715f;line-height:1.75;margin:0}
+    .more-work{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+    .work-card{padding:28px 30px;background:#fff;border:1px solid var(--line);border-radius:18px;display:flex;gap:22px;align-items:flex-start}
+    .work-icon{width:48px;height:48px;flex:none;border-radius:13px;display:grid;place-items:center;background:#edf6df;color:#568d00;font-size:23px;font-weight:700}
+    .work-card h3{margin:1px 0 10px;font-size:18px;letter-spacing:-.45px}
+    .work-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.8}
+    .work-foot{margin-top:13px;font-size:10px;font-weight:800;letter-spacing:1.1px;color:#608e27;text-transform:uppercase}
+    .projects-section .section-head p{max-width:350px}
+    .project-feature{display:grid;grid-template-columns:.93fr 1.07fr;background:#fff;border-radius:22px;border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden}
+    .project-info{padding:44px 41px;display:flex;flex-direction:column;justify-content:center}
+    .pill{display:inline-flex;align-self:flex-start;background:#edf6df;border:1px solid #d5e8bf;color:#4c8200;font-size:10px;letter-spacing:1px;font-weight:850;border-radius:20px;padding:7px 11px;text-transform:uppercase}
+    .project-info h3{font-size:37px;letter-spacing:-1.1px;margin:21px 0 10px}
+    .project-sub{font-size:16px;color:#354834;font-weight:750;margin:0 0 20px}
+    .project-info p{font-size:13px;color:#65715f;line-height:1.9;margin:0}
+    .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:23px}
+    .chip{font-size:11px;font-weight:700;background:#f1f5ec;color:#4c6043;border:1px solid #e0e8d8;padding:7px 10px;border-radius:6px}
+    .project-link{font-size:13px;color:#4f8100;font-weight:820;margin-top:29px;display:inline-flex;gap:9px;align-self:flex-start}
+    .project-link:hover{text-decoration:underline}
+    .project-visual{background:radial-gradient(circle at 32% 12%,#284023,transparent 55%),#0e180d;padding:34px 30px;color:#fff;display:flex;flex-direction:column;justify-content:center}
+    .viz-top{display:flex;align-items:center;justify-content:space-between;gap:10px;color:#bfd2b4;font-size:10px;font-weight:850;letter-spacing:1.3px;text-transform:uppercase;margin-bottom:16px}
+    .viz-top span:last-child{color:#b5ee6e;background:#1b3117;border:1px solid #4e7934;border-radius:6px;padding:6px 9px}
+    .drive-screen{padding:11px;background:#112411;border:1px solid #3b5f31;border-radius:12px}
+    .drive-screen svg{width:100%;height:auto;display:block;border-radius:8px}
+    .viz-results{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+    .viz-result{border:1px solid #3a5f2e;background:#1b2c17;border-radius:10px;padding:18px 16px}
+    .viz-result strong{font-size:29px;letter-spacing:-1px;color:#b8ed6c;display:block}
+    .viz-result span{font-size:11px;color:#bcd0b2;line-height:1.6;display:block;margin-top:5px}
+    .viz-foot{font-size:10px;color:#a8bda0;line-height:1.6;margin-top:14px}
+    .secondary-project{margin-top:20px;display:flex;justify-content:space-between;gap:28px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:27px 32px}
+    .secondary-project h3{font-size:21px;letter-spacing:-.5px;margin:8px 0 9px}
+    .secondary-project p{max-width:790px;font-size:13px;line-height:1.8;color:var(--muted);margin:0}
+    .secondary-project .pill{font-size:9px}
+    .secondary-project .chips{margin:0;justify-content:flex-end;max-width:260px}
+    /* The measured outcomes live in the existing charcoal GPU panel. */
+    .gpu-results{margin-top:26px;padding-top:21px;border-top:1px solid rgba(159,204,119,.25)}
+    .gpu-results-heading{display:flex;gap:8px;align-items:center;color:#b3e67b;font-size:10px;letter-spacing:1.35px;font-weight:850}
+    .proof-indicator{display:inline-block;flex:none;width:17px;height:3px;border-radius:3px;background:var(--green)}
+    .gpu-results-list{display:grid;gap:8px;margin-top:14px}
+    .gpu-result{display:grid;grid-template-columns:110px minmax(0,1fr);align-items:center;gap:14px;border:1px solid #38512d;background:rgba(30,50,25,.8);border-radius:11px;padding:12px 14px}
+    .gpu-result strong{font-size:27px;line-height:1.2;letter-spacing:-.75px;color:#b7ed73;font-weight:850;font-variant-numeric:tabular-nums;white-space:nowrap}
+    .gpu-result b{display:block;font-size:12px;color:#f1f8e9;line-height:1.4}
+    .gpu-result span{display:block;margin-top:5px;font-size:10px;color:#afc7a4;line-height:1.5}
+    .gpu-results-note{font-size:10px;line-height:1.7;color:#a3b99a;margin-top:13px}
+    .timeline{position:relative;padding-left:24px;margin-top:12px;border-left:1px solid #d5e3c9}
+    .timeline-item{position:relative;padding-left:23px;margin-bottom:37px}
+    .timeline-item:last-child{margin:0}
+    .timeline-item::before{content:"";position:absolute;left:-30px;top:5px;width:12px;height:12px;background:#fff;border:3px solid var(--green);border-radius:50%;box-shadow:0 0 0 3px #edf5e7}
+    .timeline-top{display:flex;justify-content:space-between;gap:20px;align-items:baseline}
+    .timeline h3{font-size:18px;letter-spacing:-.45px;margin:0}
+    .timeline time{font-size:12px;color:#737e6c;white-space:nowrap;font-weight:650}
+    .timeline-role{font-size:12px;font-weight:800;color:#588a02;margin:8px 0 11px}
+    .timeline p{font-size:13px;line-height:1.85;color:#65715f;margin:0;max-width:835px}
+    .stack-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .stack-card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:27px}
+    .stack-card h3{margin:0 0 16px;font-size:15px;letter-spacing:-.2px}
+    .stack-card .chips{margin:0}
+    .stack-note{font-size:11px;color:#75806d;margin-top:20px;line-height:1.8}
+    .contact-area{padding:84px 0 91px}
+    .contact-card{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px 34px;padding:48px 50px;border:1px solid #d6e6c7;border-radius:21px;background:linear-gradient(120deg,#fff,#eff7e6);position:relative;overflow:hidden}
+    .contact-card::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:var(--green)}
+    .contact-card h2{font-size:36px;letter-spacing:-1px;margin:14px 0 12px}
+    .contact-card p{font-size:13px;color:#64745d;margin:0;line-height:1.8}
+    .contact-actions{display:flex;gap:11px;flex-wrap:wrap}
+    .contact-resume{flex:0 0 100%;margin-top:-12px;padding-top:13px;border-top:1px solid var(--line)}
+    .footer{background:var(--dark);color:#a9b7a2;font-size:11px;padding:31px 0 36px;border-top:1px solid #2c3a26}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center}
+    .footer a{color:#b1e86a}
+    .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+    a:focus-visible,button:focus-visible{outline:3px solid var(--green);outline-offset:4px}
+    @media(max-width:1100px){.hero-inner{gap:40px}.gpu-feature{grid-template-columns:1fr}.gpu-feature-right{padding:24px}.project-feature{grid-template-columns:1fr}.project-visual{min-height:440px}.hero h1{font-size:58px}}
+    @media(max-width:760px){
+      .container{width:min(100% - 38px,1160px)}
+      .nav-inner{min-height:66px}.menu-toggle{display:block}
+      .nav{display:none;position:absolute;top:66px;left:0;right:0;padding:14px 20px 22px;flex-direction:column;align-items:stretch;gap:0;background:#141a13;border-bottom:1px solid #2c3a26}
+      .nav.open{display:flex}.nav a{padding:13px 6px;font-size:14px}.nav .nav-action{text-align:center;margin-top:9px}
+      .hero-inner{grid-template-columns:1fr;min-height:auto;padding:56px 0 57px;gap:38px}
+      .hero h1{font-size:clamp(49px,11vw,65px);letter-spacing:-2.8px}
+      .hero-lead{font-size:18px}.hero-intro{font-size:14px}
+      .portrait-wrap{max-width:215px;width:100%;margin:0 auto}
+      .section{padding:66px 0}.section-head{display:block}.section-head p{margin-top:15px;max-width:620px}
+      .section-head h2{font-size:35px}
+      .gpu-feature-left{padding:31px 25px}.gpu-feature-left h3{font-size:31px}
+      .gpu-feature-right{grid-template-columns:1fr;padding:18px;gap:11px}.capability{min-height:0;padding:20px}
+      .gpu-results{margin-top:24px}
+      .gpu-result{grid-template-columns:106px minmax(0,1fr);gap:10px;padding:12px}
+      .gpu-result strong{font-size:25px}
+      .more-work{grid-template-columns:1fr}.work-card{padding:24px}
+      .project-info{padding:34px 26px}.project-visual{min-height:350px;padding:24px}
+      .secondary-project{display:block;padding:25px}.secondary-project .chips{justify-content:flex-start;margin-top:19px;max-width:none}
+      .stack-grid{grid-template-columns:1fr}
+      .impact-stat{padding:23px}.impact-stat strong{font-size:37px}
+      .timeline-top{display:block}.timeline time{display:block;margin-top:7px}
+      .contact-area{padding:63px 0}.contact-card{display:block;padding:36px 28px}.contact-actions{margin-top:23px}
+      .footer-inner{display:block}.footer-inner span{display:block;margin-bottom:8px}
+    }
+    @media(max-width:420px){.workflow span{font-size:8px;min-height:49px}.workflow b{font-size:13px}.viz-result strong{font-size:24px}.photo-caption b{font-size:12px}.photo-caption span{font-size:9px}.gpu-result{grid-template-columns:100px minmax(0,1fr)}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button{transition:none}}
+
+    /* Portfolio information architecture v2: editorial featured projects and compact other work. */
+    .nav{gap:21px}
+    .more-work-four{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .more-work-four .work-card{min-height:168px;padding:25px 24px}
+    .more-work-four .work-card h3{font-size:17px}
+    .projects-section{background:#f7f9f5}
+    .projects-section .project-feature + .project-feature{margin-top:26px}
+    .industrial-feature{grid-template-columns:1fr 1fr}
+    .industrial-feature .project-info{padding:42px 39px}
+    .industrial-feature .project-info h3{font-size:33px;line-height:1.12}
+    .industrial-disclosure{font-size:11px!important;margin-top:22px!important;padding-top:14px;border-top:1px solid var(--line);color:#73806d!important}
+    .industrial-visual{background:radial-gradient(circle at 78% 0%,rgba(118,185,0,.23),transparent 49%),linear-gradient(145deg,#202d1d 0%,#101710 100%);padding:30px 28px 24px;display:flex;flex-direction:column;justify-content:center;color:#e5f0de}
+    .industrial-top{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:10px;color:#b8d5a3;letter-spacing:1.25px;font-weight:850}
+    .live-marker{white-space:nowrap;color:#b6ee72;font-size:9px;letter-spacing:.7px}
+    .live-marker i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#9dd93b;margin-right:6px}
+    .pipeline-scene{padding:22px 18px;margin-top:19px;background:rgba(9,15,9,.55);border:1px solid #36532b;border-radius:15px}
+    .pipes-row{display:grid;grid-template-columns:1fr 24px 1fr;align-items:center;gap:7px}
+    .pipes-cell{padding:17px 9px;border:1px solid #46663a;border-radius:10px;background:#23341e;text-align:center;min-width:0}
+    .pipes-cell span{display:block;color:#91c354;font-size:10px;font-weight:800;letter-spacing:1px}
+    .pipes-cell strong{display:block;font-size:13px;margin-top:9px;color:#f2f9ef}
+    .pipes-cell small{display:block;color:#b1c7aa;font-size:10px;margin-top:7px}
+    .pipes-cell.gpu-cell{border-color:#86c837;background:#2c461e}
+    .pipes-arrow{font-size:18px;color:#b2e769;text-align:center}
+    .pipes-branch{text-align:center;padding:12px 0;color:#b0ce9d;font-size:10px;letter-spacing:.4px}
+    .pipes-branch b{display:block;margin-top:4px;color:#b2e769;font-size:18px}
+    .industrial-bottom{margin-top:19px}
+    .trace-label{display:flex;justify-content:space-between;gap:15px;font-size:10px;color:#bad0ad}
+    .trace-label span:last-child{color:#a5de58;font-weight:700;white-space:nowrap}
+    .trace-bars{height:44px;display:flex;align-items:end;gap:5px;margin-top:13px}
+    .trace-bars i{flex:1;background:#7cbb28;border-radius:3px 3px 0 0;min-height:10px;opacity:.78}
+    .trace-bars i:nth-child(3n+1){height:38%}.trace-bars i:nth-child(3n+2){height:70%}.trace-bars i:nth-child(4n){height:94%}.trace-bars i:nth-child(5n){height:56%}
+    .industrial-viz-caption{color:#93a98a;font-size:10px;line-height:1.65;margin:15px 0 0}
+    .other-projects-section .section-head p{max-width:410px}
+    .other-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .other-card{position:relative;min-height:233px;padding:27px 25px;border-radius:16px;background:#fff;border:1px solid #dfe8d9;display:flex;flex-direction:column;transition:border-color .18s,transform .18s,box-shadow .18s}
+    .other-card:hover{border-color:#aac887;box-shadow:0 12px 30px rgba(35,58,24,.055);transform:translateY(-2px)}
+    .other-card::before{content:"";position:absolute;top:0;left:25px;width:30px;height:3px;background:var(--green);border-radius:0 0 3px 3px}
+    .other-card-top{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+    .other-kicker{font-weight:850;letter-spacing:1.2px;font-size:10px;color:#638b34}
+    .other-status{font-size:9px;color:#596e48;background:#e9f3df;border-radius:6px;padding:5px 7px;font-weight:750;white-space:nowrap}
+    .other-card h3{font-size:19px;letter-spacing:-.45px;margin:20px 0 11px;line-height:1.25}
+    .other-card p{font-size:12px;line-height:1.8;color:#63715e;margin:0}
+    .other-highlight{margin:12px 0;padding:0;background:transparent;border:0;border-radius:0}
+    .other-highlight-title{font-size:10px;letter-spacing:.8px;font-weight:850;color:#63715e}
+    .other-highlight-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
+    .other-highlight-stat{min-height:96px;padding:12px 14px;background:#fff;border:1px solid #e0e9d9;border-radius:8px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:5px}
+    .result-group-head{display:flex;flex-direction:row;align-items:baseline;justify-content:space-between;gap:8px;width:100%;min-width:0}
+    .result-group-head strong{font-size:10px;line-height:1.3;color:#34452e}
+    .result-group-head span{font-size:8px;color:#71806b;white-space:nowrap}
+    .result-metrics{display:block;border:0;padding:0;white-space:nowrap}
+    .result-metric{display:flex;flex-direction:row;align-items:baseline;gap:5px}
+    .result-metric span{font-size:8px;font-weight:750;color:#71806b}
+    .result-metric strong{font-size:25px;line-height:1;letter-spacing:-.8px;color:#4f8000}
+    @media(max-width:420px){.other-highlight-grid{gap:7px}.other-highlight-stat{padding:10px;min-height:82px}.result-group-head strong{font-size:8px}.result-group-head span{font-size:7px}.result-metric strong{font-size:20px}}
+
+    .other-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px}.other-links a{font-size:11px;font-weight:800;color:#4e8100}.other-links a:hover{text-decoration:underline}.other-tech{margin-top:auto;padding-top:23px;font-size:10px;font-weight:750;color:#5a871e;letter-spacing:.2px}
+    .other-footer{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:22px;color:#708068;font-size:11px;line-height:1.8}
+    .other-footer a{font-size:12px;font-weight:800;color:#4e8100;white-space:nowrap}
+    @media(max-width:1100px){.industrial-feature{grid-template-columns:1fr}.industrial-visual{min-height:430px}.other-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:760px){.more-work-four{grid-template-columns:1fr}.other-grid{grid-template-columns:1fr}.industrial-visual{padding:23px 20px;min-height:400px}.industrial-feature .project-info{padding:31px 26px}.industrial-feature .project-info h3{font-size:29px}.other-footer{align-items:flex-start;flex-direction:column}.trace-label{font-size:9px}}
+    @media(max-width:420px){.pipes-cell{padding:14px 5px}.pipes-cell strong{font-size:11px}.pipes-cell small{font-size:9px}.industrial-top{font-size:8px}.live-marker{font-size:8px}.trace-label{flex-wrap:wrap}}
+
+    /* V3: broad engineering capabilities; quantitative results only in featured project 01. */
+    .gpu-specialty-note{margin-top:29px;border-top:1px solid #40583a;padding-top:18px;color:#b7e980;font-size:11px;letter-spacing:1.3px;font-weight:790;line-height:1.8}
+    .gpu-specialty-note span{color:#83a774;padding:0 5px}
+    .more-work-four .work-card{min-height:185px}
+    .more-work-four .work-card h3{line-height:1.32}
+    .industrial-feature{grid-template-columns:1fr 1fr}
+    .industrial-proof{grid-column:1 / -1;background:#111a10;color:#f1f8ec;border-top:1px solid #405838;padding:20px 30px 17px}
+    .industrial-proof .production-badge{display:flex;align-items:center;gap:8px;flex-wrap:wrap;color:#b8ed76;font-size:9px;letter-spacing:1.2px;font-weight:850;line-height:1.4}
+    .production-check{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border:1px solid #94cd54;border-radius:50%;color:#b8ed76;font-size:11px;line-height:1;letter-spacing:0}
+    .production-separator{font-weight:900;color:#688953}
+    .industrial-proof .production-heading{font-size:22px;color:#f4faef;font-weight:800;letter-spacing:-.55px;line-height:1.2;margin:8px 0 4px}
+    .industrial-proof .production-summary{color:#becfb7;font-size:11px;line-height:1.5;margin:0 0 13px}
+    .proof-metric-groups{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .proof-metric-group{min-width:0}
+    .industrial-proof-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+    .metric-group-heading{display:flex;align-items:center;gap:8px;margin:0 0 8px;color:#b0e967;font-size:9px;letter-spacing:1.1px;font-weight:850}
+    .metric-group-heading::before{content:"";display:block;width:3px;height:13px;border-radius:2px;background:#b0e967;flex:none}
+    .proof-stat{padding:11px 12px 10px;background:#1e2d1a;border:1px solid #415a36;border-radius:9px;min-width:0}
+    .proof-stat strong{display:block;font-size:25px;letter-spacing:-.8px;line-height:1.05;color:#b0e967;font-weight:850;white-space:nowrap}
+    .proof-stat b{display:block;font-size:10px;margin-top:6px;color:#f0f6ec;line-height:1.3}
+    .proof-stat span{display:block;font-size:9px;color:#afc5a5;margin-top:3px;line-height:1.35}
+    .industrial-proof>p{font-size:9px;line-height:1.5;margin:10px 0 0;color:#a9bea0}
+    .industrial-proof .production-note{border-top:1px solid #394b32;padding-top:8px}
+    .industrial-proof .production-note::before{content:"ⓘ";color:#b8ed76;margin-right:6px}
+    @media(max-width:1100px){.industrial-feature{grid-template-columns:1fr}}
+    @media(max-width:760px){.industrial-proof{padding:19px 17px}.proof-metric-groups{grid-template-columns:1fr;gap:13px}.industrial-proof-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.proof-stat{padding:10px 9px}.proof-stat strong{font-size:22px}.proof-stat b{font-size:9px}.proof-stat span{font-size:8px}.industrial-proof-grid{grid-template-columns:1fr;gap:8px}.proof-stat{padding:16px 18px}.proof-stat strong{font-size:32px}.proof-stat b{margin-top:7px}.industrial-proof-top small{font-size:10px}.more-work-four .work-card{min-height:0}}
+
+    /* V4: full-width black editorial list, replacing the workflow chips and duplicate CUDA cards. */
+    .gpu-feature-vertical { display:block; border-color:#31452c; }
+    .gpu-feature-vertical .gpu-feature-left {
+      padding:48px clamp(27px,5vw,62px) 34px;
+      background:linear-gradient(125deg,#172417 0%,#101910 58%,#0c140c 100%);
+    }
+    .gpu-feature-vertical .gpu-feature-left h3 { margin:21px 0 13px; font-size:clamp(29px,3.8vw,43px); }
+    .gpu-feature-vertical .gpu-feature-left > p { max-width:790px; color:#becdb5; font-size:14px; }
+    .gpu-vertical-list { margin-top:35px; border-top:1px solid #3d5136; }
+    .gpu-vertical-row {
+      display:grid; grid-template-columns:74px minmax(0,1fr); gap:21px;
+      align-items:start; padding:24px 2px 25px; border-bottom:1px solid #3d5136;
+    }
+    .gpu-vertical-row:last-child { border-bottom:0; padding-bottom:4px; }
+    .gpu-vertical-num { color:#a9df61; font-size:30px; font-weight:850; letter-spacing:-1.3px; line-height:1.08; font-variant-numeric:tabular-nums; }
+    .gpu-vertical-copy { min-width:0; }
+    .gpu-vertical-label { display:block; color:#a7dc5c; font-size:11px; font-weight:830; letter-spacing:1.7px; }
+    .gpu-vertical-copy h4 { color:#f9fff5; font-size:21px; letter-spacing:-.5px; margin:9px 0 7px; line-height:1.2; }
+    .gpu-feature-vertical .gpu-vertical-copy p { color:#bccbb5; font-size:13px; line-height:1.7; max-width:810px; margin:0; }
+    @media(max-width:760px) {
+      .gpu-feature-vertical .gpu-feature-left { padding:32px 23px 26px; }
+      .gpu-feature-vertical .gpu-feature-left > p { font-size:13px; }
+      .gpu-vertical-list { margin-top:25px; }
+      .gpu-vertical-row { grid-template-columns:44px minmax(0,1fr); gap:12px; padding:20px 0 21px; }
+      .gpu-vertical-num { font-size:25px; }
+      .gpu-vertical-copy h4 { font-size:18px; }
+      .gpu-vertical-label { font-size:10px; letter-spacing:1.3px; }
+    }
+
+    /* V6: independent CUDA specialty, with broader abilities in their own section. */
+    .core-specialization-section {
+      position:relative; overflow:hidden; background:linear-gradient(120deg,#172317 0%,#101910 60%,#0d150d 100%);
+      color:#f7fcf3; border-top:1px solid #344831; border-bottom:1px solid #344831;
+    }
+    .core-specialization-section::before {
+      content:""; pointer-events:none; position:absolute; inset:0;
+      background-image:linear-gradient(rgba(155,218,80,.048) 1px,transparent 1px),linear-gradient(90deg,rgba(155,218,80,.048) 1px,transparent 1px);
+      background-size:30px 30px; mask-image:linear-gradient(90deg,#000,transparent 80%);
+    }
+    .core-specialization-layout { position:relative; display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); gap:clamp(36px,6vw,90px); align-items:start; }
+    .core-specialization-intro { position:sticky; top:112px; }
+    .core-specialization-intro .eyebrow {color:#abe366;}
+    .core-specialization-intro h2 {font-size:clamp(36px,4vw,55px);letter-spacing:-1.9px;line-height:1.12;margin:24px 0 20px;max-width:520px;color:#fff;}
+    .core-specialization-intro p {font-size:15px;line-height:1.92;color:#becdb8;margin:0;max-width:425px;}
+    .core-specialization-list .gpu-vertical-list {margin-top:0;border-top:1px solid #3d5136;}
+    .core-specialization-list .gpu-vertical-row {grid-template-columns:58px minmax(0,1fr);gap:16px;padding:22px 0 23px;}
+    .core-specialization-list .gpu-vertical-copy p {color:#bdcbb6;font-size:13px;line-height:1.72;margin:0;max-width:720px;}
+    .core-specialization-list .gpu-vertical-copy h4 {font-size:21px;}
+    #approach .more-work {margin-top:0;}
+    @media(max-width:1040px) {
+      .core-specialization-layout {grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:30px;}
+      .core-specialization-intro h2 {font-size:clamp(33px,4.1vw,45px);}
+    }
+    @media(max-width:900px) {
+      .nav-inner {min-height:66px;}
+      .menu-toggle {display:block;}
+      .nav {display:none;position:absolute;top:66px;left:0;right:0;padding:14px 20px 22px;flex-direction:column;align-items:stretch;gap:0;background:#141a13;border-bottom:1px solid #2c3a26;}
+      .nav.open{display:flex;} .nav a{padding:13px 6px;font-size:14px;} .nav .nav-action{text-align:center;margin-top:9px;}
+    }
+    @media(max-width:760px) {
+      .core-specialization-layout {grid-template-columns:1fr;gap:26px;}
+      .core-specialization-intro {position:static;}
+      .core-specialization-intro h2 {font-size:clamp(32px,8.2vw,44px);max-width:590px;margin:17px 0 12px;}
+      .core-specialization-intro p{font-size:13px;}
+      .core-specialization-list .gpu-vertical-row {grid-template-columns:45px minmax(0,1fr);gap:12px;padding:17px 0 18px;}
+      .core-specialization-list .gpu-vertical-copy h4 {font-size:18px;margin:6px 0;}
+      .core-specialization-list .gpu-vertical-copy p {font-size:12px;}
+    }
+
+    /* V8: Hero carries the narrative; Core is a compact technical summary. */
+    .core-specialization-section {padding-top:47px;padding-bottom:47px;}
+    .core-compact-layout {position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(28px,5vw,75px);align-items:center;}
+    .core-compact-heading .eyebrow {color:#abe366;}
+    .core-compact-heading h2 {color:#fff;font-size:clamp(27px,3vw,38px);line-height:1.18;letter-spacing:-1.1px;margin:13px 0 0;max-width:490px;}
+    .core-compact-capabilities {list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 19px;}
+    .core-compact-capabilities li {color:#f4faee;font-size:13px;line-height:1.45;font-weight:600;display:flex;gap:10px;align-items:flex-start;}
+    .core-compact-capabilities li::before {content:'✓';color:#abe366;font-weight:800;flex:none;}
+    @media(max-width:760px){
+      .core-specialization-section {padding-top:36px;padding-bottom:36px;}
+      .core-compact-layout {grid-template-columns:1fr;gap:22px;}
+      .core-compact-heading h2 {font-size:clamp(27px,7vw,34px);}
+      .core-compact-capabilities {gap:13px;}
+      .core-compact-capabilities li {font-size:12px;}
+    }
+    @media(max-width:380px){.core-compact-capabilities{grid-template-columns:1fr;gap:10px;}}
+  
+    /* V10: remove conceptual diagram; focus on verified throughput and workload scale. */
+    .industrial-feature{grid-template-columns:1fr}
+    .industrial-feature .project-info{padding:34px 39px}
+    .industrial-proof{grid-column:1;background:#111a10}
+    .industrial-proof-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .object-inspection{display:flex;align-items:center;gap:22px;border-top:1px solid #394b32;padding:22px 0 4px;margin-top:21px}
+    .object-inspection>strong{color:#b0e967;font-size:48px;line-height:1;font-weight:850}
+    .object-inspection div{display:flex;flex-direction:column;gap:6px}
+    .object-inspection b{font-size:15px;color:#f0f6ec}
+    .object-inspection span{font-size:12px;color:#b9cbb1}
+    .industrial-proof .data-estimate{font-size:10px;color:#9db392;margin-top:18px}
+    @media(max-width:760px){.industrial-feature .project-info{padding:31px 26px}.industrial-proof-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.proof-stat{padding:14px 12px}.proof-stat strong{font-size:clamp(23px,7vw,32px)}.proof-stat b{font-size:11px}.proof-stat span{font-size:10px}.object-inspection{gap:15px}.object-inspection>strong{font-size:43px}}
+
+    .kernel-speedup{display:flex;align-items:center;gap:22px;padding:20px 22px;margin-top:14px;background:#23371d;border:1px solid #526f43;border-radius:12px}
+    .kernel-speedup>strong{font-size:clamp(22px,2.5vw,33px);line-height:1.14;max-width:320px;letter-spacing:-1px;color:#b0e967;flex:0 0 42%}
+    .kernel-speedup b{display:block;color:#f0f6ec;font-size:13px;margin-bottom:5px}
+    .kernel-speedup span{display:block;color:#afc5a5;font-size:11px;line-height:1.6}
+    @media(max-width:600px){.kernel-speedup{align-items:flex-start;flex-direction:column;gap:9px;padding:17px}.kernel-speedup>strong{flex:auto;max-width:none}}
+
+    @media(max-width:440px){.industrial-proof-grid{grid-template-columns:1fr}.proof-stat{padding:18px}.proof-stat strong{font-size:34px}}
+
+    /* Responsive architecture: horizontal on desktop, vertical on mobile. */
+    .inspection-architecture{grid-column:1/-1;margin:0 28px 29px;padding:23px 25px;border-radius:16px;background:#141d16;color:#f2f7ed;border:1px solid #344c37}
+    .arch-header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}
+    .arch-header strong{font-size:11px;letter-spacing:1.3px;color:#b4e477}
+    .arch-header span{font-size:10px;color:#92a88d;letter-spacing:.7px}
+    .arch-flow{display:grid;grid-template-columns:minmax(120px,1fr) 18px minmax(285px,2.6fr) 18px minmax(160px,1.3fr);align-items:center;gap:8px;min-width:0}
+    .arch-endpoint{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;min-width:0}
+    .arch-icon{font-size:27px;color:#b1e76c;line-height:1}
+    .arch-label{font-size:13px;font-weight:750;color:#f5fff1}
+    .arch-small{font-size:11px;color:#b8c9b4;line-height:1.55}
+    .arch-arrow{font-size:24px;color:#b1e76c;text-align:center}
+    .arch-compute{padding:18px 15px;background:#202c22;border:1px solid #45634a;border-radius:11px;min-width:0}
+    .arch-compute-title{font-size:11px;color:#b3e679;letter-spacing:.7px;font-weight:800;margin-bottom:16px}
+    .arch-processors{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .arch-processor h5{font-size:14px;color:#f7fff3;margin:0 0 9px}
+    .arch-processor p{font-size:11px;line-height:1.8;color:#c4d1c0;margin:0}
+    .arch-blackbox{margin-top:16px;padding:11px 9px;background:#111a13;border-radius:7px;color:#d2e4cd;font-size:11px;text-align:center}
+    .arch-output-lines{font-size:11px;color:#b8c9b4;line-height:1.8}
+    .arch-acq-volume{font-size:26px;font-weight:850;line-height:1.05;color:#b0e967;letter-spacing:-.8px;margin-top:5px}
+    .arch-acq-unit{font-size:11px;font-weight:750;color:#f5fff1}
+    .arch-acq-details{font-size:10px;color:#b8c9b4;line-height:1.7}
+    .arch-svg-icon{width:29px;height:29px;fill:none;stroke:#b1e76c;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    .arch-detection-preview{width:94px;max-width:100%;border:1px solid #405c42;border-radius:7px;background:#1d3026;padding:4px;margin-top:1px}
+    .arch-detection-preview svg{display:block;width:100%;height:auto}
+    .arch-inspection-preview{width:170px;max-width:100%;margin:0 auto}
+    .arch-inspection-preview svg{display:block;width:100%;height:auto}
+    .arch-transfer{margin-top:17px;font-size:11px;color:#a6c996;text-align:center}
+    @media(max-width:850px){
+      .inspection-architecture{margin:0 20px 23px}
+      .arch-flow-viewport{overflow:visible;min-width:0;width:100%}
+      .arch-flow{display:flex;flex-direction:column;gap:13px;min-width:0;width:100%;box-sizing:border-box}
+      .arch-endpoint{width:100%;max-width:100%;padding:8px 0}
+      .arch-arrow{transform:none;font-size:0;line-height:1;height:24px}.arch-arrow::before{content:"↓";font-size:23px}
+      .arch-compute{width:100%;max-width:100%;box-sizing:border-box}
+      .arch-processors{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .arch-processor{min-width:0}
+      .arch-processor p{overflow-wrap:anywhere}
+    }
+    @media(max-width:480px){.arch-processors{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.arch-processor+.arch-processor{border-top:0;padding-top:0;border-left:1px solid #45634a;padding-left:10px}.inspection-architecture{padding:18px 15px;margin:0 13px 20px}.arch-header{flex-direction:column;align-items:flex-start;gap:5px}.arch-compute{padding:15px}.arch-processors{gap:12px}.arch-processor h5{font-size:12px}.arch-processor p{font-size:10px}}
+
+
+    /* Mobile: balanced CPU/GPU columns and compact 2-column metrics */
+    @media (max-width:760px){
+      .arch-processors{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0}
+      .arch-processor{min-width:0;padding:0 10px;text-align:center}
+      .arch-processor+.arch-processor{border-left:1px solid #45634a;border-top:0;padding:0 10px}
+      .arch-processor p{overflow-wrap:normal;word-break:normal;font-size:clamp(9px,2.6vw,11px);line-height:1.65}
+      .industrial-proof-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+      .proof-stat{padding:14px 10px}
+      .proof-stat strong{font-size:clamp(23px,6.8vw,32px)}
+      .proof-stat b{font-size:11px}
+      .proof-stat span{font-size:10px}
+    }
+  
+    /* Clickable video preview in Robotics project card */
+    .robotics-video-preview{position:relative;display:block;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:10px;margin-top:14px;background:#172219;color:#fff;text-decoration:none}
+    .robotics-video-preview img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .2s ease,opacity .2s ease}
+    .robotics-video-preview:hover img{transform:scale(1.035);opacity:.87}
+    .robotics-video-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:54px;height:38px;border-radius:12px;background:#e62117;color:#fff;font-size:18px;box-shadow:0 3px 12px rgba(0,0,0,.28)}
+    .robotics-video-label{position:absolute;bottom:0;left:0;right:0;padding:18px 12px 10px;background:linear-gradient(transparent,rgba(0,0,0,.75));font-size:11px;font-weight:800;color:#fff}
+    .robotics-video-preview:focus-visible{outline:3px solid #6a9b27;outline-offset:3px}
+      .solar-project-image{display:block;width:100%;height:auto;aspect-ratio:626/371;object-fit:contain;border-radius:10px;margin:14px 0 0;background:#18231a}
+  
+    .subsync-project-image{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;border-radius:10px;margin:14px 0;background:#151b21}
+  .drivefusion-video-wrap{width:100%;margin:14px 0 12px;border-radius:12px;overflow:hidden;background:#10171a;aspect-ratio:16/9}.drivefusion-animation{display:block;width:100%;height:100%;object-fit:contain;background:#10171a}
+
+/* Section 02 mirrors the compact layout of section 01 with inverted colors. */
+#approach.section-white{padding-top:47px;padding-bottom:47px;background:#fff;border-top:1px solid #e1e8dc;border-bottom:1px solid #e1e8dc}
+#approach .core-compact-layout{padding:0;background:transparent;border:0;border-radius:0;box-shadow:none}
+#approach .core-compact-heading .eyebrow{color:#5a8a03}
+#approach .core-compact-heading h2{color:var(--ink);font-size:clamp(27px,3vw,38px);line-height:1.18;letter-spacing:-1.1px;max-width:490px}
+#approach .core-compact-capabilities{gap:16px 19px}
+#approach .core-compact-capabilities li{min-height:0;padding:0;border:0;border-radius:0;background:transparent;color:#344130;font-size:13px;line-height:1.45;font-weight:700;display:flex;align-items:flex-start;gap:10px}
+#approach .core-compact-capabilities li::before{left:auto;top:auto;color:#5a8a03;font-size:inherit}
+@media(max-width:760px){#approach.section-white{padding-top:36px;padding-bottom:36px}#approach .core-compact-layout{padding:0}#approach .core-compact-heading h2{font-size:clamp(27px,7vw,34px)}#approach .core-compact-capabilities li{font-size:12px}}
+
+
+
+</style>
+<style>
+/* Consistent project card order: title, media, description, details. */
+.other-card > h3 + .drivefusion-video-wrap,
+.other-card > h3 + .robotics-video-preview,
+.other-card > h3 + .subsync-project-image { margin-top: 4px; margin-bottom: 15px; }
+.other-card > h3 + .drivefusion-video-wrap + p,
+.other-card > h3 + .robotics-video-preview + p,
+.other-card > h3 + .subsync-project-image + p { margin-top: 0; }
+</style></head>
+<body><nav aria-label="Language" style="display:flex;gap:8px;align-items:center;justify-content:flex-end;padding:8px 5%;font:600 13px system-ui,sans-serif;background:#101810;color:white"><a href="/" style="color:#c7d4c7;text-decoration:none">한국어</a><span style="opacity:.5">|</span><strong style="color:#76c943">EN</strong></nav>
+<a class="sr-only" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="container nav-inner">
+<a aria-label="Jihun Rho home" class="brand" href="#home"><span class="logo">JR</span> Jihun Rho<span class="dot">.</span></a>
+<button aria-controls="main-nav" aria-expanded="false" class="menu-toggle" id="menu-toggle" type="button">☰ Menu</button>
+<nav aria-label="Main navigation" class="nav" id="main-nav">
+<a href="#specialization">CUDA &amp; GPU</a><a href="#approach">What I Do</a><a href="#projects">Featured</a><a href="#other-projects">Other Projects</a><a href="#stack">Skills</a><a href="/en/robotics-vision/">Robotics &amp; Vision</a><a href="https://github.com/931njhthe-star" rel="noopener noreferrer" target="_blank">GitHub Profile ↗</a><a class="nav-action nav-resume" href="/assets/Jihun_Rho_Resume_English.pdf" download>Resume EN ↓</a><a class="nav-action nav-resume" href="/assets/Jihun_Rho_Resume_Korean.pdf" download>Resume KO ↓</a>
+</nav>
+</div>
+</header>
+<main id="main">
+<section class="hero" id="home">
+<div class="container hero-inner">
+<div class="hero-content">
+<div class="eyebrow">JIHUN RHO · CUDA / C++ ENGINEER</div>
+<h1>Engineering speed into <span>computer vision.</span></h1>
+<p class="hero-lead">GPU Performance · Computer Vision · Real-Time Systems</p>
+<p class="hero-intro">I specialize in CUDA/C++ optimization and high-performance software engineering, with hands-on experience in computer vision, 3D perception, robotics, and AI applications.</p>
+<div class="hero-meta"><span class="availability"><i></i>Open to opportunities</span><span>Seoul, South Korea</span></div>
+<div class="actions"><a class="button button-light" href="mailto:hunjirho@gmail.com">Email me ↗</a><a class="button button-green" href="https://github.com/931njhthe-star" rel="noopener noreferrer" target="_blank">GitHub profile ↗</a></div>
+<div class="resume-downloads" aria-label="Resume downloads"><span class="resume-download-label">RESUME</span><a href="/assets/Jihun_Rho_Resume_English.pdf" download>English Resume (PDF) ↓</a><a href="/assets/Jihun_Rho_Resume_Korean.pdf" download>한국어 이력서 (PDF) ↓</a></div>
+</div>
+<figure aria-label="Professional portrait of Jihun Rho" class="portrait-wrap">
+<img alt="Jihun Rho wearing a dark suit and glasses" class="portrait" decoding="async" loading="eager" src="data:image/webp;base64,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"/>
+<figcaption class="photo-caption"><b>Jihun Rho</b><span>GPU / CUDA / CV</span></figcaption>
+</figure>
+</div>
+</section>
+<section aria-labelledby="specialization-heading" class="section core-specialization-section" id="specialization">
+<div class="container core-compact-layout">
+<div class="core-compact-heading">
+<div class="eyebrow">01 / CORE SPECIALIZATION</div>
+<h2 id="specialization-heading">CUDA &amp; GPU Performance Engineering</h2>
+</div>
+<ul aria-label="GPU optimization capabilities" class="core-compact-capabilities">
+<li>Kernel Optimization</li>
+<li>GPU Memory Optimization</li>
+<li>CPU–GPU Pipeline Optimization</li>
+<li>Nsight Profiling &amp; Analysis</li>
+</ul>
+</div>
+</section>
+<section aria-labelledby="approach-heading" class="section section-white" id="approach">
+<div class="container core-compact-layout">
+<div class="core-compact-heading">
+<div class="eyebrow">02 / WHAT I DO</div>
+<h2 id="approach-heading">Beyond GPU optimization.</h2>
+</div>
+<ul aria-label="Areas of work" class="core-compact-capabilities">
+<li>Computer Vision &amp; 3D Perception</li>
+<li>High-Performance Software Engineering</li>
+<li>Robotics &amp; Industrial Automation</li>
+<li>AI Applications &amp; Deployment</li>
+</ul>
+</div>
+</section>
+<section class="section projects-section" id="projects">
+<div class="container">
+<div class="section-head"><div><div class="eyebrow">03 / FEATURED PROJECTS</div></div></div>
+<article class="project-feature industrial-feature">
+<div class="project-info">
+<h3>High-Throughput CUDA Vision Pipeline</h3>
+<div class="project-sub">Industrial Image Processing &amp; GPU Acceleration</div>
+<p>A real-time image-processing pipeline engineered around high-volume inspection workloads. Work focused on selective GPU acceleration, CPU–GPU task allocation, kernel and memory tuning, and profiling-driven pipeline optimization.</p>
+<div class="chips"><span class="chip">CUDA / C++</span><span class="chip">Nsight</span><span class="chip">Kernel Optimization</span><span class="chip">CPU–GPU Scheduling</span></div>
+</div>
+<section aria-label="Conceptual real-time industrial inspection system architecture" class="inspection-architecture">
+<div class="arch-header"><strong>REAL-TIME INSPECTION ARCHITECTURE</strong><span>SYSTEM OVERVIEW</span></div>
+<div aria-label="Inspection architecture diagram, stacked vertically on small screens" class="arch-flow-viewport"><div class="arch-flow">
+<div class="arch-endpoint"><svg aria-hidden="true" class="arch-svg-icon" viewbox="0 0 32 32"><path d="M5 10h5l2-3h8l2 3h5v16H5z"></path><circle cx="16" cy="18" r="5"></circle><path d="M24 13h1"></path></svg><div class="arch-acq-volume">2.52M</div><div class="arch-acq-unit">Images / Hour</div><div class="arch-acq-details">12 Images / Object<br/>Multi-Camera · Network</div></div>
+<div aria-hidden="true" class="arch-arrow">→</div>
+<div class="arch-compute">
+<div class="arch-compute-title">HYBRID CPU–GPU PROCESSING</div>
+<div class="arch-processors">
+<div class="arch-processor"><h5>CPU</h5><p>Multithreading<br/>Memory &amp; Mutex<br/>Task Scheduling</p></div>
+<div class="arch-processor"><h5>GPU</h5><p>CUDA Kernels<br/>Multi-Stream Execution<br/>Device Memory</p></div>
+</div>
+<div class="arch-blackbox">Proprietary Inspection Algorithms</div>
+</div>
+<div aria-hidden="true" class="arch-arrow">→</div>
+<div class="arch-endpoint"><div aria-hidden="true" class="arch-inspection-preview"><svg viewbox="0 0 180 92" xmlns="http://www.w3.org/2000/svg"><rect fill="#1B2B1B" height="75" rx="7" stroke="#81C943" stroke-width="1.5" width="70" x="12" y="8"></rect><circle cx="47" cy="38" fill="#334431" r="17" stroke="#B6CDA9" stroke-width="2"></circle><path d="M37 38l7 7 14-16" fill="none" stroke="#A7E66A" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path><text fill="#B0E967" font-size="11" font-weight="bold" text-anchor="middle" x="47" y="72">PASS</text><rect fill="#2A211D" height="75" rx="7" stroke="#E28D72" stroke-width="1.5" width="70" x="98" y="8"></rect><circle cx="133" cy="38" fill="#334431" r="17" stroke="#B6CDA9" stroke-width="2"></circle><path d="M127 28l11 10-9 8" fill="none" stroke="#F29A7B" stroke-linecap="round" stroke-width="3"></path><circle cx="139" cy="29" fill="none" r="5" stroke="#F29A7B" stroke-dasharray="2 2" stroke-width="1.5"></circle><text fill="#F29A7B" font-size="11" font-weight="bold" text-anchor="middle" x="133" y="72">FAIL</text></svg></div><div class="arch-label">Inspection Results</div><div class="arch-output-lines">Defect Detection · Pass / Fail<br/>Monitoring · I/O Sorting</div></div>
+</div>
+</div>
+<div class="arch-transfer">↔   CPU–GPU Memory Transfers · Asynchronous Execution</div>
+</section>
+<div aria-label="Production-deployed industrial GPU performance results" class="industrial-proof">
+<div class="production-badge"><span aria-hidden="true" class="production-check">✓</span> PRODUCTION-DEPLOYED <span aria-hidden="true" class="production-separator">·</span> INDUSTRIAL MACHINE VISION</div>
+<h4 class="production-heading">GPU Optimization Proven in Production</h4>
+<p class="production-summary">Measured performance improvements from a CUDA/C++ image-processing pipeline deployed in a real industrial inspection system.</p>
+<div class="proof-metric-groups">
+<section class="proof-metric-group" aria-label="Performance gains">
+<div class="metric-group-heading">PERFORMANCE GAINS</div>
+<div class="industrial-proof-grid">
+<div class="proof-stat"><strong>11.2×</strong><b>Throughput</b><span>vs. single-core CPU</span></div>
+<div class="proof-stat"><strong>~40%</strong><b>More Throughput</b><span>vs. multi-core CPU</span></div>
+<div class="proof-stat"><strong>10s–100s×</strong><b>Kernel Speedups</b><span>Individual operations</span></div>
+</div>
+</section>
+<section class="proof-metric-group" aria-label="Production workload scale">
+<div class="metric-group-heading">PRODUCTION WORKLOAD</div>
+<div class="industrial-proof-grid">
+<div class="proof-stat"><strong>2.52M</strong><b>Images / Hour</b><span>Inspection workload</span></div>
+<div class="proof-stat"><strong>~1.55 TB</strong><b>Data / Hour</b><span>Multi-angle imaging</span></div>
+<div class="proof-stat"><strong>12</strong><b>Images / Object</b><span>640×480 · RGB + height</span></div>
+</div>
+</section>
+</div>
+<p class="production-note">Kernel gains are per operation, not end-to-end. Results are from a production inspection system; proprietary implementation details are not disclosed.</p>
+</div>
+</article>
+</div>
+</section>
+<section class="section section-white other-projects-section" id="other-projects">
+<div class="container">
+<div class="section-head"><div><div class="eyebrow">04 / OTHER PROJECTS</div><h2>More things I've built.</h2></div><p>Additional work across vision research, robotics and applied AI systems.</p></div>
+<div class="other-grid"><article class="other-card"><div class="other-card-top"><span class="other-kicker">AUTOMOTIVE VISION</span></div><h3>Real-Time Camera–Radar Perception &amp; Evaluation</h3><div class="drivefusion-video-wrap"><img alt="DriveFusion CARLA radar and vision Qt dashboard animation" class="drivefusion-animation" loading="lazy" src="https://931njhthe-star.github.io/assets/drivefusion.gif"/></div><div class="other-highlight"><div class="other-highlight-title">MAE REDUCTION VS. BASELINE</div><div class="other-highlight-grid">
+<div class="other-highlight-stat"><div class="result-group-head"><strong>Overall</strong><span>16,491 samples</span></div><div class="result-metrics"><div class="result-metric"><strong>5.41%</strong></div></div></div>
+<div class="other-highlight-stat"><div class="result-group-head"><strong>Radar-corrected</strong><span>437 samples</span></div><div class="result-metrics"><div class="result-metric"><strong>39.42%</strong></div></div></div>
+<div class="other-highlight-stat"><div class="result-group-head"><strong>Radar final distance</strong><span>242 samples</span></div><div class="result-metrics"><div class="result-metric"><strong>80.95%</strong></div></div></div>
+<div class="other-highlight-stat"><div class="result-group-head"><strong>Camera final distance</strong><span>195 samples</span></div><div class="result-metrics"><div class="result-metric"><strong>8.77%</strong></div></div></div>
+</div></div><p>Independently built a CARLA-based real-time camera–radar perception and evaluation system. Integrated YOLO11n inference through a C++/CUDA TensorRT module, vehicle ID tracking, radar-assisted distance estimation, and a Qt monitoring dashboard. Evaluated the system across 9 driving sessions.</p><div class="other-tech">C++/CUDA · TensorRT · YOLO11n · Tracking · Radar Fusion · Qt · CARLA</div><div class="other-links"><a href="/en/drivefusion/">View project page ↗</a><a href="https://github.com/931njhthe-star/DriveFusion" rel="noopener noreferrer" target="_blank">View repository ↗</a></div></article>
+<article class="other-card"><div class="other-card-top"><span class="other-kicker">ROBOTICS · VISION · COMMUNICATION</span></div><h3>Robotics &amp; Vision System Integration</h3>
+<div class="robotics-video-embed" style="position:relative;width:100%;aspect-ratio:16/9;margin:14px 0 18px;border-radius:10px;overflow:hidden;background:#101410">
+<iframe src="https://www.youtube-nocookie.com/embed/wLmfVy-GDSs?rel=0" title="Robotics and 3D Bin Picking introduction video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
+</div>
+<img alt="English system flow: Solomon 3D random bin picking, Doosan robots, MiR AMR, and external LMS" loading="lazy" src="https://931njhthe-star.github.io/assets/robotics-system-flow-en.png" style="display:block;width:100%;height:auto;margin:0 0 18px;border:1px solid #e1e8dc;border-radius:10px;background:#fff">
+<p>At INA Oriental Motor, integrated a MiR autonomous mobile robot, a Doosan six-axis robot, a 3D vision system, and a pneumatic gripper into a coordinated robotic automation system. Developed communication and control interfaces using REST APIs, TCP/IP, Modbus, and digital I/O to connect heterogeneous devices. Implemented system-level control logic to coordinate robot movements, vision-based object localization, and gripping operations, enabling automated 3D bin picking workflows.</p><div class="other-tech">System Integration · Robot Control · 3D Vision · REST API · TCP/IP · Modbus · Digital I/O</div><div class="other-links"><a href="/en/robotics-vision/">View project page ↗</a></div></article>
+<article class="other-card"><div class="other-card-top"><span class="other-kicker">AI APPLICATION</span></div><h3>AI-Powered YouTube English Learning Extension</h3><img alt="SubSync AI YouTube English tutor browser extension interface" class="subsync-project-image" loading="lazy" src="https://931njhthe-star.github.io/assets/subsync.gif"/><p>Led a five-person team to deliver a Chrome extension MVP for learning English while watching YouTube. Built a workflow around synchronized English/Korean subtitles, one-click vocabulary saving, and a Gemini-powered AI tutor, with FastAPI services, Supabase authentication and storage, and Redis caching. The backend passed 79 automated tests.</p><div class="other-tech">Chrome Extension (MV3) · FastAPI · Gemini · Supabase · Redis · Team PM</div><div class="other-links"><a href="https://github.com/931njhthe-star/subsync-ai-tutor" rel="noopener noreferrer" target="_blank">View repository ↗</a></div></article>
+
+</div>
+<div class="other-footer"><span>Selected work spans multiple engineering settings. Project descriptions focus on technical scope and contribution.</span><a href="https://github.com/931njhthe-star" rel="noopener noreferrer" target="_blank">Explore GitHub ↗</a></div>
+</div>
+</section>
+<section aria-labelledby="engineering-heading" class="section section-white" id="engineering-in-practice">
+<div class="container">
+<div class="section-head"><div><div class="eyebrow">05 / ENGINEERING IN PRACTICE</div><h2 id="engineering-heading">What I build across disciplines.</h2></div><p>Computer vision, high-performance software, robotics, and AI—from detailed engineering work to operating systems.</p></div>
+<div class="more-work more-work-four">
+<article class="work-card"><div aria-hidden="true" class="work-icon">▣</div><div><h3>Computer Vision &amp; 3D Perception</h3><p>Image processing, object detection, tracking, multi-sensor fusion, and 3D reconstruction.</p><div class="work-foot">Real-Time Vision · Sensor Fusion · Object detection · Tracking</div></div></article>
+<article class="work-card"><div aria-hidden="true" class="work-icon">↗</div><div><h3>High-Performance Software Engineering</h3><p>High-performance C++/CUDA development, GPU kernel optimization, multithreading, real-time processing, and profiling-driven performance tuning.</p><div class="work-foot">C++ · CUDA · Nsight Systems · Nsight Compute</div></div></article>
+<article class="work-card"><div aria-hidden="true" class="work-icon">⌘</div><div><h3>Robotics &amp; Industrial Automation</h3><p>Designed, built, and operated integrated robotic control and electrical systems.</p><div class="work-foot">MiR AMR · Doosan Robotics · Solomon 3D Vision · System Integration</div></div></article>
+<article class="work-card"><div aria-hidden="true" class="work-icon">◇</div><div><h3>AI Applications &amp; Deployment</h3><p>Full-stack AI application development, backend integration, and CI/CD-based deployment.</p><div class="work-foot">Full-Stack · AI Agents · CI/CD · Docker</div></div></article>
+</div>
+</div>
+</section>
+<section class="section section-white" id="stack">
+<div class="container">
+<div class="section-head"><div><div class="eyebrow">06 / TECHNICAL SKILLS</div><h2>Tools I work with.</h2></div><p>Core GPU and vision tools complemented by application and deployment experience.</p></div>
+<div class="stack-grid">
+<div class="stack-card"><h3>GPU &amp; Performance</h3><div class="chips"><span class="chip">CUDA</span><span class="chip">C++</span><span class="chip">Nsight Systems</span><span class="chip">Nsight Compute</span><span class="chip">Multithreading</span></div></div>
+<div class="stack-card"><h3>Vision &amp; Inference</h3><div class="chips"><span class="chip">OpenCV</span><span class="chip">TensorRT</span><span class="chip">YOLO</span><span class="chip">Camera Calibration</span><span class="chip">Sensor Fusion</span></div></div>
+<div class="stack-card"><h3>Integration &amp; Delivery</h3><div class="chips"><span class="chip">Qt</span><span class="chip">CMake</span><span class="chip">Python</span><span class="chip">Windows / Linux</span><span class="chip">Git</span><span class="chip">Docker</span><span class="chip">CI/CD</span></div></div>
+</div>
+<p class="stack-note">Docker and CI/CD experience is based on project work. My primary engineering background is GPU performance and computer vision.</p>
+</div>
+</section>
+<section class="contact-area" id="contact">
+<div class="container"><div class="contact-card"><div><div class="eyebrow">07 / CONTACT</div><h2>Let's build faster systems.</h2><p>Open to roles in GPU performance, CUDA software and computer vision engineering.</p></div><div class="contact-actions"><a class="button button-green" href="mailto:hunjirho@gmail.com">Email me ↗</a><a class="button button-light" href="https://github.com/931njhthe-star" rel="noopener noreferrer" target="_blank">GitHub ↗</a></div><div class="resume-downloads contact-resume" aria-label="Resume downloads"><span class="resume-download-label">RESUME</span><a href="/assets/Jihun_Rho_Resume_English.pdf" download>English Resume (PDF) ↓</a><a href="/assets/Jihun_Rho_Resume_Korean.pdf" download>한국어 이력서 (PDF) ↓</a></div></div></div>
+</section>
+</main>
+<footer class="footer"><div class="container footer-inner"><span>© <span id="year">2026</span> Jihun Rho · Built for GitHub Pages</span><span>Seoul, South Korea · <a href="#home">Back to top ↑</a></span></div></footer>
+<script>
+    const toggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('main-nav');
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.textContent = open ? '✕ Close' : '☰ Menu';
+    });
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      nav.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); toggle.textContent='☰ Menu';
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
