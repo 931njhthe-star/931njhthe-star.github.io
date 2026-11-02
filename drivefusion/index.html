@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,10 +29,10 @@ footer{padding:26px 0;background:var(--dark);color:#b5c2ad;font-size:11px}.foote
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
-<body>
+<body><nav aria-label="언어 선택" style="display:flex;gap:8px;align-items:center;justify-content:flex-end;padding:8px 5%;font:600 13px system-ui,sans-serif;background:#101810;color:white"><strong style="color:#76c943">한국어</strong><span style="opacity:.5">|</span><a href="/en/drivefusion/" style="color:#c7d4c7;text-decoration:none">EN</a></nav>
 <header>
   <nav class="container nav" aria-label="Primary navigation">
-    <a class="brand" href="https://931njhthe-star.github.io/" style="color:white;text-decoration:none">JIHUN RHO <b>·</b> DRIVEFUSION</a>
+    <a class="brand" href="/" style="color:white;text-decoration:none">JIHUN RHO <b>·</b> DRIVEFUSION</a>
     <div class="navlinks">
       <a href="#system">System</a><a href="#evaluation">Evaluation</a><a href="#results">Results</a>
       <a class="back" href="https://github.com/931njhthe-star/DriveFusion">Repository ↗</a>
@@ -43,54 +43,54 @@ footer{padding:26px 0;background:var(--dark);color:#b5c2ad;font-size:11px}.foote
 <section class="hero">
   <div class="container hero-grid">
     <div>
-      <div class="eyebrow">Automotive Vision · Radar Fusion · Real-Time Evaluation</div>
+      <div class="eyebrow">차량 비전 · 레이더 융합 · 실시간 평가</div>
       <h1>DriveFusion:<br><span>Camera meets radar.</span></h1>
-      <p class="lead">I independently built a CARLA-based vehicle perception and distance-evaluation system that connects real-time camera and radar streams, YOLO11n detection, vehicle tracking, a Qt dashboard, and repeatable experiments.</p>
+      <p class="lead">CARLA에서 실시간 카메라·레이더 데이터, YOLO11n 검출, 차량 추적, Qt 대시보드, 반복 가능한 실험을 연결하는 차량 인지 및 거리 평가 시스템을 개인 프로젝트로 구축했습니다.</p>
       <div class="hero-actions">
-        <a class="button button-green" href="#results">Explore measured results ↓</a>
+        <a class="button button-green" href="#results">실험 결과 확인 ↓</a>
         <a class="button button-ghost" href="https://github.com/931njhthe-star/DriveFusion">View repository ↗</a>
       </div>
       <div class="metrics" aria-label="Project results">
-        <div class="metric"><strong>16,491</strong><span>common evaluation samples</span></div>
+        <div class="metric"><strong>16,491</strong><span>공통 평가 샘플</span></div>
         <div class="metric"><strong>−5.41%</strong><span>overall distance MAE</span></div>
-        <div class="metric"><strong>−39.42%</strong><span>MAE on 437 radar-corrected samples</span></div>
+        <div class="metric"><strong>−39.42%</strong><span>레이더 보정 437개 샘플의 MAE</span></div>
       </div>
     </div>
     <figure class="hero-visual">
       <img src="https://931njhthe-star.github.io/assets/drivefusion.gif" alt="DriveFusion Qt dashboard comparing camera-only and radar-assisted vehicle tracking" fetchpriority="high">
-      <figcaption class="visual-caption"><span>Live perception and evaluation dashboard</span><span class="live-dot">CARLA · YOLO11n · RADAR</span></figcaption>
+      <figcaption class="visual-caption"><span>실시간 인지 및 평가 대시보드</span><span class="live-dot">CARLA · YOLO11n · RADAR</span></figcaption>
     </figure>
   </div>
 </section>
 <section class="section" id="system">
   <div class="container">
-    <div class="section-head"><div><div class="eyebrow">01 / SYSTEM OVERVIEW</div><h2>From simulated sensors to measurable results.</h2></div><p>A single workflow collects synchronized sensor data, runs detection and tracking, estimates inter-vehicle distance, and records results for replay and evaluation.</p></div>
+    <div class="section-head"><div><div class="eyebrow">01 / SYSTEM OVERVIEW</div><h2>시뮬레이션 센서부터 정량 평가까지.</h2></div><p>하나의 파이프라인에서 동기화된 센서 데이터를 수집하고 검출·추적 및 차량 간 거리 추정을 수행한 뒤, 재생과 평가를 위한 결과를 기록합니다.</p></div>
     <figure class="panel">
       <img class="architecture" src="/assets/drivefusion-pipeline.webp" alt="CARLA Vehicle Vision Pipeline: simulation, sensing, detection, tracking, radar fusion, Qt dashboard, and accuracy evaluation">
-      <figcaption class="arch-note">Updated English-language pipeline overview. CARLA ground-truth vehicle state is used for evaluation, not as an input to the perception pipeline.</figcaption>
+      <figcaption class="arch-note">시스템 흐름도입니다. CARLA의 실제 차량 상태(Ground Truth)는 인지 파이프라인 입력이 아닌 평가 목적으로만 사용합니다.</figcaption>
     </figure>
     <div class="flow" aria-label="DriveFusion processing stages">
-      <article class="flow-step"><div class="number">01 · INPUT</div><h3>CARLA sensor streams</h3><p>RGB camera, radar, IMU, GNSS, vehicle state, and event sensors.</p></article>
-      <article class="flow-step"><div class="number">02 · DETECT</div><h3>YOLO11n inference</h3><p>C++/CUDA TensorRT module returns vehicle detections to the runtime.</p></article>
-      <article class="flow-step"><div class="number">03 · TRACK</div><h3>Camera + radar tracking</h3><p>Vehicle IDs use class, IoU, and center distance, with radar-assisted association and position correction.</p></article>
-      <article class="flow-step accent"><div class="number">04 · ESTIMATE</div><h3>Distance calculation</h3><p>Camera ground projection with conditional radar distance correction.</p></article>
-      <article class="flow-step"><div class="number">05 · REVIEW</div><h3>Monitor, record, evaluate</h3><p>Qt dashboard, session recording, saved-input replay, and Ground Truth comparison.</p></article>
+      <article class="flow-step"><div class="number">01 · INPUT</div><h3>CARLA 센서 데이터</h3><p>RGB 카메라, 레이더, IMU, GNSS, 차량 상태 및 이벤트 센서.</p></article>
+      <article class="flow-step"><div class="number">02 · DETECT</div><h3>YOLO11n 추론</h3><p>C++/CUDA TensorRT 모듈이 차량 검출 결과를 실행 환경에 전달합니다.</p></article>
+      <article class="flow-step"><div class="number">03 · TRACK</div><h3>카메라·레이더 추적</h3><p>클래스, IoU, 중심점 거리를 활용해 차량 ID를 유지하고 레이더로 연관 및 위치 보정을 수행합니다.</p></article>
+      <article class="flow-step accent"><div class="number">04 · ESTIMATE</div><h3>거리 계산</h3><p>카메라 지면 투영 기반 거리 계산과 조건부 레이더 거리 보정.</p></article>
+      <article class="flow-step"><div class="number">05 · REVIEW</div><h3>모니터링·기록·평가</h3><p>Qt 대시보드, 세션 기록, 저장된 입력 재생 및 Ground Truth 비교.</p></article>
     </div>
   </div>
 </section>
 <section class="section section-white">
   <div class="container">
-    <div class="section-head"><div><div class="eyebrow">02 / REAL-TIME MONITORING</div><h2>See both tracking paths side by side.</h2></div><p>The Qt application combines live monitoring, experiment controls, session capture, and post-run evaluation in one interface.</p></div>
+    <div class="section-head"><div><div class="eyebrow">02 / REAL-TIME MONITORING</div><h2>두 가지 추적 방식을 실시간으로 비교합니다.</h2></div><p>Qt 애플리케이션 하나에서 실시간 모니터링, 실험 제어, 세션 기록 및 사후 평가를 수행합니다.</p></div>
     <div class="dashboard-grid">
       <figure class="dashboard-card"><img src="https://931njhthe-star.github.io/assets/drivefusion.gif" alt="Animated view of the DriveFusion Qt monitoring dashboard"></figure>
       <article class="dashboard-card dashboard-copy">
-        <h3>Built for live comparison and repeatable runs</h3>
-        <p>The dashboard displays the camera image, YOLO detections, camera-only tracks, radar-assisted tracks, and estimated vehicle distance. It also controls selected tracking and collection settings and supports session recording and replay.</p>
+        <h3>실시간 비교와 반복 가능한 실험</h3>
+        <p>대시보드에서 카메라 영상, YOLO 검출, 카메라 단독 추적, 레이더 보조 추적, 차량 거리 추정값을 표시합니다. 추적·수집 설정과 세션 기록 및 재생도 지원합니다.</p>
         <ul class="feature-list">
-          <li>Compare camera-only and radar-assisted tracking on the same frames.</li>
-          <li>Inspect distance estimates alongside sensor and vehicle information.</li>
-          <li>Record sessions manually or through scheduled weather workflows.</li>
-          <li>Replay saved data to generate comparable evaluation reports.</li>
+          <li>동일 프레임에서 카메라 단독 추적과 레이더 보조 추적을 비교합니다.</li>
+          <li>센서 및 차량 정보와 거리 추정값을 함께 확인합니다.</li>
+          <li>수동 또는 날씨별 예약 작업으로 세션을 기록합니다.</li>
+          <li>저장된 데이터를 재생해 비교 가능한 평가 보고서를 생성합니다.</li>
         </ul>
       </article>
     </div>
@@ -98,42 +98,42 @@ footer{padding:26px 0;background:var(--dark);color:#b5c2ad;font-size:11px}.foote
 </section>
 <section class="section" id="evaluation">
   <div class="container">
-    <div class="section-head"><div><div class="eyebrow">03 / EVALUATION DESIGN</div><h2>Separate radar distance correction from track correction.</h2></div><p>Three methods run on the same recorded input. This keeps the comparison focused on the contribution of each step.</p></div>
+    <div class="section-head"><div><div class="eyebrow">03 / EVALUATION DESIGN</div><h2>레이더 거리 보정과 추적 위치 보정을 분리했습니다.</h2></div><p>세 가지 방법을 동일한 기록 데이터에 적용하여 각 단계의 기여도를 비교합니다.</p></div>
     <div class="methods">
-      <article class="method"><div class="code">M1 · BASELINE</div><h3>Image tracking + camera distance</h3><p>YOLO detections are associated by class, IoU, and center distance. Distance is estimated by projecting the tracked box onto the ground plane.</p></article>
-      <article class="method"><div class="code">M2 · DISTANCE FUSION</div><h3>Camera tracking + conditional radar distance</h3><p>Uses the M1 tracks. When radar cluster quality and consistency checks pass, the camera distance is replaced with radar distance; otherwise the valid camera estimate is retained.</p></article>
-      <article class="method active"><div class="code">M3 · RADAR-ASSISTED</div><h3>Radar-assisted tracking + distance fusion</h3><p>Adds radar-based association and position correction during camera detection gaps, then applies the same conditional distance rule used by M2.</p></article>
+      <article class="method"><div class="code">M1 · BASELINE</div><h3>영상 추적 + 카메라 거리</h3><p>클래스, IoU, 중심점 거리로 YOLO 검출 결과를 연결하고 추적 박스를 지면에 투영해 거리를 추정합니다.</p></article>
+      <article class="method"><div class="code">M2 · DISTANCE FUSION</div><h3>카메라 추적 + 조건부 레이더 거리</h3><p>M1의 추적 결과를 사용합니다. 레이더 클러스터 품질과 일관성 검사를 통과하면 카메라 거리를 레이더 거리로 대체하고, 그렇지 않으면 유효한 카메라 추정값을 유지합니다.</p></article>
+      <article class="method active"><div class="code">M3 · RADAR-ASSISTED</div><h3>레이더 보조 추적 + 거리 융합</h3><p>카메라 검출이 누락된 구간에서 레이더 기반 연관 및 위치 보정을 추가하고, M2와 동일한 조건부 거리 선택 규칙을 적용합니다.</p></article>
     </div>
   </div>
 </section>
 <section class="section section-white" id="results">
   <div class="container">
-    <div class="section-head"><div><div class="eyebrow">04 / MEASURED RESULTS</div><h2>Radar assistance helped most when correction applied.</h2></div><p>Distance errors are compared against CARLA vehicle-state Ground Truth. Lower MAE and RMSE indicate more accurate estimates.</p></div>
+    <div class="section-head"><div><div class="eyebrow">04 / MEASURED RESULTS</div><h2>레이더 보정이 적용된 구간에서 효과가 컸습니다.</h2></div><p>거리 오차를 CARLA 차량 상태의 Ground Truth와 비교합니다. MAE와 RMSE가 낮을수록 정확도가 높습니다.</p></div>
     <div class="results">
       <table>
         <thead><tr><th>Evaluation group</th><th>Samples</th><th>Share of total</th><th>MAE reduction</th><th>RMSE reduction</th></tr></thead>
         <tbody>
           <tr><td>All common samples</td><td>16,491</td><td>100%</td><td><strong>5.41%</strong></td><td><strong>0.83%</strong></td></tr>
-          <tr class="subset"><td>Radar-corrected tracks (A + B)</td><td>437</td><td>2.65%</td><td><strong>39.42%</strong></td><td><strong>25.15%</strong></td></tr>
-          <tr><td>A · Final distance uses radar</td><td>242</td><td>1.47%</td><td><strong>80.95%</strong></td><td><strong>71.43%</strong></td></tr>
-          <tr><td>B · Final distance uses camera</td><td>195</td><td>1.18%</td><td><strong>8.77%</strong></td><td><strong>11.68%</strong></td></tr>
+          <tr class="subset"><td>레이더 보정 추적 (A + B)</td><td>437</td><td>2.65%</td><td><strong>39.42%</strong></td><td><strong>25.15%</strong></td></tr>
+          <tr><td>A · 최종 거리에 레이더 사용</td><td>242</td><td>1.47%</td><td><strong>80.95%</strong></td><td><strong>71.43%</strong></td></tr>
+          <tr><td>B · 최종 거리에 카메라 사용</td><td>195</td><td>1.18%</td><td><strong>8.77%</strong></td><td><strong>11.68%</strong></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="results-note">The 437 radar-corrected samples are a subset of the 16,491 common samples. Their larger gains apply to this selected subset; they should not be interpreted as the overall system improvement.</p>
+    <p class="results-note">레이더 보정이 적용된 437개 샘플은 전체 16,491개 공통 샘플의 일부입니다. 큰 개선 폭은 이 구간에만 해당하며 전체 시스템 개선율로 해석해서는 안 됩니다.</p>
     <div class="result-visual">
       <img src="/assets/drivefusion-error-reduction.webp" alt="Distance error reduction with radar fusion: MAE and RMSE improvements across overall and radar-corrected samples">
-      <div><h3>Overall results and conditional gains tell different parts of the story.</h3><p>Across all common samples, M3 reduced MAE by 5.41% and RMSE by 0.83% compared with M1. Among 437 predictions where radar corrected the track position, M3 reduced MAE by 39.42% and RMSE by 25.15%. The overall result remains modest because the corrected cases account for 2.65% of the common sample set.</p></div>
+      <div><h3>전체 성능과 보정 구간 성능을 구분해 해석합니다.</h3><p>전체 공통 샘플에서 M3는 M1 대비 MAE를 5.41%, RMSE를 0.83% 줄였습니다. 레이더가 추적 위치를 보정한 437개 샘플에서는 MAE 39.42%, RMSE 25.15% 감소했습니다. 보정 대상이 전체의 2.65%이므로 전체 개선 폭은 상대적으로 작습니다.</p></div>
     </div>
   </div>
 </section>
 <section class="section">
   <div class="container">
-    <div class="section-head"><div><div class="eyebrow">05 / EXPERIMENTS &amp; LIMITS</div><h2>Controlled simulation, clearly scoped conclusions.</h2></div><p>CARLA provides repeatable conditions and Ground Truth for quantitative analysis. The results describe simulation experiments, not proof of real-road performance.</p></div>
+    <div class="section-head"><div><div class="eyebrow">05 / EXPERIMENTS &amp; LIMITS</div><h2>통제된 시뮬레이션과 명확한 평가 범위.</h2></div><p>CARLA는 반복 가능한 조건과 정량 분석용 Ground Truth를 제공합니다. 결과는 시뮬레이션 실험에 해당하며 실제 도로 성능을 입증하지 않습니다.</p></div>
     <div class="experiment">
       <article class="experiment-card">
-        <h3>Nine weather and time-of-day sessions</h3>
-        <p>Data was collected for clear, cloudy, and heavy-rain conditions across noon, sunset, and night. Each condition was collected once for approximately two minutes, then evaluated with the same saved input.</p>
+        <h3>날씨와 시간대를 조합한 9개 세션</h3>
+        <p>맑음, 흐림, 폭우를 정오·일몰·야간과 조합해 데이터를 수집했습니다. 각 조건에서 약 2분간 한 차례 수집하고 동일한 저장 입력으로 평가했습니다.</p>
         <div class="weather-grid" aria-label="All nine CARLA weather and time-of-day sessions">
           <figure class="weather-tile"><img src="https://raw.githubusercontent.com/931njhthe-star/DriveFusion/main/docs/images/weather/ClearNoon.jpg" alt="CARLA Clear noon scene" loading="lazy"><figcaption>Clear · Noon</figcaption></figure>
           <figure class="weather-tile"><img src="https://raw.githubusercontent.com/931njhthe-star/DriveFusion/main/docs/images/weather/ClearSunset.jpg" alt="CARLA Clear sunset scene" loading="lazy"><figcaption>Clear · Sunset</figcaption></figure>
@@ -147,19 +147,19 @@ footer{padding:26px 0;background:var(--dark);color:#b5c2ad;font-size:11px}.foote
         </div>
       </article>
       <article class="experiment-card">
-        <h3>Interpretation and limitations</h3>
-        <p>The experiment uses a limited set of CARLA scenarios. The 437 radar-corrected samples are only 2.65% of all common samples, and scene composition differs between weather/time sessions. The evaluation therefore does not isolate weather effects or establish generalization to real-road conditions.</p>
-        <p style="margin-top:12px">Next steps include repeated runs with matched traffic and routes, broader distance and occlusion scenarios, and validation with real sensor data. Future evaluation can also include track continuity, ID switches, missed-detection recovery, and processing latency.</p>
+        <h3>결과 해석 및 한계</h3>
+        <p>실험은 제한된 CARLA 시나리오를 사용했습니다. 레이더 보정 샘플은 전체의 2.65%이고 날씨·시간대별 장면 구성도 다르므로, 날씨만의 효과를 분리하거나 실제 도로에 일반화할 수 없습니다.</p>
+        <p style="margin-top:12px">향후 동일 교통량·경로에서 반복 실험하고 거리·가림 조건을 확대하며 실제 센서 데이터로 검증할 계획입니다. 추적 연속성, ID 전환, 검출 누락 복구, 처리 지연도 추가 평가할 수 있습니다.</p>
       </article>
     </div>
   </div>
 </section>
 <section class="section section-white">
   <div class="container">
-    <div class="section-head"><div><div class="eyebrow">06 / IMPLEMENTATION</div><h2>One project across inference, integration, and evaluation.</h2></div><p>Independently designed and implemented the CARLA-based application, with a separate native inference module and an interactive monitoring workflow.</p></div>
+    <div class="section-head"><div><div class="eyebrow">06 / IMPLEMENTATION</div><h2>추론부터 시스템 통합, 평가까지 구현했습니다.</h2></div><p>네이티브 추론 모듈과 대화형 모니터링 기능을 포함한 CARLA 기반 애플리케이션을 독립적으로 설계·구현했습니다.</p></div>
     <div class="stack">
       <div class="stack-item"><b>Inference</b><span>YOLO11n · C++/CUDA · TensorRT DLL</span></div>
-      <div class="stack-item"><b>Sensor &amp; tracking runtime</b><span>Python · Camera/radar association · Distance estimation</span></div>
+      <div class="stack-item"><b>센서 및 추적 실행 환경</b><span>Python · Camera/radar association · Distance estimation</span></div>
       <div class="stack-item"><b>Monitoring</b><span>Qt dashboard · Live comparison · Session recording</span></div>
       <div class="stack-item"><b>Evaluation</b><span>CARLA Ground Truth · Replay · MAE/RMSE reports</span></div>
     </div>
@@ -167,10 +167,10 @@ footer{padding:26px 0;background:var(--dark);color:#b5c2ad;font-size:11px}.foote
 </section>
 <section class="section">
   <div class="container">
-    <div class="cta"><div><h2>Explore the implementation.</h2><p>Source code, setup notes, system details, and the complete evaluation write-up.</p></div><a class="button button-green" href="https://github.com/931njhthe-star/DriveFusion">Open DriveFusion repository ↗</a></div>
+    <div class="cta"><div><h2>구현 내용을 살펴보세요.</h2><p>소스코드, 설치 방법, 시스템 상세 설명 및 전체 평가 결과를 확인할 수 있습니다.</p></div><a class="button button-green" href="https://github.com/931njhthe-star/DriveFusion">DriveFusion 저장소 보기 ↗</a></div>
   </div>
 </section>
 </main>
-<footer><div class="container footer-inner"><span>Jihun Rho · DriveFusion</span><span><a href="https://931njhthe-star.github.io/">Back to portfolio ↗</a></span></div></footer>
+<footer><div class="container footer-inner"><span>Jihun Rho · DriveFusion</span><span><a href="/">Back to portfolio ↗</a></span></div></footer>
 </body>
 </html>
