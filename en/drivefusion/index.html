@@ -27,9 +27,17 @@ footer{padding:26px 0;background:var(--dark);color:#b5c2ad;font-size:11px}.foote
 @media(max-width:850px){.hero-grid,.dashboard-grid,.result-visual{grid-template-columns:1fr}.hero-grid{gap:32px;padding:54px 0}.hero-visual{max-width:700px}.flow{grid-template-columns:repeat(2,minmax(0,1fr))}.methods{grid-template-columns:1fr}.experiment{grid-template-columns:1fr}.stack{grid-template-columns:repeat(2,1fr)}.section{padding:58px 0}.section-head{display:block}.section-head p{margin-top:12px}}
 @media(max-width:560px){.container{width:calc(100% - 32px)}.navlinks{gap:11px}.navlinks a{font-size:10px}.metrics{gap:7px}.metric{padding:12px 9px}.metric strong{font-size:20px}.metric span{font-size:9px}.flow{grid-template-columns:1fr}.flow-step{min-height:auto}.stack{grid-template-columns:1fr 1fr}.weather-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.cta{padding:25px;display:block}.cta .button{margin-top:18px}.footer-inner{display:block}.footer-inner span{display:block;margin-top:6px}.section-head{margin-bottom:20px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Persistent, accessible language switcher */
+.floating-language-switch{position:fixed;top:16px;right:16px;z-index:99999;display:flex;align-items:center;gap:4px;padding:6px;border:1px solid rgba(125,160,125,.5);border-radius:999px;background:rgba(15,25,20,.96);box-shadow:0 6px 22px rgba(0,0,0,.26);font:700 13px/1.2 system-ui,-apple-system,sans-serif;backdrop-filter:blur(12px)}
+.floating-language-switch .language-globe{padding:0 5px;color:#d8ead4;font-size:17px}
+.floating-language-switch .language-choice{display:inline-flex;min-height:34px;align-items:center;justify-content:center;padding:0 12px;border-radius:999px;color:#f0f5ee;text-decoration:none;white-space:nowrap;transition:background .15s,color .15s}
+.floating-language-switch .language-choice:hover,.floating-language-switch .language-choice:focus-visible{background:#334737;color:white;outline:2px solid #8edb5e;outline-offset:1px}
+.floating-language-switch .language-choice.active{background:#79c943;color:#10200b;pointer-events:none}
+@media(max-width:600px){.floating-language-switch{top:auto;bottom:calc(14px + env(safe-area-inset-bottom,0px));right:12px;padding:5px}.floating-language-switch .language-choice{min-height:38px;padding:0 13px}}
 </style>
 </head>
-<body><nav aria-label="Language" style="display:flex;gap:8px;align-items:center;justify-content:flex-end;padding:8px 5%;font:600 13px system-ui,sans-serif;background:#101810;color:white"><a href="/drivefusion/" style="color:#c7d4c7;text-decoration:none">한국어</a><span style="opacity:.5">|</span><strong style="color:#76c943">EN</strong></nav>
+<body><nav class="floating-language-switch" aria-label="Choose language"><span class="language-globe" aria-hidden="true">🌐</span><a href="/drivefusion/" class="language-choice" lang="ko" >한국어</a><a href="/en/drivefusion/" class="language-choice active" aria-current="page" lang="en" tabindex="-1">EN</a></nav>
 <header>
   <nav class="container nav" aria-label="Primary navigation">
     <a class="brand" href="/en/" style="color:white;text-decoration:none">JIHUN RHO <b>·</b> DRIVEFUSION</a>
