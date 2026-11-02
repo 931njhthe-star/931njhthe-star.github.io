@@ -452,6 +452,14 @@
 
 
 
+
+/* Persistent, accessible language switcher */
+.floating-language-switch{position:fixed;top:16px;right:16px;z-index:99999;display:flex;align-items:center;gap:4px;padding:6px;border:1px solid rgba(125,160,125,.5);border-radius:999px;background:rgba(15,25,20,.96);box-shadow:0 6px 22px rgba(0,0,0,.26);font:700 13px/1.2 system-ui,-apple-system,sans-serif;backdrop-filter:blur(12px)}
+.floating-language-switch .language-globe{padding:0 5px;color:#d8ead4;font-size:17px}
+.floating-language-switch .language-choice{display:inline-flex;min-height:34px;align-items:center;justify-content:center;padding:0 12px;border-radius:999px;color:#f0f5ee;text-decoration:none;white-space:nowrap;transition:background .15s,color .15s}
+.floating-language-switch .language-choice:hover,.floating-language-switch .language-choice:focus-visible{background:#334737;color:white;outline:2px solid #8edb5e;outline-offset:1px}
+.floating-language-switch .language-choice.active{background:#79c943;color:#10200b;pointer-events:none}
+@media(max-width:600px){.floating-language-switch{top:auto;bottom:calc(14px + env(safe-area-inset-bottom,0px));right:12px;padding:5px}.floating-language-switch .language-choice{min-height:38px;padding:0 13px}}
 </style>
 <style>
 /* Consistent project card order: title, media, description, details. */
@@ -462,7 +470,7 @@
 .other-card > h3 + .robotics-video-preview + p,
 .other-card > h3 + .subsync-project-image + p { margin-top: 0; }
 </style></head>
-<body><nav aria-label="언어 선택" style="display:flex;gap:8px;align-items:center;justify-content:flex-end;padding:8px 5%;font:600 13px system-ui,sans-serif;background:#101810;color:white"><strong style="color:#76c943">한국어</strong><span style="opacity:.5">|</span><a href="/en/" style="color:#c7d4c7;text-decoration:none">EN</a></nav>
+<body><nav class="floating-language-switch" aria-label="언어 선택"><span class="language-globe" aria-hidden="true">🌐</span><a href="/" class="language-choice active" aria-current="page" lang="ko" tabindex="-1">한국어</a><a href="/en/" class="language-choice" lang="en" >EN</a></nav>
 <a class="sr-only" href="#main">Skip to content</a>
 <header class="site-header">
 <div class="container nav-inner">
