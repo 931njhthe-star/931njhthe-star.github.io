@@ -84,14 +84,14 @@
     </div></section>
 
     <section class="section" id="workflow"><div class="wrap">
-      <div class="section-head"><div><div class="eyebrow">IMPLEMENTATION &amp; WORKFLOW</div><h2>A local Python app turns session files into an incident review.</h2></div><p>DriveFusion records the event in Qt; this separate interface analyzes the saved session.</p></div>
-      <div class="pipeline" aria-label="Incident review workflow">
-        <article class="step arrow"><small>01 · INPUT</small><b>CARLA session</b><span>Recorded vehicle and sensor data</span></article>
-        <article class="step arrow"><small>02 · SELECT</small><b>Collision event</b><span>Collect records around impact time</span></article>
-        <article class="step arrow"><small>03 · PREPARE</small><b>Evidence package</b><span>Selected frames and sensor summary</span></article>
-        <article class="step"><small>04 · REVIEW</small><b>LLM narrative</b><span>Summary cached with the session</span></article>
+      <div class="section-head"><div><div class="eyebrow">LLM EVIDENCE PIPELINE</div><h2>The LLM summarizes selected collision evidence.</h2></div><p>A Python review app prepares a small, collision-centered evidence package and saves the generated narrative with the session.</p></div>
+      <div class="pipeline" aria-label="LLM evidence workflow">
+        <article class="step arrow"><small>01 · EVENT</small><b>Collision timestamp</b><span>Find the impact in the recorded session</span></article>
+        <article class="step arrow"><small>02 · SELECT</small><b>Representative frames</b><span>Choose images near −3 s, impact, and +2 s</span></article>
+        <article class="step arrow"><small>03 · CONTEXT</small><b>Sensor summary</b><span>Pair frames with vehicle, IMU, radar, and lane data</span></article>
+        <article class="step"><small>04 · GENERATE</small><b>Cached LLM summary</b><span>Send evidence to OpenAI Responses API; save the result</span></article>
       </div>
-      <div class="implementation-note"><strong>How it works:</strong> Python’s standard library serves a local dashboard built with HTML, CSS, JavaScript, and SVG. It reads <code>session.json</code>, <code>measurements.jsonl</code>, and <code>ground_truth.jsonl</code>, then gathers records around impact. FFmpeg builds the preview clip. When available, selected frames near −3 s, impact, and +2 s plus a compact vehicle, IMU, radar, and lane summary go to the OpenAI Responses API. The narrative is cached in <code>llm_analysis.json</code>.</div><div class="implementation-stack" aria-label="Implementation technologies"><span>Python standard library</span><span>HTML · CSS · JavaScript · SVG</span><span>JSON · JSONL</span><span>FFmpeg</span><span>OpenAI Responses API</span></div>
+      <div class="implementation-note"><strong>LLM implementation:</strong> The app builds a request from three selected still frames and a compact, time-aligned summary of recorded vehicle and sensor signals. It sends that evidence to the OpenAI Responses API for a readable collision-centered narrative; the full video is not uploaded. The response is cached in <code>llm_analysis.json</code> beside the session, so the review can reuse the saved analysis.</div><div class="implementation-stack" aria-label="LLM pipeline technologies"><span>Python evidence preparation</span><span>Selected image frames</span><span>Time-aligned sensor context</span><span>OpenAI Responses API</span><span>Session-level JSON cache</span></div>
     </div></section>
 
     
