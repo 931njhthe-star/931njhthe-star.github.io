@@ -48,6 +48,12 @@ footer{padding:26px 0;background:var(--dark);color:#b5c2ad;font-size:11px}.foote
     .cross-project img{display:block;flex:0 0 150px;width:150px;height:84px;object-fit:cover;border-radius:8px;border:1px solid #e0e8db}
     .cross-project-copy{min-width:0}.cross-project-copy strong{display:block;margin-bottom:4px;color:#35551a;font-size:13px;line-height:1.35}.cross-project-copy span{display:block;color:#68745f;font-size:11px;line-height:1.5}
     @media(max-width:560px){.cross-project-wrap{width:calc(100% - 32px);margin:-8px auto 26px}.cross-project{gap:11px}.cross-project img{flex-basis:112px;width:112px;height:68px}.cross-project-copy strong{font-size:12px}.cross-project-copy span{font-size:10px}}
+
+    .cross-project-hero{display:flex;align-items:center;gap:12px;width:100%;max-width:390px;margin:0;padding:9px;border:1px solid #d7e1d0;border-radius:14px;background:#fff;color:#263322;text-decoration:none;box-shadow:0 12px 32px #172b0c12;transition:transform .15s,box-shadow .15s}
+    .cross-project-hero:hover{transform:translateY(-2px);box-shadow:0 16px 36px #172b0c1c}
+    .cross-project-hero img{display:block;flex:0 0 132px;width:132px;height:76px;object-fit:cover;border:1px solid #e0e8db;border-radius:8px}
+    .cross-project-hero-copy{min-width:0}.cross-project-hero-copy strong{display:block;margin-bottom:4px;color:#35551a;font-size:12px;line-height:1.35}.cross-project-hero-copy span{display:block;color:#68745f;font-size:10px;line-height:1.45}
+    @media(max-width:560px){.cross-project-hero{gap:10px;max-width:100%}.cross-project-hero img{flex-basis:110px;width:110px;height:64px}}
 </style>
 </head>
 <body><nav class="floating-language-switch" aria-label="Choose language"><span class="language-globe" aria-hidden="true">🌐</span><a href="/drivefusion/" class="language-choice" lang="ko" >한국어</a><a href="/en/drivefusion/" class="language-choice active" aria-current="page" lang="en" tabindex="-1">EN</a></nav>
@@ -79,14 +85,9 @@ footer{padding:26px 0;background:var(--dark);color:#b5c2ad;font-size:11px}.foote
         <div class="metric"><strong>−39.42%</strong><span>MAE on 437 radar-corrected samples</span></div>
       </div>
     </div>
-    <figure class="hero-visual">
-      <img src="https://931njhthe-star.github.io/assets/drivefusion.gif" alt="DriveFusion Qt dashboard comparing camera-only and radar-assisted vehicle tracking" fetchpriority="high">
-      <figcaption class="visual-caption"><span>Live perception and evaluation dashboard</span><span class="live-dot">CARLA · YOLO11n · RADAR</span></figcaption>
-    </figure>
+    <a class="cross-project-hero" href="/en/drivefusion/accident-review/"><img src="/en/drivefusion/accident-review/collision-video.gif" alt="Animated preview of the DriveFusion incident review" loading="eager"><span class="cross-project-hero-copy"><strong>DriveFusion Incident Review</strong><span>Collision video, sensor evidence, and an LLM summary.</span></span></a>
   </div>
 </section>
-<div class="cross-project-wrap"><a class="cross-project" href="/en/drivefusion/accident-review/"><img src="/en/drivefusion/accident-review/collision-video.gif" alt="Preview of DriveFusion's LLM-assisted incident review dashboard" loading="lazy"><span class="cross-project-copy"><strong>DriveFusion Incident Review</strong><span>Review collision video, synchronized sensor evidence, and an LLM summary.</span></span></a></div>
-
 <section class="section" id="system">
   <div class="container">
     <div class="section-head"><div><div class="eyebrow">01 / SYSTEM OVERVIEW</div><h2>From simulated sensors to measurable results.</h2></div><p>A single workflow collects synchronized sensor data, runs detection and tracking, estimates inter-vehicle distance, and records results for replay and evaluation.</p></div>
