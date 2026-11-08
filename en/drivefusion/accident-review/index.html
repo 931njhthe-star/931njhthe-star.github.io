@@ -59,6 +59,15 @@
     .portfolio-home-fab:hover,.portfolio-home-fab:focus-visible{background:#a5e85b;transform:translateY(-2px);outline:2px solid #274d12;outline-offset:2px}
     .portfolio-home-fab .home-symbol{font-size:18px;line-height:1}
     @media(max-width:600px){.floating-language-switch{top:auto;bottom:calc(14px + env(safe-area-inset-bottom,0px));right:12px;padding:5px}.floating-language-switch .language-choice{min-height:38px;padding:0 13px}.portfolio-home-fab{top:auto;bottom:calc(75px + env(safe-area-inset-bottom,0px));right:12px;min-height:44px;padding:10px 15px;font-size:13px}}
+
+    /* Compact hero preview, matching the DriveFusion portfolio. */
+    .hero-grid{grid-template-columns:minmax(0,1fr) minmax(260px,.72fr);gap:40px}
+    .hero-grid>div:first-child{max-width:none}
+    .hero-visual{position:relative;justify-self:end;width:100%;max-width:440px;padding:12px;background:#fff;border:1px solid #d7e1d0;border-radius:18px;box-shadow:0 22px 55px #172b0c16}
+    .hero-visual img{display:block;width:100%;height:auto;border-radius:10px}
+    .visual-caption{display:flex;justify-content:space-between;gap:12px;padding:11px 5px 2px;color:#68745f;font-size:9px;font-weight:750;letter-spacing:.06em;text-transform:uppercase}
+    .visual-caption strong{color:#548b00}
+    @media(max-width:850px){.hero-grid{grid-template-columns:1fr}.hero-visual{justify-self:start;max-width:560px}}
 </style>
 </head>
 <body>
@@ -79,6 +88,7 @@
         <div class="actions"><a class="btn primary" href="#dashboard">Watch the incident review ↓</a><a class="btn secondary" href="/en/drivefusion/">← Back to DriveFusion portfolio</a></div>
         <div class="stat-row" aria-label="Analysis inputs"><div class="stat"><strong>Signals</strong><span>vehicle, IMU, radar and lane events</span></div></div>
       </div>
+      <figure class="hero-visual"><img src="/en/drivefusion/accident-review/collision-video.gif" alt="Animated CARLA collision review dashboard with synchronized vehicle and sensor data" loading="eager"><figcaption class="visual-caption"><span>Collision evidence review</span><strong>DRIVEFUSION · LLM</strong></figcaption></figure>
     </div></section>
 
     <section class="section" id="dashboard"><div class="wrap">
