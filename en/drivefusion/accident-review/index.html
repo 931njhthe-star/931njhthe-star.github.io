@@ -68,6 +68,13 @@
     .visual-caption{display:flex;justify-content:space-between;gap:12px;padding:11px 5px 2px;color:#68745f;font-size:9px;font-weight:750;letter-spacing:.06em;text-transform:uppercase}
     .visual-caption strong{color:#548b00}
     @media(max-width:850px){.hero-grid{grid-template-columns:1fr}.hero-visual{justify-self:start;max-width:560px}}
+
+    .cross-project-wrap{width:min(1140px,calc(100% - 48px));margin:-18px auto 34px}
+    .cross-project{display:flex;align-items:center;gap:16px;width:min(570px,100%);margin:0 auto;padding:10px;border:1px solid #d7e1d0;border-radius:14px;background:#fff;color:#263322;text-decoration:none;box-shadow:0 10px 28px #172b0c0c;transition:transform .15s,box-shadow .15s}
+    .cross-project:hover{transform:translateY(-2px);box-shadow:0 14px 34px #172b0c18}
+    .cross-project img{display:block;flex:0 0 150px;width:150px;height:84px;object-fit:cover;border-radius:8px;border:1px solid #e0e8db}
+    .cross-project-copy{min-width:0}.cross-project-copy strong{display:block;margin-bottom:4px;color:#35551a;font-size:13px;line-height:1.35}.cross-project-copy span{display:block;color:#68745f;font-size:11px;line-height:1.5}
+    @media(max-width:560px){.cross-project-wrap{width:calc(100% - 32px);margin:-8px auto 26px}.cross-project{gap:11px}.cross-project img{flex-basis:112px;width:112px;height:68px}.cross-project-copy strong{font-size:12px}.cross-project-copy span{font-size:10px}}
 </style>
 </head>
 <body>
@@ -90,6 +97,8 @@
       </div>
       <figure class="hero-visual"><img src="/en/drivefusion/accident-review/collision-video.gif" alt="Animated CARLA collision review dashboard with synchronized vehicle and sensor data" loading="eager"><figcaption class="visual-caption"><span>Collision evidence review</span><strong>DRIVEFUSION · LLM</strong></figcaption></figure>
     </div></section>
+<div class="cross-project-wrap"><a class="cross-project" href="/en/drivefusion/"><img src="/assets/drivefusion.gif" alt="Preview of the DriveFusion camera and radar perception dashboard" loading="lazy"><span class="cross-project-copy"><strong>DriveFusion · Camera–Radar Perception</strong><span>Explore the real-time perception pipeline and measured radar-fusion results.</span></span></a></div>
+
 
     <section class="section" id="dashboard"><div class="wrap">
       <div class="section-head"><div><div class="eyebrow">COLLISION REVIEW</div><h2>Review the video, vehicle positions, and sensor signals together.</h2></div><p>A collision-centered view of saved CARLA data, with an animated clip, reconstructed positions, sensor timeline, and a concise LLM summary.</p></div>
