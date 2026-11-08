@@ -49,6 +49,7 @@
     .disclaimer{border-color:#dce5d7;background:#f4f8ef}.disclaimer b{color:#8b5b14}.disclaimer p{color:#53634f}
     footer{background:#101710;border-top:0;color:#b5c2ad}.foot a{color:#b9ed73}
     @media(max-width:560px){.nav{height:60px}.links{gap:11px}.links a{font-size:10px}}
+    .data-files{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px}.data-file{padding:10px 12px;border:1px solid #dce5d7;border-radius:9px;background:#fff;color:#53634f;font-size:10px;line-height:1.55}.data-file code{color:#25331e;font-weight:800}.data-file span{display:block;margin-top:3px}@media(max-width:560px){.data-files{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -88,15 +89,20 @@
     </div></section>
 
     <section class="section" id="workflow"><div class="wrap">
-      <div class="section-head"><div><div class="eyebrow">LLM EVIDENCE PIPELINE</div><h2>The LLM summarizes selected collision evidence.</h2></div><p>A local Python review app prepares a focused evidence package from the saved CARLA session, then stores the generated narrative with that session.</p></div>
-      <div class="pipeline" aria-label="LLM evidence workflow">
-        <article class="step arrow"><small>01 · EVENT</small><b>Collision timestamp</b><span>Locate impact in the recorded session</span></article>
-        <article class="step arrow"><small>02 · SELECT</small><b>Representative frames</b><span>Choose stills near −3 s, impact, and +2 s</span></article>
-        <article class="step arrow"><small>03 · CONTEXT</small><b>Sensor summary</b><span>Pair frames with vehicle, IMU, radar, and lane data</span></article>
-        <article class="step"><small>04 · GENERATE</small><b>Cached LLM narrative</b><span>OpenAI Responses API result saved per session</span></article>
+      <div class="section-head"><div><div class="eyebrow">LOCAL DATA → LLM EVIDENCE</div><h2>From CARLA session files to a cached LLM summary.</h2></div><p>A local Python server reads the selected recording folder. The dashboard and LLM use different parts of the same session data.</p></div>
+      <div class="pipeline" aria-label="Local data and LLM workflow">
+        <article class="step arrow"><small>01 · LOAD</small><b>Saved session</b><span>Scan recording folders using session metadata</span></article>
+        <article class="step arrow"><small>02 · FIND</small><b>Collision event</b><span>Read measurements and gather nearby records</span></article>
+        <article class="step arrow"><small>03 · PREPARE</small><b>Evidence package</b><span>Select still frames and align sensor summaries</span></article>
+        <article class="step"><small>04 · SUMMARIZE</small><b>LLM narrative</b><span>Send evidence to Responses API; cache the result</span></article>
       </div>
-      <div class="implementation-note"><strong>How the LLM is applied:</strong> The app assembles selected still frames and a compact, time-aligned summary of recorded vehicle and sensor signals into one request to the OpenAI Responses API. The model returns a readable, collision-centered summary based on those inputs; the full video is not sent. The response is cached in <code>llm_analysis.json</code> beside the session for reuse.</div>
-      <div class="implementation-stack" aria-label="LLM implementation details"><span>Python evidence preparation</span><span>Image frames + sensor context</span><span>OpenAI Responses API</span><span>Session-level JSON cache</span></div>
+      <div class="implementation-note"><strong>Two paths from the same session:</strong> The dashboard uses camera frames to build an FFmpeg preview, sensor records for the timeline, and CARLA ground-truth positions for the vehicle reconstruction. For LLM analysis, Python selects still frames near −3 s, impact, and +2 s, then pairs them with a time-aligned vehicle, IMU, radar, and lane summary. Only this evidence package goes to the OpenAI Responses API—not the full video. The narrative is saved as <code>llm_analysis.json</code> beside the session.</div>
+      <div class="data-files" aria-label="Local recording files">
+        <div class="data-file"><code>session.json</code><span>Session metadata such as weather and recording mode</span></div>
+        <div class="data-file"><code>measurements.jsonl</code><span>Camera references, collision events, vehicle and sensor records</span></div>
+        <div class="data-file"><code>ground_truth.jsonl</code><span>CARLA vehicle positions used in the reconstruction view</span></div>
+      </div>
+      <div class="implementation-stack" aria-label="Implementation details"><span>Python local server</span><span>FFmpeg preview clip</span><span>OpenAI Responses API</span><span>Session-level JSON cache</span></div>
     </div></section>
 
   </main>
