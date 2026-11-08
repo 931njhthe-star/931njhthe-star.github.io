@@ -54,7 +54,7 @@
 <body>
   <header class="topbar"><nav class="wrap nav" aria-label="Main navigation">
     <a class="brand" href="/en/drivefusion/">JIHUN RHO <span>·</span> DRIVEFUSION</a>
-    <div class="links"><a href="#dashboard">Dashboard</a><a href="#workflow">Review workflow</a><a href="#run">Run locally</a><a href="/en/drivefusion/">← DriveFusion</a></div>
+    <div class="links"><a href="#dashboard">Demo</a><a href="#capabilities">Key features</a><a href="#workflow">Workflow</a><a href="/en/drivefusion/">← DriveFusion</a></div>
   </nav></header>
   <main>
     <section class="hero"><div class="wrap hero-grid">
@@ -63,7 +63,7 @@
         <h1>From collision logs<br>to a clearer <span>story.</span></h1>
         <p class="lead">A local DriveFusion review tool that brings CARLA collision clips, reconstructed vehicle positions, sensor changes, and an evidence-grounded LLM summary together.</p>
         <div class="chips"><span class="chip live">Local web dashboard</span><span class="chip">CARLA recordings</span><span class="chip">LLM-assisted review</span></div>
-        <div class="actions"><a class="btn primary" href="#dashboard">Watch the incident review ↓</a><a class="btn secondary" href="https://github.com/931njhthe-star/DriveFusion">View DriveFusion source ↗</a></div>
+        <div class="actions"><a class="btn primary" href="#dashboard">Watch the incident review ↓</a><a class="btn secondary" href="https://github.com/931njhthe-star/DriveFusion/tree/main/monitor/accident">View source ↗</a></div>
         <div class="stat-row" aria-label="Analysis inputs"><div class="stat"><strong>−3s · 0s · +2s</strong><span>representative frames around impact</span></div><div class="stat"><strong>Signals</strong><span>vehicle, IMU, radar and lane events</span></div><div class="stat"><strong>Local</strong><span>recordings stay in the selected folder</span></div></div>
       </div>
     </div></section>
@@ -73,7 +73,7 @@
       <figure class="screen"><img src="collision-video.gif" alt="Animated DriveFusion collision review showing vehicle placement, sensor changes, and synchronized video" loading="lazy"><figcaption class="screen-caption"><strong>CARLA collision review</strong><span>Video · vehicle reconstruction · sensor timeline</span></figcaption></figure>
     </div></section>
 
-    <section class="section light"><div class="wrap">
+    <section class="section light" id="capabilities"><div class="wrap">
       <div class="section-head"><div><div class="eyebrow">KEY CAPABILITIES</div><h2>Move from the collision moment to its supporting evidence.</h2></div><p>The review screen keeps recorded measurements, visual reconstruction, and generated narrative distinct.</p></div>
       <div class="feature-grid">
         <article class="feature"><div class="num">01 / WATCH</div><h3>Replay the moments around impact</h3><p>Review the camera clip from about eight seconds before to four seconds after impact, with seeking and playback controls.</p></article>
@@ -91,23 +91,10 @@
         <article class="step arrow"><small>03 · PREPARE</small><b>Evidence package</b><span>Representative frames and sensor summary</span></article>
         <article class="step"><small>04 · REVIEW</small><b>LLM narrative</b><span>Readable summary cached with the session</span></article>
       </div>
-      <div class="callout">The LLM helps organize selected simulation evidence. It does not determine real-world cause, legal fault, or injury severity.</div>
+      
     </div></section>
 
-    <section class="section light" id="run"><div class="wrap run-grid">
-      <div><div class="eyebrow">RUN LOCALLY</div><h2>Use your own recordings and keep the API key local.</h2><p>The dashboard reads files from the machine running it. It is a local portfolio demo, not a public service.</p><div class="warning"><b>Keep the API key local.</b> Store <code>OPENAI_API_KEY</code> in the project’s local <code>.env</code> file.</div></div>
-      <div>
-        <pre class="code"><span class="comment"># From the DriveFusion project root</span>
-.\.venv\Scripts\python.exe -m monitor.accident.app --recordings data/recordings
-
-<span class="comment"># Open on the same PC</span>
-http://127.0.0.1:8765</pre>
-        <p>Python’s standard library serves the page; FFmpeg creates incident clips. LLM summaries need a valid API key and network access.</p>
-        <a class="btn primary" href="https://github.com/931njhthe-star/DriveFusion/tree/main/monitor/accident">Open accident-review source ↗</a>
-      </div>
-    </div></section>
-
-    <section class="section"><div class="wrap"><div class="disclaimer"><b>Scope</b><p>This tool reviews recorded CARLA simulations. Ground-truth positions support the reconstruction; interpolated motion is visual. LLM output summarizes selected evidence and does not establish real-world cause, fault, or injury.</p></div></div></section>
+    <section class="section"><div class="wrap"><div class="disclaimer"><b>Scope</b><p>This tool reviews recorded CARLA simulations. Ground-truth positions support the reconstruction; interpolated motion is shown for visualization.</p></div></div></section>
   </main>
   <footer><div class="wrap foot"><a href="/en/drivefusion/">← Back to DriveFusion portfolio</a><span>DriveFusion Incident Review · Built by Jihun Rho</span></div></footer>
 </body>
