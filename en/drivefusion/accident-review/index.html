@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a1115">
+  <meta name="description" content="A local CARLA collision-review dashboard that connects DriveFusion sensor records with evidence-grounded LLM summaries.">
+  <title>DriveFusion Incident Review | Jihun Rho</title>
+  <style>
+    :root{--bg:#0a1115;--panel:#111d22;--panel2:#16252b;--line:#294047;--text:#eaf2ef;--muted:#a1b4b2;--mint:#72e2c3;--amber:#ffbd68;--ink:#101a1d;--paper:#f4f7f4;--paperline:#dce6e1}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:82px}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit}.wrap{width:min(1140px,calc(100% - 48px));margin:auto}
+    .topbar{position:sticky;top:0;z-index:5;background:rgba(10,17,21,.92);backdrop-filter:blur(12px);border-bottom:1px solid #1e3036}.nav{height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-size:12px;font-weight:850;letter-spacing:.09em;text-decoration:none}.brand span{color:var(--mint)}.links{display:flex;align-items:center;gap:22px}.links a{font-size:11px;font-weight:750;color:#c2d1ce;text-decoration:none}.links a:hover{color:var(--mint)}
+    .hero{overflow:hidden;position:relative;background:radial-gradient(ellipse at 74% 48%,#183238 0,transparent 48%),linear-gradient(120deg,#0a1115,#0d191d 55%,#101a1e);border-bottom:1px solid #1c3035}.hero:after{content:"";position:absolute;inset:auto 0 0;height:1px;background:linear-gradient(90deg,transparent,var(--mint),transparent);opacity:.6}.hero-grid{display:grid;grid-template-columns:.96fr 1.04fr;gap:44px;align-items:center;padding:68px 0 72px}.eyebrow{font-size:10px;font-weight:850;letter-spacing:.17em;text-transform:uppercase;color:var(--mint)}h1{max-width:640px;margin:16px 0 18px;font-size:clamp(42px,5.3vw,68px);line-height:.99;letter-spacing:-.06em}h1 span{color:var(--mint)}.lead{max-width:590px;margin:0;color:#b7c8c5;font-size:15px;line-height:1.85}.chips{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0}.chip{border:1px solid #365058;border-radius:999px;padding:5px 10px;color:#c2d2ce;font-size:9px;font-weight:800;letter-spacing:.07em;text-transform:uppercase}.chip.live{border-color:#327968;color:#8df0d1}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 15px;border-radius:8px;text-decoration:none;font-size:11px;font-weight:850}.btn.primary{background:var(--mint);color:#092019}.btn.secondary{border:1px solid #42585d;color:#e8efec}.hero-art{position:relative;min-width:0}.hero-art img{display:block;width:100%;height:auto;border-radius:16px;border:1px solid #315058;box-shadow:0 30px 90px #0008}.art-tag{position:absolute;left:14px;bottom:14px;padding:7px 10px;border:1px solid #4c686c;border-radius:6px;background:#071014d9;color:#c5d7d3;font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:25px}.stat{padding:12px 13px;border:1px solid #253b41;border-radius:10px;background:#101c20}.stat strong{display:block;color:var(--mint);font-size:18px;line-height:1.2;letter-spacing:-.04em}.stat span{display:block;margin-top:5px;color:#9aafad;font-size:9px;line-height:1.45;font-weight:700}
+    .section{padding:76px 0}.section.light{background:var(--paper);color:var(--ink)}.section-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:25px}.section-head h2{max-width:650px;margin:8px 0 0;font-size:clamp(27px,3.7vw,42px);line-height:1.1;letter-spacing:-.05em}.section-head p{max-width:440px;margin:0;color:var(--muted);font-size:12px;line-height:1.8}.light .section-head p{color:#5e706a}.light .eyebrow{color:#087e69}
+    .screen{overflow:hidden;border:1px solid #263c42;border-radius:14px;background:#10191e;box-shadow:0 18px 60px #0004}.screen img{display:block;width:100%;height:auto}.screen-caption{display:flex;justify-content:space-between;gap:14px;padding:11px 15px;color:#9fb2af;font-size:9px;font-weight:750;letter-spacing:.08em;text-transform:uppercase}.screen-caption strong{color:var(--mint)}
+    .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.feature{padding:21px;border:1px solid var(--paperline);border-radius:12px;background:#fff}.feature .num{color:#07856f;font-size:9px;font-weight:900;letter-spacing:.15em}.feature h3{margin:10px 0 7px;font-size:15px;line-height:1.35}.feature p{margin:0;color:#5d6c67;font-size:11px;line-height:1.8}
+    .pipeline{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:20px}.step{min-height:125px;padding:15px 13px;border:1px solid #2c4348;border-radius:10px;background:var(--panel)}.step small{color:var(--mint);font-size:8px;font-weight:900;letter-spacing:.13em}.step b{display:block;margin:8px 0 5px;font-size:11px}.step span{display:block;color:#a5b7b4;font-size:9px;line-height:1.65}.step.arrow{position:relative}.step.arrow:after{content:"→";position:absolute;top:50%;right:-12px;z-index:1;color:var(--amber);font-size:18px;transform:translateY(-50%)}
+    .llm-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.info-card{padding:22px;border:1px solid #2d4449;border-radius:12px;background:#101b20}.info-card h3{margin:0 0 10px;font-size:15px}.info-card p,.info-card li{color:#b3c3c0;font-size:11px;line-height:1.8}.info-card p{margin:0}.info-card ul{margin:0;padding-left:17px}.callout{margin-top:15px;padding:12px 14px;border-left:2px solid var(--amber);border-radius:0 8px 8px 0;background:#211e18;color:#e7cda8;font-size:10px;line-height:1.7}
+    .run-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:24px;align-items:start}.run-grid h2{margin:8px 0 13px;font-size:clamp(27px,3.7vw,40px);line-height:1.1;letter-spacing:-.05em}.run-grid p{color:#5e706a;font-size:12px;line-height:1.8}.code{overflow:auto;padding:16px 18px;border:1px solid #31494d;border-radius:10px;background:#0e191d;color:#d9e7e2;font:11px/1.8 ui-monospace,SFMono-Regular,Consolas,monospace}.code .comment{color:#7d9991}.warning{margin-top:13px;padding:13px 15px;border:1px solid #e8c899;border-radius:9px;background:#fff9ef;color:#6d512b;font-size:10px;line-height:1.7}
+    .disclaimer{padding:23px 25px;border:1px solid #33494b;border-radius:12px;background:linear-gradient(115deg,#132126,#152223)}.disclaimer b{display:block;margin-bottom:6px;color:var(--amber);font-size:11px}.disclaimer p{margin:0;color:#b4c4c0;font-size:10px;line-height:1.8}
+    footer{padding:25px 0;border-top:1px solid #24373c;color:#9fb0ad;font-size:10px}.foot{display:flex;justify-content:space-between;gap:18px}.foot a{color:var(--mint);text-decoration:none}
+    @media(max-width:850px){.hero-grid,.run-grid{grid-template-columns:1fr}.hero-grid{gap:30px;padding:52px 0}.hero-art{max-width:760px}.section{padding:58px 0}.section-head{display:block}.section-head p{margin-top:12px}.feature-grid{grid-template-columns:1fr 1fr}.pipeline{grid-template-columns:repeat(2,1fr)}.step.arrow:after{display:none}}
+    @media(max-width:560px){.wrap{width:calc(100% - 32px)}.nav{height:60px}.links{gap:12px}.links a{font-size:9px}.links a:nth-child(2){display:none}.hero-grid{padding:42px 0}.stat-row{gap:6px}.stat{padding:10px 8px}.stat strong{font-size:15px}.stat span{font-size:8px}.feature-grid,.llm-grid{grid-template-columns:1fr}.pipeline{grid-template-columns:1fr}.step{min-height:auto}.screen-caption{display:block}.screen-caption span{display:block;margin-top:3px}.foot{display:block}.foot span{display:block;margin-top:7px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+  <header class="topbar"><nav class="wrap nav" aria-label="Main navigation">
+    <a class="brand" href="/en/drivefusion/">JIHUN RHO <span>·</span> DRIVEFUSION</a>
+    <div class="links"><a href="#dashboard">Dashboard</a><a href="#workflow">LLM workflow</a><a href="#run">Run locally</a><a href="/en/drivefusion/">← DriveFusion</a></div>
+  </nav></header>
+  <main>
+    <section class="hero"><div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">DRIVEFUSION · LOCAL INCIDENT REVIEW</div>
+        <h1>From collision logs<br>to a clearer <span>story.</span></h1>
+        <p class="lead">A focused accident-review dashboard built on DriveFusion. It brings CARLA collision clips, vehicle and sensor signals, a spatial reconstruction, and an evidence-grounded LLM summary into one review flow.</p>
+        <div class="chips"><span class="chip live">Local web dashboard</span><span class="chip">CARLA recordings</span><span class="chip">LLM-assisted review</span></div>
+        <div class="actions"><a class="btn primary" href="#dashboard">Explore the dashboard ↓</a><a class="btn secondary" href="https://github.com/931njhthe-star/DriveFusion">View DriveFusion source ↗</a></div>
+        <div class="stat-row" aria-label="Analysis inputs"><div class="stat"><strong>−3s · 0s · +2s</strong><span>representative frames around impact</span></div><div class="stat"><strong>Signals</strong><span>vehicle, IMU, radar and lane events</span></div><div class="stat"><strong>Local</strong><span>recordings stay in the selected folder</span></div></div>
+      </div>
+      <figure class="hero-art"><img src="collision-hero.webp" alt="Illustration of camera and radar signals around a vehicle collision"><figcaption class="art-tag">Camera · Radar · Event timeline</figcaption></figure>
+    </div></section>
+
+    <section class="section" id="dashboard"><div class="wrap">
+      <div class="section-head"><div><div class="eyebrow">THE REVIEW SCREEN</div><h2>One incident, viewed from several kinds of evidence.</h2></div><p>The dashboard keeps the event clip, reconstructed vehicle positions, sensor changes, and session context together so a reviewer can move from a collision entry to its supporting records.</p></div>
+      <figure class="screen"><img src="accident-dashboard.webp" alt="DriveFusion accident review dashboard showing a complete speed and IMU graph, vehicle reconstruction, collision video, and right-side incident details"><figcaption class="screen-caption"><strong>CARLA collision review</strong><span>Video-synchronized sensor and event context</span></figcaption></figure>
+    </div></section>
+
+    <section class="section light"><div class="wrap">
+      <div class="section-head"><div><div class="eyebrow">WHAT IT HELPS YOU REVIEW</div><h2>Move from a collision list to the event context.</h2></div><p>Designed to make recorded simulation incidents easier to inspect, while keeping measured values distinct from visual interpolation and LLM-generated narrative.</p></div>
+      <div class="feature-grid">
+        <article class="feature"><div class="num">01 / FIND</div><h3>Browse recorded incidents</h3><p>Discover CARLA sessions and collision events, then narrow the list by weather or available video.</p></article>
+        <article class="feature"><div class="num">02 / WATCH</div><h3>Review the moments around impact</h3><p>Play the camera clip from roughly eight seconds before to four seconds after impact, with speed controls and timeline seeking.</p></article>
+        <article class="feature"><div class="num">03 / RECONSTRUCT</div><h3>See relative vehicle positions</h3><p>Use CARLA position records to draw the vehicles around the ego car. Between recorded samples, motion is interpolated for display.</p></article>
+        <article class="feature"><div class="num">04 / COMPARE</div><h3>Follow sensor changes</h3><p>Inspect speed and IMU graphs alongside camera, radar, lane, vehicle, and collision events on a shared timeline.</p></article>
+        <article class="feature"><div class="num">05 / SUMMARIZE</div><h3>Ask an LLM to organize evidence</h3><p>Send representative still frames and a compact sensor summary for a readable, cached incident narrative.</p></article>
+        <article class="feature"><div class="num">06 / KEEP CONTEXT</div><h3>Return to the source records</h3><p>Video previews and LLM results are cached with the local recording session, alongside the original CARLA files.</p></article>
+      </div>
+    </div></section>
+
+    <section class="section" id="workflow"><div class="wrap">
+      <div class="section-head"><div><div class="eyebrow">HOW THE ANALYSIS IS BUILT</div><h2>DriveFusion records the event; the review page organizes it.</h2></div><p>The dashboard is a separate local web interface beside the existing Qt measurement screen. It uses the saved DriveFusion/CARLA data instead of replacing the real-time pipeline.</p></div>
+      <div class="pipeline" aria-label="Incident review workflow">
+        <article class="step arrow"><small>01 · INPUT</small><b>CARLA session</b><span>session.json, measurements.jsonl and ground_truth.jsonl</span></article>
+        <article class="step arrow"><small>02 · COLLECT</small><b>Local Python server</b><span>Find sessions and assemble collision-centered records</span></article>
+        <article class="step arrow"><small>03 · PRESENT</small><b>Synced dashboard</b><span>HTML, CSS, JavaScript and SVG; FFmpeg builds the preview clip</span></article>
+        <article class="step arrow"><small>04 · SUMMARIZE</small><b>Selected evidence</b><span>Representative stills plus vehicle, IMU, radar and lane summaries</span></article>
+        <article class="step"><small>05 · SAVE</small><b>Review narrative</b><span>OpenAI Responses API result cached as llm_analysis.json</span></article>
+      </div>
+      <div class="llm-grid" style="margin-top:18px">
+        <article class="info-card"><h3>What the model receives</h3><p>When available, still frames near −3 seconds, impact, and +2 seconds, together with a compact summary of recorded vehicle and sensor signals. The full video is not sent to the model.</p></article>
+        <article class="info-card"><h3>What the result means</h3><p>A readable description grounded in the selected simulation evidence. It can help organize a review; it does not establish real-world cause, fault, or injury severity.</p></article>
+      </div>
+      <div class="callout">Recorded sensors do not necessarily sample at the same instant or interval. The dashboard aligns the review around simulation time, but it does not treat every sensor value as a simultaneous measurement.</div>
+    </div></section>
+
+    <section class="section light" id="run"><div class="wrap run-grid">
+      <div><div class="eyebrow">TRY IT LOCALLY</div><h2>A portfolio page for the tool, not a public link to localhost.</h2><p>The dashboard reads recordings from the machine running it, so <code>127.0.0.1:8765</code> is intentionally a local address. Visitors can inspect this page and the source; to use the dashboard, run DriveFusion locally with their own CARLA recordings and API key.</p><div class="warning"><b>Keep the API key local.</b> Put <code>OPENAI_API_KEY</code> in the project’s local <code>.env</code> file. Never publish the key or expose this local server as a public service.</div></div>
+      <div>
+        <pre class="code"><span class="comment"># From the DriveFusion project root</span>
+.\.venv\Scripts\python.exe -m monitor.accident.app --recordings data/recordings
+
+<span class="comment"># Open in a browser on the same PC</span>
+http://127.0.0.1:8765
+
+<span class="comment"># Optional local .env settings</span>
+OPENAI_API_KEY=your-api-key
+OPENAI_MODEL=gpt-6-luna</pre>
+        <p>Python’s standard library serves the page; FFmpeg is needed to create incident clips. LLM summaries require network access and a valid API key.</p>
+        <a class="btn primary" href="https://github.com/931njhthe-star/DriveFusion/tree/main/monitor/accident">Open accident-review source ↗</a>
+      </div>
+    </div></section>
+
+    <section class="section"><div class="wrap"><div class="disclaimer"><b>Scope and limitations</b><p>This interface reviews recorded CARLA simulation events. Ground-truth positions support the spatial reconstruction and evaluation; interpolated positions are visual estimates between samples. LLM output is an evidence summary, not a determination of collision causality, legal fault, or physical injury.</p></div></div></section>
+  </main>
+  <footer><div class="wrap foot"><a href="/en/drivefusion/">← Back to DriveFusion portfolio</a><span>DriveFusion Incident Review · Built by Jihun Rho</span></div></footer>
+</body>
+</html>
