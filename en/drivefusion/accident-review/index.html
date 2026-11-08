@@ -54,7 +54,7 @@
 <body>
   <header class="topbar"><nav class="wrap nav" aria-label="Main navigation">
     <a class="brand" href="/en/drivefusion/">JIHUN RHO <span>·</span> DRIVEFUSION</a>
-    <div class="links"><a href="#dashboard">Dashboard</a><a href="#workflow">LLM workflow</a><a href="#run">Run locally</a><a href="/en/drivefusion/">← DriveFusion</a></div>
+    <div class="links"><a href="#dashboard">Dashboard</a><a href="#workflow">Review workflow</a><a href="#run">Run locally</a><a href="/en/drivefusion/">← DriveFusion</a></div>
   </nav></header>
   <main>
     <section class="hero"><div class="wrap hero-grid">
@@ -98,7 +98,7 @@
       <div><div class="eyebrow">RUN LOCALLY</div><h2>Use your own recordings and keep the API key local.</h2><p>The dashboard reads files from the machine running it. It is a local portfolio demo, not a public service.</p><div class="warning"><b>Keep the API key local.</b> Store <code>OPENAI_API_KEY</code> in the project’s local <code>.env</code> file.</div></div>
       <div>
         <pre class="code"><span class="comment"># From the DriveFusion project root</span>
-.\\.venv\\Scripts\\python.exe -m monitor.accident.app --recordings data/recordings
+.\.venv\Scripts\python.exe -m monitor.accident.app --recordings data/recordings
 
 <span class="comment"># Open on the same PC</span>
 http://127.0.0.1:8765</pre>
