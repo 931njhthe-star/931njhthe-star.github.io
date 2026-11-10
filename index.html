@@ -460,6 +460,13 @@
 .floating-language-switch .language-choice:hover,.floating-language-switch .language-choice:focus-visible{background:#334737;color:white;outline:2px solid #8edb5e;outline-offset:1px}
 .floating-language-switch .language-choice.active{background:#79c943;color:#10200b;pointer-events:none}
 @media(max-width:600px){.floating-language-switch{top:auto;bottom:calc(14px + env(safe-area-inset-bottom,0px));right:12px;padding:5px}.floating-language-switch .language-choice{min-height:38px;padding:0 13px}}
+
+/* Keep DriveFusion and Robotics unchanged; display remaining projects three across on desktop. */
+@media (min-width:1101px){
+  .other-projects-section .other-grid{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .other-projects-section .other-grid>.other-card:nth-child(-n+2){grid-column:span 3}
+  .other-projects-section .other-grid>.other-card:nth-child(n+3){grid-column:span 2}
+}
 </style>
 <style>
 /* Consistent project card order: title, media, description, details. */
