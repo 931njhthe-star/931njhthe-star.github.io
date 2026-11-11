@@ -147,13 +147,6 @@
         <article class="step arrow"><small>03 · PREPARE</small><b>Evidence package</b><span>Select still frames and align sensor summaries</span></article>
         <article class="step"><small>04 · SUMMARIZE</small><b>LLM narrative</b><span>Send evidence to Responses API; cache the result</span></article>
       </div>
-      <div class="implementation-note"><strong>Two paths from the same session:</strong> The dashboard uses camera frames to build an FFmpeg preview, sensor records for the timeline, and CARLA ground-truth positions for the vehicle reconstruction. For LLM analysis, Python selects still frames near −3 s, impact, and +2 s, then pairs them with a time-aligned vehicle, IMU, radar, and lane summary. Only this evidence package goes to the OpenAI Responses API—not the full video. The narrative is saved as <code>llm_analysis.json</code> beside the session.</div>
-      <div class="data-files" aria-label="Local recording files">
-        <div class="data-file"><code>session.json</code><span>Session metadata such as weather and recording mode</span></div>
-        <div class="data-file"><code>measurements.jsonl</code><span>Camera references, collision events, vehicle and sensor records</span></div>
-        <div class="data-file"><code>ground_truth.jsonl</code><span>CARLA vehicle positions used in the reconstruction view</span></div>
-      </div>
-      <div class="implementation-stack" aria-label="Implementation details"><span>Python local server</span><span>FFmpeg preview clip</span><span>OpenAI Responses API</span><span>Session-level JSON cache</span></div>
     </div></section>
 
     
