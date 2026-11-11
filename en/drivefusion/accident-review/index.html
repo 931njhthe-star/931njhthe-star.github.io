@@ -92,6 +92,9 @@
     .cross-project-hero-copy small{display:block;margin-bottom:5px;color:#648e20;font-size:9px;font-weight:850;letter-spacing:.09em;line-height:1.35;text-transform:uppercase}
 
     .cross-project-hero-copy small{display:inline-flex;align-items:center;margin:0 0 9px;padding:6px 10px;border:1px solid #c6dda9;border-radius:999px;background:#eaf5dc;color:#3f7300;font-size:10px;font-weight:900;letter-spacing:.055em;line-height:1.2;text-transform:uppercase;box-shadow:0 2px 6px #4f800015}
+
+    /* Engineering decisions: same three-column card structure as DriveFusion. */
+    .challenge-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.challenge-card{padding:20px;border:1px solid var(--paperline);border-radius:14px;background:#fff;color:var(--ink)}.challenge-card h3{font-size:15px;line-height:1.45;margin:8px 0}.challenge-card p{font-size:12px;line-height:1.75;color:#5e706a;margin:0}.challenge-card .challenge-number{font-size:10px;font-weight:850;letter-spacing:.12em;color:#087e69}.challenge-card details{margin-top:15px;border-top:1px solid var(--paperline);padding-top:11px}.challenge-card summary{cursor:pointer;font-size:12px;font-weight:800;color:#087e69}.challenge-card details p{margin-top:10px}.challenge-card details strong{color:var(--ink)}@media(max-width:850px){.challenge-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -129,6 +132,12 @@
         <article class="feature"><div class="num">04 / SUMMARIZE</div><h3>Organize selected evidence with an LLM</h3><p>Generate a cached narrative from representative still frames and a compact sensor summary. The full video is not sent.</p></article>
       </div>
     </div></section>
+
+    <section class="section light" id="challenges"><div class="wrap"><div class="section-head"><div><div class="eyebrow">ENGINEERING DECISIONS</div><h2>Technical Challenges &amp; Solutions</h2></div><p>Three engineering problems encountered while building the incident review system and how they were addressed.</p></div><div class="challenge-grid">
+<article class="challenge-card"><span class="challenge-number">01</span><h3>Flickering during frame playback</h3><p>Replaced sequential still-image updates with video playback to eliminate distracting frame transitions.</p><details><summary>View details</summary><p><strong>Problem · </strong>Displaying saved image frames one by one in the browser caused flickering and interrupted playback.</p><p><strong>Solution &amp; result · </strong>Combined individual frames into a video using FFmpeg and switched to the browser's video player, enabling continuous playback around the incident.</p></details></article>
+<article class="challenge-card"><span class="challenge-number">02</span><h3>Jerky vehicle motion in replay</h3><p>Interpolated between recorded vehicle positions to make the incident reconstruction smoother.</p><details><summary>View details</summary><p><strong>Problem · </strong>Updating vehicle positions only at recorded timestamps made vehicles appear to jump between locations.</p><p><strong>Solution &amp; result · </strong>Interpolated intermediate positions between adjacent records and updated the visualization according to playback time, producing smoother motion during incident replay.</p></details></article>
+<article class="challenge-card"><span class="challenge-number">03</span><h3>Misaligned video and sensor timelines</h3><p>Synchronized video, vehicle positions, and sensor charts against a shared timeline.</p><details><summary>View details</summary><p><strong>Problem · </strong>Video, vehicle positions, and speed, IMU, and radar records did not naturally update at the same instants, making direct comparison difficult.</p><p><strong>Solution &amp; result · </strong>Aligned the incident window around the collision timestamp and updated vehicle positions and sensor charts using video playback time, allowing the same moment to be examined across views.</p></details></article>
+</div></div></section>
 
     <section class="section" id="workflow"><div class="wrap">
       <div class="section-head"><div><div class="eyebrow">LOCAL DATA → LLM EVIDENCE</div><h2>From CARLA session files to a cached LLM summary.</h2></div><p>A local Python server reads the selected recording folder. The dashboard and LLM use different parts of the same session data.</p></div>
