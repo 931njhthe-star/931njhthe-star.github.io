@@ -103,7 +103,7 @@
 .legacy-layout{display:grid;grid-template-columns:220px 1fr;align-items:center;gap:22px}
 .legacy-chip,.single-core-badge,.single-core-card{display:grid;place-items:center;text-align:center;border-radius:10px;background:#223322;color:#dff1d0;font-size:13px;font-weight:800;line-height:1.45;padding:14px}
 .legacy-chip{min-height:62px}
-.legacy-work{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:8px 14px;color:#526749;font-size:11px;font-weight:750}
+.legacy-work{display:grid;grid-template-columns:1fr;align-items:center;gap:8px;color:#526749;font-size:11px;font-weight:750}
 .legacy-work span{grid-column:1/-1}
 .legacy-work i{height:9px;border-radius:9px;background:#91b86a}
 .measurement-layout{display:grid;grid-template-columns:180px 1fr;gap:16px;align-items:stretch}
