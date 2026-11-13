@@ -84,7 +84,7 @@
 .detail-industrial-proof .production-note{font-size:9px;line-height:1.5;margin:10px 0 0;color:#a9bea0;border-top:1px solid #394b32;padding-top:8px}
 .detail-industrial-proof .production-note::before{content:"ⓘ";color:#b8ed76;margin-right:6px}
 .execution-detail{margin-top:0;padding:0;border:0;border-radius:0;background:transparent}
-.execution-figure{width:82%;max-width:800px;margin:0 auto}
+.execution-figure{width:96%;max-width:1080px;margin:0 auto}
 @media(max-width:760px){.pipeline-proof-stack .detail-architecture{padding:20px 18px 17px}.detail-industrial-proof{padding:19px 18px}.detail-industrial-proof .proof-metric-groups{grid-template-columns:1fr;gap:13px}.detail-industrial-proof .industrial-proof-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.detail-industrial-proof .proof-stat{padding:14px 10px}.detail-industrial-proof .proof-stat strong{font-size:clamp(23px,6.8vw,32px)}.detail-industrial-proof .proof-stat b{font-size:11px}.detail-industrial-proof .proof-stat span{font-size:10px}}
 @media(max-width:440px){.detail-industrial-proof .industrial-proof-grid{grid-template-columns:1fr}.detail-industrial-proof .proof-stat{padding:16px 18px}}
 
@@ -92,8 +92,16 @@
 /* Vertical optimization progression leading into the final CPU–GPU pipeline. */
 .optimization-progression{width:100%;margin:28px auto 0}
 .progression-title{text-align:center;margin:0 0 24px;color:#172117;font-size:21px;font-weight:850;letter-spacing:-.4px;line-height:1.3}
-.progression-stage-flow{width:100%;max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.progression-stage{background:#f3f7ef;border-radius:12px;padding:16px 18px 17px}
+.progression-stage-flow{width:100%;max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"one two" "four three";gap:14px}
+.progression-stage{position:relative;background:#f3f7ef;border-radius:12px;padding:16px 18px 17px}
+.progression-stage:nth-child(1){grid-area:one}
+.progression-stage:nth-child(2){grid-area:two}
+.progression-stage:nth-child(3){grid-area:three}
+.progression-stage:nth-child(4){grid-area:four}
+.progression-stage:nth-child(1)::after,.progression-stage:nth-child(3)::after{position:absolute;color:#8ab64b;font-size:20px;font-weight:850;line-height:1;z-index:2}
+.progression-stage:nth-child(1)::after{content:"→";right:-15px;top:50%;transform:translate(50%,-50%)}
+.progression-stage:nth-child(2)::after{content:"↓";position:absolute;left:50%;bottom:-23px;transform:translateX(-50%);color:#8ab64b;font-size:20px;font-weight:850;line-height:1;z-index:2}
+.progression-stage:nth-child(3)::after{content:"←";left:-15px;top:50%;transform:translate(-50%,-50%)}
 .progression-stage-head{display:flex;align-items:flex-start;gap:11px;margin:0 0 12px}
 .progression-number{flex:none;display:grid;place-items:center;width:31px;height:31px;border-radius:50%;background:#1b2b19;color:#c3ef8e;border:2px solid #9bd653;font-size:11px;font-weight:850;line-height:1}
 .progression-stage h3{margin:0 0 4px;color:#172117;font-size:15px;font-weight:800;line-height:1.35}
@@ -127,6 +135,7 @@
 .cuda-streams-card>strong{display:block;margin-bottom:8px;color:#405c31;text-align:center;font-size:11px;letter-spacing:.7px}
 .stream-row{height:22px;display:flex;align-items:center;margin:4px 0;padding:0 9px;border-radius:6px;background:#fff;color:#526749;font-size:9px;font-weight:750}
 .cuda-streams-card small{display:block;margin-top:7px;color:#65715f;text-align:center;font-size:10px}
-.progression-result{text-align:center;margin:19px 0 14px;color:#69884a;font-size:12px;font-weight:850;line-height:1.45}
-@media(max-width:760px){.progression-title{font-size:19px;margin-bottom:18px}.progression-stage-flow{grid-template-columns:1fr;gap:10px}.progression-stage{padding:16px 17px 17px}.legacy-layout{grid-template-columns:145px 1fr;gap:14px}.measurement-layout{grid-template-columns:135px 1fr;gap:10px}.measurement-row{grid-template-columns:minmax(110px,150px) 1fr;gap:8px}.hybrid-layout{grid-template-columns:150px 30px 1fr;gap:10px}.kernel-selection-note{text-align:left}}
+.progression-final-connector{width:100%;max-width:960px;height:38px;margin:0 auto}.progression-final-connector svg{display:block;width:100%;height:100%;overflow:visible}.final-connector-mobile{display:none!important}.progression-result{text-align:center;margin:10px 0 14px;color:#69884a;font-size:12px;font-weight:850;line-height:1.45}
+@media(max-width:760px){.progression-title{font-size:19px;margin-bottom:18px}.progression-stage-flow{grid-template-columns:1fr;grid-template-areas:"one" "two" "three" "four";gap:10px}.progression-stage:nth-child(1)::after,.progression-stage:nth-child(2)::after,.progression-stage:nth-child(3)::after{content:"↓";left:50%;right:auto;top:auto;bottom:-18px;transform:translateX(-50%)}.progression-stage{padding:16px 17px 17px}.legacy-layout{grid-template-columns:145px 1fr;gap:14px}.measurement-layout{grid-template-columns:135px 1fr;gap:10px}.measurement-row{grid-template-columns:minmax(110px,150px) 1fr;gap:8px}.hybrid-layout{grid-template-columns:150px 30px 1fr;gap:10px}.kernel-selection-note{text-align:left}}
+@media(max-width:760px){.final-connector-desktop{display:none!important}.final-connector-mobile{display:block!important}.progression-final-connector{height:30px}}
 @media(max-width:480px){.optimization-progression{margin-top:22px}.kernel-table{grid-template-columns:56px minmax(72px,1fr) minmax(72px,1fr) 40px;gap:4px}.kernel-heading{font-size:7px;padding-left:2px;padding-right:2px}.kernel-alg,.kernel-cell{font-size:8px;padding:5px 5px}.kernel-measure{font-size:8px}.progression-stage-head{gap:10px}.progression-stage h3{font-size:15px}.progression-stage-head p{font-size:10px}.legacy-layout{grid-template-columns:1fr;gap:10px}.legacy-chip{min-height:48px}.measurement-layout{grid-template-columns:1fr}.single-core-badge{min-height:48px}.measurement-row{grid-template-columns:1fr;gap:4px;padding:9px 11px}.measurement-copy{font-size:10px}.hybrid-layout{grid-template-columns:100px 24px 1fr;gap:6px}.single-core-card{min-height:84px;padding:9px;font-size:10px}.cuda-streams-card{padding:10px}.stream-row{font-size:9px}}
