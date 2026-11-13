@@ -87,3 +87,21 @@
 .execution-figure{width:96%;max-width:1080px;margin:0 auto}
 @media(max-width:760px){.pipeline-proof-stack .detail-architecture{padding:20px 18px 17px}.detail-industrial-proof{padding:19px 18px}.detail-industrial-proof .proof-metric-groups{grid-template-columns:1fr;gap:13px}.detail-industrial-proof .industrial-proof-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.detail-industrial-proof .proof-stat{padding:14px 10px}.detail-industrial-proof .proof-stat strong{font-size:clamp(23px,6.8vw,32px)}.detail-industrial-proof .proof-stat b{font-size:11px}.detail-industrial-proof .proof-stat span{font-size:10px}}
 @media(max-width:440px){.detail-industrial-proof .industrial-proof-grid{grid-template-columns:1fr}.detail-industrial-proof .proof-stat{padding:16px 18px}}
+
+
+/* Optimization history leading into the final CPU–GPU pipeline. */
+.optimization-progression{width:100%;margin:0 auto 19px}
+.progression-label{text-align:center;margin:0 0 14px;color:#61843e;font-size:10px;font-weight:850;letter-spacing:1.25px;line-height:1.3}
+.progression-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;position:relative}
+.progression-steps::before{content:"";position:absolute;left:12.5%;right:12.5%;top:16px;height:2px;background:#91b86a}
+.progression-step{position:relative;min-width:0;text-align:center}
+.progression-number{position:relative;z-index:1;display:grid;place-items:center;width:34px;height:34px;margin:0 auto 9px;border-radius:50%;background:#1b2b19;border:2px solid #9bd653;color:#c3ef8e;font-size:10px;font-weight:850;line-height:1}
+.progression-step h3{margin:0 0 4px;color:#172117;font-size:13px;font-weight:800;line-height:1.35}
+.progression-step p{margin:0;color:#65715f;font-size:10px;line-height:1.5;min-height:30px}
+.progression-visual{display:block;width:100%;max-width:230px;height:auto;margin:12px auto 0;overflow:visible;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+.progression-visual text{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+.progression-connector{position:relative;width:2px;height:20px;margin:13px auto 7px;background:#8ab64b}
+.progression-connector::after{content:"";position:absolute;left:50%;bottom:-1px;transform:translateX(-50%);border-left:6px solid transparent;border-right:6px solid transparent;border-top:8px solid #8ab64b}
+.progression-result{text-align:center;margin:0 0 9px;color:#69884a;font-size:10px;font-weight:850;line-height:1.4}
+@media(max-width:760px){.progression-steps{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:20px}.progression-steps::before{display:none}.progression-step p{min-height:30px}.progression-visual{max-width:250px}}
+@media(max-width:440px){.progression-step h3{font-size:12px}.progression-step p{font-size:9px}.progression-visual{margin-top:9px}}
