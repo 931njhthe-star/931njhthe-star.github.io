@@ -63,7 +63,7 @@
 
 @media(min-width:1101px){.execution-detail{width:min(1800px,calc(100vw - 80px));max-width:none;margin-left:50%;transform:translateX(-50%)}}
 .execution-detail{margin-top:24px;padding:0;border:0;border-radius:0;background:transparent}.execution-figure{margin:0}.execution-figure img{display:block;width:100%;height:auto;border:0;border-radius:0}
-@media(max-width:600px){.execution-figure{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}.execution-figure img{width:850px;max-width:none}}
+@media(max-width:600px){.execution-figure{width:100%;max-width:none;overflow:visible}.execution-image-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}.execution-image-wrap img{width:850px;max-width:none}.final-structure-caption-desktop{display:none}.final-structure-caption-mobile{display:block;margin:0;padding:13px 16px 16px;background:#101710;border-radius:0 0 12px 12px;color:#dff4c2;text-align:center;font-size:14px;font-weight:800;line-height:1.45}}
 
 
 /* Production metrics and conceptual execution detail, aligned as one pipeline section. */
@@ -88,6 +88,7 @@
 .execution-detail{margin-top:0;padding:0;border:0;border-radius:0;background:transparent}
 .execution-figure{width:96%;max-width:1080px;margin:0 auto}
 @media(min-width:1101px){.execution-detail .execution-figure{width:100%;max-width:none;margin:0}}
+.execution-image-wrap{position:relative;width:100%}.execution-image-wrap img{display:block;width:100%;height:auto}.final-structure-caption-desktop{position:absolute;left:50%;bottom:clamp(14px,1.6vw,24px);transform:translateX(-50%);margin:0;color:#dff4c2;font-size:clamp(16px,1.6vw,22px);font-weight:850;letter-spacing:-.25px;text-align:center;white-space:nowrap;text-shadow:0 2px 10px #0009;pointer-events:none}.final-structure-caption-mobile{display:none}
 @media(max-width:760px){.pipeline-proof-stack .detail-architecture{padding:20px 18px 17px}.detail-industrial-proof{padding:19px 18px}.detail-industrial-proof .proof-metric-groups{grid-template-columns:1fr;gap:13px}.detail-industrial-proof .industrial-proof-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.detail-industrial-proof .proof-stat{padding:14px 10px}.detail-industrial-proof .proof-stat strong{font-size:clamp(23px,6.8vw,32px)}.detail-industrial-proof .proof-stat b{font-size:11px}.detail-industrial-proof .proof-stat span{font-size:10px}}
 @media(max-width:440px){.detail-industrial-proof .industrial-proof-grid{grid-template-columns:1fr}.detail-industrial-proof .proof-stat{padding:16px 18px}}
 
