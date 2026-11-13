@@ -61,13 +61,14 @@
 @media(max-width:850px){.detail-architecture{padding:20px}}
 @media(max-width:480px){.detail-architecture{padding:18px 15px}}
 
+@media(min-width:1101px){.execution-detail{width:min(1800px,calc(100vw - 80px));max-width:none;margin-left:50%;transform:translateX(-50%)}}
 .execution-detail{margin-top:24px;padding:0;border:0;border-radius:0;background:transparent}.execution-figure{margin:0}.execution-figure img{display:block;width:100%;height:auto;border:0;border-radius:0}
 @media(max-width:600px){.execution-figure{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}.execution-figure img{width:850px;max-width:none}}
 
 
 /* Production metrics and conceptual execution detail, aligned as one pipeline section. */
 .pipeline-proof-stack{margin:0 0 24px;border:1px solid #344c37;border-radius:16px;background:#141d16;overflow:hidden}
-@media(min-width:1101px){#pipeline .container{width:min(1800px,calc(100% - 80px))}}
+
 .pipeline-proof-stack .detail-architecture{grid-column:auto;width:auto;margin:0;padding:24px 28px 20px;border:0;border-radius:0;background:transparent}
 .detail-industrial-proof{grid-column:auto;background:#111a10;color:#f1f8ec;border-top:1px solid #405838;padding:20px 28px 18px}
 .detail-industrial-proof .production-badge{display:flex;align-items:center;gap:8px;flex-wrap:wrap;color:#b8ed76;font-size:9px;letter-spacing:1.2px;font-weight:850;line-height:1.4}
