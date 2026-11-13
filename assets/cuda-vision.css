@@ -102,6 +102,6 @@
 .progression-visual text{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
 .progression-connector{position:relative;width:2px;height:20px;margin:13px auto 7px;background:#8ab64b}
 .progression-connector::after{content:"";position:absolute;left:50%;bottom:-1px;transform:translateX(-50%);border-left:6px solid transparent;border-right:6px solid transparent;border-top:8px solid #8ab64b}
-.progression-result{text-align:center;margin:0 0 9px;color:#69884a;font-size:10px;font-weight:850;line-height:1.4}
+.progression-result{text-align:center;margin:0 0 21px;color:#69884a;font-size:10px;font-weight:850;line-height:1.4}
 @media(max-width:760px){.progression-steps{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:20px}.progression-steps::before{display:none}.progression-step p{min-height:30px}.progression-visual{max-width:250px}}
 @media(max-width:440px){.progression-step h3{font-size:12px}.progression-step p{font-size:9px}.progression-visual{margin-top:9px}}
