@@ -79,4 +79,5 @@
   <text x="1104" y="250" fill="#aee56c" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="800" text-anchor="middle">OUTPUT</text>
   <text x="1104" y="277" fill="#f1f6ed" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="750" text-anchor="middle">결과 취합</text>
   <text x="1104" y="300" fill="#bdcbb6" font-family="Inter,Arial,sans-serif" font-size="10" text-anchor="middle">검사 파이프라인으로</text>
+  <text x="600" y="486" fill="#dff4c2" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="800" text-anchor="middle">CPU 멀티스레딩을 추가한 최종 구조</text>
 </svg>
