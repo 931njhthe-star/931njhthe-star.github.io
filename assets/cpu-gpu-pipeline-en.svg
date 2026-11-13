@@ -9,73 +9,74 @@
   <text x="30" y="35" fill="#aee56c" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="800" letter-spacing="1.5">EXECUTION MODEL · CONCEPTUAL EXAMPLE</text>
   <text x="30" y="59" fill="#dce8d5" font-family="Inter,Arial,sans-serif" font-size="13">CPU task queues and asynchronous GPU execution</text>
 
-  <rect x="28" y="195" width="128" height="112" rx="12" fill="#202c22" stroke="#526749"/>
-  <text x="92" y="228" fill="#aee56c" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="800" text-anchor="middle">INPUT</text>
-  <text x="92" y="255" fill="#f1f6ed" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="750" text-anchor="middle">Image batches</text>
-  <text x="92" y="277" fill="#bdcbb6" font-family="Inter,Arial,sans-serif" font-size="10" text-anchor="middle">Work units</text>
+  <rect x="28" y="216" width="128" height="112" rx="12" fill="#202c22" stroke="#526749"/>
+  <text x="92" y="249" fill="#aee56c" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="800" text-anchor="middle">INPUT</text>
+  <text x="92" y="276" fill="#f1f6ed" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="750" text-anchor="middle">Image batches</text>
+  <text x="92" y="298" fill="#bdcbb6" font-family="Inter,Arial,sans-serif" font-size="10" text-anchor="middle">Work units</text>
 
-  <path d="M157 251H187" stroke="#a5df61" stroke-width="2" marker-end="url(#arrow)"/>
-  <rect x="191" y="184" width="150" height="134" rx="12" fill="#202c22" stroke="#526749"/>
-  <text x="266" y="215" fill="#aee56c" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="800" text-anchor="middle">CPU</text>
-  <text x="266" y="243" fill="#f1f6ed" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="750" text-anchor="middle">Task dispatcher</text>
-  <text x="266" y="265" fill="#bdcbb6" font-family="Inter,Arial,sans-serif" font-size="10" text-anchor="middle">Multithreaded scheduling</text>
-  <text x="266" y="284" fill="#bdcbb6" font-family="Inter,Arial,sans-serif" font-size="10" text-anchor="middle">CPU–GPU allocation</text>
+  <path d="M157 272H187" stroke="#a5df61" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="191" y="205" width="150" height="134" rx="12" fill="#202c22" stroke="#526749"/>
+  <text x="266" y="236" fill="#aee56c" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="800" text-anchor="middle">CPU</text>
+  <text x="266" y="264" fill="#f1f6ed" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="750" text-anchor="middle">Task dispatcher</text>
+  <text x="266" y="286" fill="#bdcbb6" font-family="Inter,Arial,sans-serif" font-size="10" text-anchor="middle">Multithreaded scheduling</text>
+  <text x="266" y="305" fill="#bdcbb6" font-family="Inter,Arial,sans-serif" font-size="10" text-anchor="middle">CPU–GPU allocation</text>
 
-  <path d="M342 251H366M366 136V374M366 136H386M366 255H386M366 374H386" fill="none" stroke="#83b84c" stroke-width="2"/>
-  <path d="M386 136H397M386 255H397M386 374H397" stroke="#a5df61" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M342 272H366M366 153V391" fill="none" stroke="#83b84c" stroke-width="2"/>
+  <path d="M366 153H397M366 272H397M366 391H397" stroke="#a5df61" stroke-width="2" marker-end="url(#arrow)"/>
 
   <g font-family="Inter,Arial,sans-serif">
-    <rect x="401" y="101" width="72" height="70" rx="9" fill="#26351f" stroke="#5c7948"/>
-    <text x="437" y="128" fill="#aee56c" font-size="9" font-weight="800" text-anchor="middle">QUEUE A</text>
-    <text x="437" y="149" fill="#dce8d5" font-size="9" text-anchor="middle">pending work</text>
-    <rect x="481" y="101" width="125" height="70" rx="9" fill="#202c22" stroke="#526749"/>
-    <text x="543" y="128" fill="#f1f6ed" font-size="11" font-weight="750" text-anchor="middle">CPU core / worker A</text>
-    <text x="543" y="149" fill="#bdcbb6" font-size="9" text-anchor="middle">prepare · submit</text>
+    <rect x="401" y="118" width="72" height="70" rx="9" fill="#26351f" stroke="#5c7948"/>
+    <text x="437" y="145" fill="#aee56c" font-size="9" font-weight="800" text-anchor="middle">QUEUE A</text>
+    <text x="437" y="166" fill="#dce8d5" font-size="9" text-anchor="middle">pending work</text>
+    <rect x="488" y="118" width="118" height="70" rx="9" fill="#202c22" stroke="#526749"/>
+    <text x="547" y="145" fill="#f1f6ed" font-size="11" font-weight="750" text-anchor="middle">CPU core / worker A</text>
+    <text x="547" y="166" fill="#bdcbb6" font-size="9" text-anchor="middle">prepare · submit</text>
 
-    <rect x="401" y="220" width="72" height="70" rx="9" fill="#26351f" stroke="#5c7948"/>
-    <text x="437" y="247" fill="#aee56c" font-size="9" font-weight="800" text-anchor="middle">QUEUE B</text>
-    <text x="437" y="268" fill="#dce8d5" font-size="9" text-anchor="middle">pending work</text>
-    <rect x="481" y="220" width="125" height="70" rx="9" fill="#202c22" stroke="#526749"/>
-    <text x="543" y="247" fill="#f1f6ed" font-size="11" font-weight="750" text-anchor="middle">CPU core / worker B</text>
-    <text x="543" y="268" fill="#bdcbb6" font-size="9" text-anchor="middle">prepare · submit</text>
+    <rect x="401" y="237" width="72" height="70" rx="9" fill="#26351f" stroke="#5c7948"/>
+    <text x="437" y="264" fill="#aee56c" font-size="9" font-weight="800" text-anchor="middle">QUEUE B</text>
+    <text x="437" y="285" fill="#dce8d5" font-size="9" text-anchor="middle">pending work</text>
+    <rect x="488" y="237" width="118" height="70" rx="9" fill="#202c22" stroke="#526749"/>
+    <text x="547" y="264" fill="#f1f6ed" font-size="11" font-weight="750" text-anchor="middle">CPU core / worker B</text>
+    <text x="547" y="285" fill="#bdcbb6" font-size="9" text-anchor="middle">prepare · submit</text>
 
-    <rect x="401" y="339" width="72" height="70" rx="9" fill="#26351f" stroke="#5c7948"/>
-    <text x="437" y="381" fill="#aee56c" font-size="20" font-weight="800" text-anchor="middle">···</text>
-    <rect x="481" y="339" width="125" height="70" rx="9" fill="#202c22" stroke="#526749"/>
-    <text x="543" y="367" fill="#f1f6ed" font-size="11" font-weight="750" text-anchor="middle">CPU core / worker …</text>
-    <text x="543" y="388" fill="#bdcbb6" font-size="9" text-anchor="middle">additional work lanes</text>
+    <rect x="401" y="356" width="72" height="70" rx="9" fill="#26351f" stroke="#5c7948"/>
+    <text x="437" y="398" fill="#aee56c" font-size="20" font-weight="800" text-anchor="middle">···</text>
+    <rect x="488" y="356" width="118" height="70" rx="9" fill="#202c22" stroke="#526749"/>
+    <text x="547" y="384" fill="#f1f6ed" font-size="11" font-weight="750" text-anchor="middle">CPU core / worker …</text>
+    <text x="547" y="405" fill="#bdcbb6" font-size="9" text-anchor="middle">additional work lanes</text>
   </g>
 
-  <rect x="650" y="77" width="350" height="351" rx="14" fill="url(#gpu)" stroke="#78a94b" stroke-width="1.4"/>
-  <text x="670" y="103" fill="#b7e77c" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="800" letter-spacing=".7">SHARED GPU · CUDA ASYNC STREAMS</text>
-  <text x="670" y="121" fill="#9caf92" font-family="Inter,Arial,sans-serif" font-size="9">Workers submit asynchronous operations</text>
-  <path d="M607 136C627 136 629 172 649 172M607 255H649M607 374C627 374 629 337 649 337" fill="none" stroke="#a5df61" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M474 153H483M474 272H483M474 391H483" stroke="#a5df61" stroke-width="1.7" marker-end="url(#arrow)"/>
+  <rect x="650" y="75" width="350" height="378" rx="14" fill="url(#gpu)" stroke="#78a94b" stroke-width="1.4"/>
+  <text x="670" y="98" fill="#b7e77c" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="800" letter-spacing=".7">SHARED GPU · CUDA ASYNC STREAMS</text>
+  <text x="670" y="116" fill="#9caf92" font-family="Inter,Arial,sans-serif" font-size="9">Workers submit asynchronous operations</text>
+  <path d="M607 153H649M607 272H649M607 391H649" fill="none" stroke="#a5df61" stroke-width="2" marker-end="url(#arrow)"/>
   <g font-family="Inter,Arial,sans-serif">
-    <rect x="670" y="142" width="310" height="64" rx="8" fill="#142116" stroke="#49653b"/>
-    <text x="684" y="164" fill="#b7e77c" font-size="9" font-weight="800">STREAM A</text>
-    <rect x="765" y="153" width="54" height="42" rx="5" fill="#2a3c24" stroke="#638644"/><text x="792" y="179" fill="#e5f2dc" font-size="9" font-weight="700" text-anchor="middle">kernel</text>
-    <path d="M822 174H836" stroke="#a5df61" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <rect x="842" y="153" width="54" height="42" rx="5" fill="#2a3c24" stroke="#638644"/><text x="869" y="179" fill="#e5f2dc" font-size="9" font-weight="700" text-anchor="middle">kernel</text>
-    <text x="913" y="178" fill="#9caf92" font-size="9">…</text>
+    <rect x="670" y="121" width="310" height="64" rx="8" fill="#142116" stroke="#49653b"/>
+    <text x="684" y="143" fill="#b7e77c" font-size="9" font-weight="800">STREAM A</text>
+    <rect x="765" y="132" width="54" height="42" rx="5" fill="#2a3c24" stroke="#638644"/><text x="792" y="158" fill="#e5f2dc" font-size="9" font-weight="700" text-anchor="middle">kernel</text>
+    <path d="M822 153H836" stroke="#a5df61" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <rect x="842" y="132" width="54" height="42" rx="5" fill="#2a3c24" stroke="#638644"/><text x="869" y="158" fill="#e5f2dc" font-size="9" font-weight="700" text-anchor="middle">kernel</text>
+    <text x="913" y="157" fill="#9caf92" font-size="9">…</text>
 
-    <rect x="670" y="223" width="310" height="64" rx="8" fill="#142116" stroke="#49653b"/>
-    <text x="684" y="245" fill="#b7e77c" font-size="9" font-weight="800">STREAM B</text>
-    <rect x="765" y="234" width="54" height="42" rx="5" fill="#2a3c24" stroke="#638644"/><text x="792" y="260" fill="#e5f2dc" font-size="9" font-weight="700" text-anchor="middle">kernel</text>
-    <path d="M822 255H836" stroke="#a5df61" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <rect x="842" y="234" width="54" height="42" rx="5" fill="#2a3c24" stroke="#638644"/><text x="869" y="260" fill="#e5f2dc" font-size="9" font-weight="700" text-anchor="middle">kernel</text>
-    <text x="913" y="259" fill="#9caf92" font-size="9">…</text>
+    <rect x="670" y="240" width="310" height="64" rx="8" fill="#142116" stroke="#49653b"/>
+    <text x="684" y="262" fill="#b7e77c" font-size="9" font-weight="800">STREAM B</text>
+    <rect x="765" y="251" width="54" height="42" rx="5" fill="#2a3c24" stroke="#638644"/><text x="792" y="277" fill="#e5f2dc" font-size="9" font-weight="700" text-anchor="middle">kernel</text>
+    <path d="M822 272H836" stroke="#a5df61" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <rect x="842" y="251" width="54" height="42" rx="5" fill="#2a3c24" stroke="#638644"/><text x="869" y="277" fill="#e5f2dc" font-size="9" font-weight="700" text-anchor="middle">kernel</text>
+    <text x="913" y="276" fill="#9caf92" font-size="9">…</text>
 
-    <rect x="670" y="304" width="310" height="64" rx="8" fill="#142116" stroke="#49653b" stroke-dasharray="4 3"/>
-    <text x="684" y="343" fill="#b7e77c" font-size="18" font-weight="800">···</text>
-    <rect x="765" y="315" width="54" height="42" rx="5" fill="#2a3c24" stroke="#638644"/><text x="792" y="341" fill="#e5f2dc" font-size="9" font-weight="700" text-anchor="middle">kernel</text>
-    <path d="M822 336H836" stroke="#a5df61" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <rect x="842" y="315" width="54" height="42" rx="5" fill="#2a3c24" stroke="#638644"/><text x="869" y="341" fill="#e5f2dc" font-size="9" font-weight="700" text-anchor="middle">kernel</text>
-    <text x="913" y="340" fill="#9caf92" font-size="9">…</text>
+    <rect x="670" y="359" width="310" height="64" rx="8" fill="#142116" stroke="#49653b" stroke-dasharray="4 3"/>
+    <text x="684" y="398" fill="#b7e77c" font-size="18" font-weight="800">···</text>
+    <rect x="765" y="370" width="54" height="42" rx="5" fill="#2a3c24" stroke="#638644"/><text x="792" y="396" fill="#e5f2dc" font-size="9" font-weight="700" text-anchor="middle">kernel</text>
+    <path d="M822 391H836" stroke="#a5df61" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <rect x="842" y="370" width="54" height="42" rx="5" fill="#2a3c24" stroke="#638644"/><text x="869" y="396" fill="#e5f2dc" font-size="9" font-weight="700" text-anchor="middle">kernel</text>
+    <text x="913" y="395" fill="#9caf92" font-size="9">…</text>
   </g>
 
-  <path d="M1001 252H1032" stroke="#a5df61" stroke-width="2" marker-end="url(#arrow)"/>
-  <rect x="1036" y="195" width="136" height="112" rx="12" fill="#202c22" stroke="#526749"/>
-  <text x="1104" y="229" fill="#aee56c" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="800" text-anchor="middle">OUTPUT</text>
-  <text x="1104" y="256" fill="#f1f6ed" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="750" text-anchor="middle">Result merge</text>
-  <text x="1104" y="279" fill="#bdcbb6" font-family="Inter,Arial,sans-serif" font-size="10" text-anchor="middle">to inspection flow</text>
+  <path d="M1001 272H1032" stroke="#a5df61" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="1036" y="216" width="136" height="112" rx="12" fill="#202c22" stroke="#526749"/>
+  <text x="1104" y="250" fill="#aee56c" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="800" text-anchor="middle">OUTPUT</text>
+  <text x="1104" y="277" fill="#f1f6ed" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="750" text-anchor="middle">Result merge</text>
+  <text x="1104" y="300" fill="#bdcbb6" font-family="Inter,Arial,sans-serif" font-size="10" text-anchor="middle">to inspection flow</text>
 </svg>
