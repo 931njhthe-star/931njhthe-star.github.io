@@ -14,7 +14,7 @@
   <text x="92" y="276" fill="#f1f6ed" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="750" text-anchor="middle">이미지 작업</text>
   <text x="92" y="298" fill="#bdcbb6" font-family="Inter,Arial,sans-serif" font-size="10" text-anchor="middle">작업 단위 입력</text>
 
-  <path d="M157 272H187" stroke="#a5df61" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M156 272H191" stroke="#a5df61" stroke-width="2" marker-end="url(#arrow)"/>
   <rect x="191" y="205" width="150" height="134" rx="12" fill="#202c22" stroke="#526749"/>
   <text x="266" y="236" fill="#aee56c" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="800" text-anchor="middle">CPU</text>
   <text x="266" y="264" fill="#f1f6ed" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="750" text-anchor="middle">작업 분배</text>
@@ -22,7 +22,7 @@
   <text x="266" y="305" fill="#bdcbb6" font-family="Inter,Arial,sans-serif" font-size="10" text-anchor="middle">CPU–GPU 작업 할당</text>
 
   <path d="M342 272H366M366 153V391" fill="none" stroke="#83b84c" stroke-width="2"/>
-  <path d="M366 153H397M366 272H397M366 391H397" stroke="#a5df61" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M366 153H401M366 272H401M366 391H401" stroke="#a5df61" stroke-width="2"/>
 
   <g font-family="Inter,Arial,sans-serif">
     <rect x="401" y="118" width="72" height="70" rx="9" fill="#26351f" stroke="#5c7948"/>
@@ -46,11 +46,11 @@
     <text x="547" y="405" fill="#bdcbb6" font-size="9" text-anchor="middle">다른 작업 분기</text>
   </g>
 
-  <path d="M474 153H483M474 272H483M474 391H483" stroke="#a5df61" stroke-width="1.7" marker-end="url(#arrow)"/>
+  <path d="M473 153H488M473 272H488M473 391H488" stroke="#a5df61" stroke-width="1.7"/>
   <rect x="650" y="75" width="350" height="378" rx="14" fill="url(#gpu)" stroke="#78a94b" stroke-width="1.4"/>
   <text x="670" y="98" fill="#b7e77c" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="800" letter-spacing=".7">SHARED GPU · CUDA ASYNC STREAMS</text>
   <text x="670" y="116" fill="#9caf92" font-family="Inter,Arial,sans-serif" font-size="9">CPU 워커가 비동기 연산을 제출</text>
-  <path d="M607 153H649M607 272H649M607 391H649" fill="none" stroke="#a5df61" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M606 153H670M606 272H670M606 391H670" fill="none" stroke="#a5df61" stroke-width="2"/>
   <g font-family="Inter,Arial,sans-serif">
     <rect x="670" y="121" width="310" height="64" rx="8" fill="#142116" stroke="#49653b"/>
     <text x="684" y="143" fill="#b7e77c" font-size="9" font-weight="800">STREAM A</text>
@@ -74,7 +74,7 @@
     <text x="913" y="395" fill="#9caf92" font-size="9">…</text>
   </g>
 
-  <path d="M1001 272H1032" stroke="#a5df61" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M1000 272H1036" stroke="#a5df61" stroke-width="2" marker-end="url(#arrow)"/>
   <rect x="1036" y="216" width="136" height="112" rx="12" fill="#202c22" stroke="#526749"/>
   <text x="1104" y="250" fill="#aee56c" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="800" text-anchor="middle">OUTPUT</text>
   <text x="1104" y="277" fill="#f1f6ed" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="750" text-anchor="middle">결과 취합</text>
