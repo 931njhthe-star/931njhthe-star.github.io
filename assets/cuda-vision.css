@@ -84,7 +84,7 @@
 .detail-industrial-proof .production-note{font-size:9px;line-height:1.5;margin:10px 0 0;color:#a9bea0;border-top:1px solid #394b32;padding-top:8px}
 .detail-industrial-proof .production-note::before{content:"ⓘ";color:#b8ed76;margin-right:6px}
 .execution-detail{margin-top:0;padding:0;border:0;border-radius:0;background:transparent}
-.execution-figure{width:88%;max-width:920px;margin:0 auto}
+.execution-figure{width:82%;max-width:800px;margin:0 auto}
 @media(max-width:760px){.pipeline-proof-stack .detail-architecture{padding:20px 18px 17px}.detail-industrial-proof{padding:19px 18px}.detail-industrial-proof .proof-metric-groups{grid-template-columns:1fr;gap:13px}.detail-industrial-proof .industrial-proof-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.detail-industrial-proof .proof-stat{padding:14px 10px}.detail-industrial-proof .proof-stat strong{font-size:clamp(23px,6.8vw,32px)}.detail-industrial-proof .proof-stat b{font-size:11px}.detail-industrial-proof .proof-stat span{font-size:10px}}
 @media(max-width:440px){.detail-industrial-proof .industrial-proof-grid{grid-template-columns:1fr}.detail-industrial-proof .proof-stat{padding:16px 18px}}
 
