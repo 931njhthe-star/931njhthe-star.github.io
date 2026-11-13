@@ -246,7 +246,7 @@
     .more-work-four .work-card{min-height:185px}
     .more-work-four .work-card h3{line-height:1.32}
     .industrial-feature{grid-template-columns:1fr 1fr}
-    .industrial-proof{grid-column:1 / -1;background:#111a10;color:#f1f8ec;border-top:1px solid #405838;padding:20px 30px 17px}
+    .industrial-proof{grid-column:1 / -1;background:#111a10;color:#f1f8ec;border-top:1px solid #405838;padding:20px 30px 24px}
     .industrial-proof .production-badge{display:flex;align-items:center;gap:8px;flex-wrap:wrap;color:#b8ed76;font-size:9px;letter-spacing:1.2px;font-weight:850;line-height:1.4}
     .production-check{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border:1px solid #94cd54;border-radius:50%;color:#b8ed76;font-size:11px;line-height:1;letter-spacing:0}
     .production-separator{font-weight:900;color:#688953}
@@ -263,7 +263,7 @@
     .proof-stat span{display:block;font-size:9px;color:#afc5a5;margin-top:3px;line-height:1.35}
     .industrial-proof>p{font-size:9px;line-height:1.5;margin:10px 0 0;color:#a9bea0}
     .industrial-proof .production-note{border-top:1px solid #394b32;padding-top:8px}
-    .industrial-proof .production-note::before{content:"ⓘ";color:#b8ed76;margin-right:6px}
+    .industrial-proof .production-note::before{content:"ⓘ";color:#b8ed76;margin-right:6px}.industrial-proof .industrial-detail-link{margin:18px 0 0;align-self:flex-start}
     @media(max-width:1100px){.industrial-feature{grid-template-columns:1fr}}
     @media(max-width:760px){.industrial-proof{padding:19px 17px}.proof-metric-groups{grid-template-columns:1fr;gap:13px}.industrial-proof-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.proof-stat{padding:10px 9px}.proof-stat strong{font-size:22px}.proof-stat b{font-size:9px}.proof-stat span{font-size:8px}.industrial-proof-grid{grid-template-columns:1fr;gap:8px}.proof-stat{padding:16px 18px}.proof-stat strong{font-size:32px}.proof-stat b{margin-top:7px}.industrial-proof-top small{font-size:10px}.more-work-four .work-card{min-height:0}}
 
@@ -546,7 +546,7 @@
 <div class="project-sub">Industrial Image Processing &amp; GPU Acceleration</div>
 <p>A real-time image-processing pipeline engineered around high-volume inspection workloads. Work focused on selective GPU acceleration, CPU–GPU task allocation, kernel and memory tuning, and profiling-driven pipeline optimization.</p>
 <div class="chips"><span class="chip">CUDA / C++</span><span class="chip">Nsight</span><span class="chip">Kernel Optimization</span><span class="chip">CPU–GPU Scheduling</span></div>
-<a class="industrial-detail-link" href="/en/cuda-vision/">Explore the GPU optimization project <span aria-hidden="true">↗</span></a>
+
 </div>
 <section aria-label="Conceptual real-time industrial inspection system architecture" class="inspection-architecture">
 <div class="arch-header"><strong>REAL-TIME INSPECTION ARCHITECTURE</strong><span>SYSTEM OVERVIEW</span></div>
@@ -590,6 +590,7 @@
 </section>
 </div>
 <p class="production-note">Kernel gains are per operation, not end-to-end. Results are from a production inspection system; proprietary implementation details are not disclosed.</p>
+<a class="industrial-detail-link" href="/en/cuda-vision/">Explore the GPU optimization project <span aria-hidden="true">↗</span></a>
 </div>
 </article>
 </div>
