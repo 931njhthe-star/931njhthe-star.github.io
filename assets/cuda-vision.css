@@ -178,3 +178,23 @@
 @media(max-width:760px){.optimization-progression{margin-top:48px}.progression-title{font-size:23px;margin-bottom:22px}.progression-stage-flow{grid-template-columns:1fr;grid-template-areas:"one" "two" "three" "four";gap:10px}.progression-stage:nth-child(1)::after,.progression-stage:nth-child(2)::after,.progression-stage:nth-child(3)::after{content:"↓";left:50%;right:auto;top:auto;bottom:-18px;transform:translateX(-50%)}.progression-stage{padding:16px 17px 17px}.legacy-layout{grid-template-columns:145px 1fr;gap:14px}.measurement-layout{grid-template-columns:135px 1fr;gap:10px}.measurement-row{grid-template-columns:minmax(110px,150px) 1fr;gap:8px}.hybrid-layout{grid-template-columns:150px 30px 1fr;gap:10px}.kernel-selection-note{text-align:left}}
 @media(max-width:760px){.final-connector-desktop{display:none!important}.final-connector-mobile{display:block!important}.progression-final-connector{height:30px}}
 @media(max-width:480px){.optimization-progression{margin-top:22px}.kernel-table{grid-template-columns:56px minmax(72px,1fr) minmax(72px,1fr) 40px;gap:4px}.kernel-heading{font-size:7px;padding-left:2px;padding-right:2px}.kernel-alg,.kernel-cell{font-size:8px;padding:5px 5px}.kernel-measure{font-size:8px}.progression-stage-head{gap:10px}.progression-stage h3{font-size:15px}.progression-stage-head p{font-size:10px}.legacy-layout{grid-template-columns:1fr;gap:10px}.legacy-chip{min-height:48px}.measurement-layout{grid-template-columns:1fr}.single-core-badge{min-height:48px}.measurement-row{grid-template-columns:1fr;gap:4px;padding:9px 11px}.measurement-copy{font-size:10px}.hybrid-layout{grid-template-columns:100px 24px 1fr;gap:6px}.single-core-card{min-height:84px;padding:9px;font-size:10px}.cuda-streams-card{padding:10px}.stream-row{font-size:9px}}
+
+
+/* Low-level CUDA portfolio expansion: production vs. experiments */
+.cuda-selection-callout{display:flex;align-items:center;gap:18px;margin:0 0 20px;padding:15px 20px;background:#eef5e8;border:1px solid #cedfbe;border-left:4px solid #76b900;border-radius:10px;color:#243526;line-height:1.65}
+.cuda-selection-callout strong{flex:0 0 auto;font-size:14px}
+.cuda-selection-callout span{font-size:13px;color:#455843}
+.cuda-depth{margin-top:38px}
+.cuda-depth-heading{margin-bottom:18px}
+.cuda-depth-heading h3{font-size:clamp(20px,2.6vw,28px);line-height:1.3;margin:9px 0 8px}
+.cuda-depth-heading p{font-size:14px;line-height:1.7;color:#576453;max-width:880px;margin:0}
+.cuda-depth-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.cuda-depth-card{padding:22px 20px;border:1px solid #dce5d6;border-radius:14px;background:#fff;min-width:0}
+.cuda-depth-card>span{display:block;font-size:10px;letter-spacing:1.2px;font-weight:800;color:#58852b}
+.cuda-depth-card h4{font-size:17px;line-height:1.4;margin:11px 0 9px;color:#1f3021}
+.cuda-depth-card p{font-size:13px;line-height:1.75;color:#526052;margin:0}
+.cuda-research-note{margin-top:15px;padding:19px 22px;border-radius:12px;border:1px solid #dfe5dc;background:#f5f7f3}
+.cuda-research-note strong{display:block;font-size:11px;letter-spacing:.65px;color:#3d5e32}
+.cuda-research-note p{font-size:13px;line-height:1.75;color:#536252;margin:8px 0 0}
+@media(max-width:850px){.cuda-depth-grid{grid-template-columns:1fr 1fr}.cuda-depth-card:last-child{grid-column:1/-1}.cuda-selection-callout{display:block}.cuda-selection-callout span{display:block;margin-top:6px}}
+@media(max-width:560px){.cuda-depth-grid{grid-template-columns:1fr}.cuda-depth-card:last-child{grid-column:auto}.cuda-depth-card{padding:18px}.cuda-selection-callout{padding:13px 15px}.cuda-depth{margin-top:28px}.cuda-research-note{padding:16px}}
