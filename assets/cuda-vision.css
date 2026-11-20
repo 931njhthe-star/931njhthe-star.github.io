@@ -180,21 +180,28 @@
 @media(max-width:480px){.optimization-progression{margin-top:22px}.kernel-table{grid-template-columns:56px minmax(72px,1fr) minmax(72px,1fr) 40px;gap:4px}.kernel-heading{font-size:7px;padding-left:2px;padding-right:2px}.kernel-alg,.kernel-cell{font-size:8px;padding:5px 5px}.kernel-measure{font-size:8px}.progression-stage-head{gap:10px}.progression-stage h3{font-size:15px}.progression-stage-head p{font-size:10px}.legacy-layout{grid-template-columns:1fr;gap:10px}.legacy-chip{min-height:48px}.measurement-layout{grid-template-columns:1fr}.single-core-badge{min-height:48px}.measurement-row{grid-template-columns:1fr;gap:4px;padding:9px 11px}.measurement-copy{font-size:10px}.hybrid-layout{grid-template-columns:100px 24px 1fr;gap:6px}.single-core-card{min-height:84px;padding:9px;font-size:10px}.cuda-streams-card{padding:10px}.stream-row{font-size:9px}}
 
 
-/* Low-level CUDA portfolio expansion: production vs. experiments */
+/* CUDA project: compact integrated optimization panel */
 .cuda-selection-callout{display:flex;align-items:center;gap:18px;margin:0 0 20px;padding:15px 20px;background:#eef5e8;border:1px solid #cedfbe;border-left:4px solid #76b900;border-radius:10px;color:#243526;line-height:1.65}
 .cuda-selection-callout strong{flex:0 0 auto;font-size:14px}
 .cuda-selection-callout span{font-size:13px;color:#455843}
-.cuda-depth{margin-top:38px}
-.cuda-depth-heading{margin-bottom:18px}
-.cuda-depth-heading h3{font-size:clamp(20px,2.6vw,28px);line-height:1.3;margin:9px 0 8px}
-.cuda-depth-heading p{font-size:14px;line-height:1.7;color:#576453;max-width:880px;margin:0}
-.cuda-depth-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.cuda-depth-card{padding:22px 20px;border:1px solid #dce5d6;border-radius:14px;background:#fff;min-width:0}
-.cuda-depth-card>span{display:block;font-size:10px;letter-spacing:1.2px;font-weight:800;color:#58852b}
-.cuda-depth-card h4{font-size:17px;line-height:1.4;margin:11px 0 9px;color:#1f3021}
-.cuda-depth-card p{font-size:13px;line-height:1.75;color:#526052;margin:0}
-.cuda-research-note{margin-top:15px;padding:19px 22px;border-radius:12px;border:1px solid #dfe5dc;background:#f5f7f3}
-.cuda-research-note strong{display:block;font-size:11px;letter-spacing:.65px;color:#3d5e32}
-.cuda-research-note p{font-size:13px;line-height:1.75;color:#536252;margin:8px 0 0}
-@media(max-width:850px){.cuda-depth-grid{grid-template-columns:1fr 1fr}.cuda-depth-card:last-child{grid-column:1/-1}.cuda-selection-callout{display:block}.cuda-selection-callout span{display:block;margin-top:6px}}
-@media(max-width:560px){.cuda-depth-grid{grid-template-columns:1fr}.cuda-depth-card:last-child{grid-column:auto}.cuda-depth-card{padding:18px}.cuda-selection-callout{padding:13px 15px}.cuda-depth{margin-top:28px}.cuda-research-note{padding:16px}}
+.cuda-compact-panel{margin-top:38px;background:#17231a;color:#f4f8f1;border:1px solid #304436;border-radius:20px;padding:32px 38px;box-shadow:0 16px 34px rgba(20,32,22,.12)}
+.cuda-compact-heading{margin-bottom:22px}
+.cuda-compact-eyebrow{display:block;color:#a5d67c;font-size:11px;letter-spacing:1.45px;font-weight:800}
+.cuda-compact-heading h3{color:#f4f8f1;font-size:clamp(22px,2.6vw,29px);line-height:1.28;margin:9px 0}
+.cuda-compact-heading p{font-size:13px;line-height:1.8;color:#b9c8b7;margin:0}
+.cuda-compact-status{display:inline-block;color:#b5e68c;border:1px solid #4c7043;border-radius:100px;padding:5px 12px;font-size:11px;font-weight:750;margin:0 0 7px}
+.cuda-compact-row{display:grid;grid-template-columns:154px minmax(0,1fr);gap:24px;border-bottom:1px solid #3b5140;padding:20px 0;align-items:start}
+.cuda-compact-index{display:flex;align-items:baseline;gap:10px;color:#b5e18a}
+.cuda-compact-index span{font-size:11px;font-weight:800}
+.cuda-compact-index strong{font-size:12px;letter-spacing:.6px;font-weight:800}
+.cuda-compact-copy h4{font-size:16px;color:#f1f7ef;margin:0 0 7px;font-weight:750}
+.cuda-compact-copy p{font-size:13px;color:#c3d0bd;line-height:1.8;margin:0;overflow-wrap:anywhere}
+.cuda-compact-research{margin-top:22px;background:#223026;border:1px solid #33493a;border-radius:12px;padding:20px 23px}
+.cuda-compact-research-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.cuda-compact-research-heading strong{font-size:14px;color:#e4f0db}
+.cuda-compact-research-heading span{font-size:11px;color:#b7d0a8;border:1px solid #52694b;border-radius:100px;padding:4px 10px}
+.cuda-compact-research p{margin:10px 0 0;color:#c3d3bc;font-size:13px;line-height:1.8;overflow-wrap:anywhere}
+.cuda-compact-theory{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;margin-top:15px;color:#9bad96;font-size:12px;line-height:1.65}
+.cuda-compact-theory strong{color:#b8cba9;white-space:nowrap;font-size:11px}
+@media(max-width:850px){.cuda-selection-callout{display:block}.cuda-selection-callout span{display:block;margin-top:6px}.cuda-compact-panel{padding:25px 23px}.cuda-compact-row{grid-template-columns:125px minmax(0,1fr);gap:16px}}
+@media(max-width:560px){.cuda-compact-panel{padding:21px 17px;border-radius:15px;margin-top:26px}.cuda-compact-row{grid-template-columns:1fr;gap:7px;padding:18px 0}.cuda-compact-index{gap:8px}.cuda-compact-copy h4{font-size:15px}.cuda-compact-research{padding:16px}.cuda-selection-callout{padding:13px 15px}}
